@@ -1,0 +1,18 @@
+{
+  "Bloody Roar 2": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Mouthwashing": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Blasphemous": {
+    "Item1": true,
+    "Item2": "D:\\game"
+  },
+  "Flappy Bird": {
+    "Item1": true,
+    "Item2": "D:\\game"
+  }
+}
