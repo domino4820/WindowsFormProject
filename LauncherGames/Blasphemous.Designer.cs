@@ -35,10 +35,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnInstall = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnInstall = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox4);
-            this.panel1.Location = new System.Drawing.Point(0, 238);
+            this.panel1.Location = new System.Drawing.Point(0, 179);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(934, 391);
             this.panel1.TabIndex = 1;
@@ -112,34 +112,11 @@
             this.panel2.Size = new System.Drawing.Size(934, 945);
             this.panel2.TabIndex = 2;
             // 
-            // btnInstall
-            // 
-            this.btnInstall.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstall.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnInstall.Location = new System.Drawing.Point(41, 713);
-            this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(149, 40);
-            this.btnInstall.TabIndex = 27;
-            this.btnInstall.Text = "Install";
-            this.btnInstall.UseVisualStyleBackColor = true;
-            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(41, 798);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(149, 40);
-            this.btnDelete.TabIndex = 28;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(405, 633);
+            this.panel3.Location = new System.Drawing.Point(405, 576);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(529, 309);
             this.panel3.TabIndex = 29;
@@ -150,9 +127,32 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(513, 433);
+            this.label1.Size = new System.Drawing.Size(523, 309);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(41, 747);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(149, 40);
+            this.btnDelete.TabIndex = 28;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnInstall
+            // 
+            this.btnInstall.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInstall.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnInstall.Location = new System.Drawing.Point(41, 653);
+            this.btnInstall.Name = "btnInstall";
+            this.btnInstall.Size = new System.Drawing.Size(149, 40);
+            this.btnInstall.TabIndex = 27;
+            this.btnInstall.Text = "Install";
+            this.btnInstall.UseVisualStyleBackColor = true;
+            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
             // Blasphemous
             // 
@@ -163,6 +163,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Blasphemous";
             this.Text = "Blasphemous";
+            this.Load += new System.EventHandler(this.Blasphemous_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

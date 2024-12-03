@@ -32,11 +32,19 @@ namespace LauncherGames
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelGameList = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureLt1 = new System.Windows.Forms.PictureBox();
+            this.pictureLt2 = new System.Windows.Forms.PictureBox();
+            this.pictureLittleNightmares = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,21 +57,23 @@ namespace LauncherGames
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureMouthwashing = new System.Windows.Forms.PictureBox();
             this.pictureProjectZomboid = new System.Windows.Forms.PictureBox();
-            this.pictureLittleNightMares = new System.Windows.Forms.PictureBox();
             this.pictureBloodyRoar2 = new System.Windows.Forms.PictureBox();
             this.pictureTheHouseofTheDead = new System.Windows.Forms.PictureBox();
             this.pictureFlappyBird = new System.Windows.Forms.PictureBox();
             this.pictureBlasphemous = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGameList.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLt1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLt2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLittleNightmares)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMouthwashing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureProjectZomboid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLittleNightMares)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBloodyRoar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTheHouseofTheDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFlappyBird)).BeginInit();
@@ -75,6 +85,9 @@ namespace LauncherGames
             // 
             this.panelGameList.AutoScroll = true;
             this.panelGameList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelGameList.Controls.Add(this.label26);
+            this.panelGameList.Controls.Add(this.panel3);
+            this.panelGameList.Controls.Add(this.panel2);
             this.panelGameList.Controls.Add(this.label16);
             this.panelGameList.Controls.Add(this.label15);
             this.panelGameList.Controls.Add(this.label13);
@@ -86,7 +99,6 @@ namespace LauncherGames
             this.panelGameList.Controls.Add(this.label9);
             this.panelGameList.Controls.Add(this.panel1);
             this.panelGameList.Controls.Add(this.pictureProjectZomboid);
-            this.panelGameList.Controls.Add(this.pictureLittleNightMares);
             this.panelGameList.Controls.Add(this.pictureBloodyRoar2);
             this.panelGameList.Controls.Add(this.pictureTheHouseofTheDead);
             this.panelGameList.Controls.Add(this.pictureFlappyBird);
@@ -99,12 +111,84 @@ namespace LauncherGames
             this.panelGameList.TabIndex = 4;
             this.panelGameList.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGameList_Paint);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Constantia", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(3, 1847);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(210, 40);
+            this.label26.TabIndex = 34;
+            this.label26.Text = "SẮP RA MẮT";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label25);
+            this.panel3.Location = new System.Drawing.Point(0, 2489);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1018, 470);
+            this.panel3.TabIndex = 33;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(-3, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(1021, 470);
+            this.label25.TabIndex = 32;
+            this.label25.Text = resources.GetString("label25.Text");
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.pictureLt1);
+            this.panel2.Controls.Add(this.pictureLt2);
+            this.panel2.Controls.Add(this.pictureLittleNightmares);
+            this.panel2.Location = new System.Drawing.Point(3, 1890);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1012, 407);
+            this.panel2.TabIndex = 31;
+            // 
+            // pictureLt1
+            // 
+            this.pictureLt1.Image = global::LauncherGames.Properties.Resources.R2;
+            this.pictureLt1.Location = new System.Drawing.Point(951, 12);
+            this.pictureLt1.Name = "pictureLt1";
+            this.pictureLt1.Size = new System.Drawing.Size(641, 370);
+            this.pictureLt1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureLt1.TabIndex = 15;
+            this.pictureLt1.TabStop = false;
+            // 
+            // pictureLt2
+            // 
+            this.pictureLt2.Image = global::LauncherGames.Properties.Resources.lngamescomscreenshot03escapingthedarkcorridorjpg_7b17a9;
+            this.pictureLt2.Location = new System.Drawing.Point(1722, 13);
+            this.pictureLt2.Name = "pictureLt2";
+            this.pictureLt2.Size = new System.Drawing.Size(641, 370);
+            this.pictureLt2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureLt2.TabIndex = 14;
+            this.pictureLt2.TabStop = false;
+            // 
+            // pictureLittleNightmares
+            // 
+            this.pictureLittleNightmares.Image = global::LauncherGames.Properties.Resources.ltn;
+            this.pictureLittleNightmares.Location = new System.Drawing.Point(190, 12);
+            this.pictureLittleNightmares.Name = "pictureLittleNightmares";
+            this.pictureLittleNightmares.Size = new System.Drawing.Size(641, 370);
+            this.pictureLittleNightmares.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureLittleNightmares.TabIndex = 13;
+            this.pictureLittleNightmares.TabStop = false;
+            this.pictureLittleNightmares.Click += new System.EventHandler(this.pictureLittleNightmares_Click);
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(6, 749);
+            this.label16.Location = new System.Drawing.Point(6, 740);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(429, 37);
             this.label16.TabIndex = 30;
@@ -115,7 +199,7 @@ namespace LauncherGames
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Constantia", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 231);
+            this.label15.Location = new System.Drawing.Point(3, 222);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(370, 40);
             this.label15.TabIndex = 29;
@@ -126,7 +210,7 @@ namespace LauncherGames
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(757, 1699);
+            this.label13.Location = new System.Drawing.Point(757, 1690);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(196, 32);
             this.label13.TabIndex = 28;
@@ -137,7 +221,7 @@ namespace LauncherGames
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(409, 1699);
+            this.label12.Location = new System.Drawing.Point(409, 1690);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(213, 32);
             this.label12.TabIndex = 27;
@@ -148,18 +232,28 @@ namespace LauncherGames
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(68, 1699);
+            this.label14.Location = new System.Drawing.Point(68, 1690);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(222, 32);
             this.label14.TabIndex = 26;
             this.label14.Text = "Đấu Trường Thú 2";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::LauncherGames.Properties.Resources.OIP__1_;
+            this.pictureBox9.Location = new System.Drawing.Point(371, 1318);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(284, 351);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 25;
+            this.pictureBox9.TabStop = false;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(703, 1208);
+            this.label11.Location = new System.Drawing.Point(703, 1199);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(285, 32);
             this.label11.TabIndex = 24;
@@ -170,7 +264,7 @@ namespace LauncherGames
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(443, 1208);
+            this.label10.Location = new System.Drawing.Point(443, 1199);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 32);
             this.label10.TabIndex = 23;
@@ -181,7 +275,7 @@ namespace LauncherGames
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(98, 1208);
+            this.label9.Location = new System.Drawing.Point(98, 1199);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(150, 32);
             this.label9.TabIndex = 22;
@@ -189,7 +283,7 @@ namespace LauncherGames
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -199,7 +293,7 @@ namespace LauncherGames
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureMouthwashing);
-            this.panel1.Location = new System.Drawing.Point(3, 275);
+            this.panel1.Location = new System.Drawing.Point(3, 266);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1012, 407);
             this.panel1.TabIndex = 14;
@@ -292,16 +386,6 @@ namespace LauncherGames
             this.label2.TabIndex = 15;
             this.label2.Text = "Tên Game :";
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::LauncherGames.Properties.Resources.OIP__1_;
-            this.pictureBox9.Location = new System.Drawing.Point(37, 1798);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(284, 351);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 25;
-            this.pictureBox9.TabStop = false;
-            // 
             // pictureMouthwashing
             // 
             this.pictureMouthwashing.Image = global::LauncherGames.Properties.Resources.capsule_616x353;
@@ -316,27 +400,18 @@ namespace LauncherGames
             // pictureProjectZomboid
             // 
             this.pictureProjectZomboid.Image = global::LauncherGames.Properties.Resources.OIP;
-            this.pictureProjectZomboid.Location = new System.Drawing.Point(704, 1327);
+            this.pictureProjectZomboid.Location = new System.Drawing.Point(704, 1318);
             this.pictureProjectZomboid.Name = "pictureProjectZomboid";
             this.pictureProjectZomboid.Size = new System.Drawing.Size(284, 351);
             this.pictureProjectZomboid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureProjectZomboid.TabIndex = 12;
             this.pictureProjectZomboid.TabStop = false;
-            // 
-            // pictureLittleNightMares
-            // 
-            this.pictureLittleNightMares.Image = global::LauncherGames.Properties.Resources.OIP__3_;
-            this.pictureLittleNightMares.Location = new System.Drawing.Point(371, 1327);
-            this.pictureLittleNightMares.Name = "pictureLittleNightMares";
-            this.pictureLittleNightMares.Size = new System.Drawing.Size(284, 351);
-            this.pictureLittleNightMares.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureLittleNightMares.TabIndex = 11;
-            this.pictureLittleNightMares.TabStop = false;
+            this.pictureProjectZomboid.Click += new System.EventHandler(this.pictureProjectZomboid_Click);
             // 
             // pictureBloodyRoar2
             // 
             this.pictureBloodyRoar2.Image = global::LauncherGames.Properties.Resources.OIP__1_;
-            this.pictureBloodyRoar2.Location = new System.Drawing.Point(37, 1327);
+            this.pictureBloodyRoar2.Location = new System.Drawing.Point(37, 1318);
             this.pictureBloodyRoar2.Name = "pictureBloodyRoar2";
             this.pictureBloodyRoar2.Size = new System.Drawing.Size(284, 351);
             this.pictureBloodyRoar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -347,7 +422,7 @@ namespace LauncherGames
             // pictureTheHouseofTheDead
             // 
             this.pictureTheHouseofTheDead.Image = global::LauncherGames.Properties.Resources.OIP__2_;
-            this.pictureTheHouseofTheDead.Location = new System.Drawing.Point(704, 838);
+            this.pictureTheHouseofTheDead.Location = new System.Drawing.Point(704, 829);
             this.pictureTheHouseofTheDead.Name = "pictureTheHouseofTheDead";
             this.pictureTheHouseofTheDead.Size = new System.Drawing.Size(284, 351);
             this.pictureTheHouseofTheDead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -357,7 +432,7 @@ namespace LauncherGames
             // pictureFlappyBird
             // 
             this.pictureFlappyBird.Image = global::LauncherGames.Properties.Resources.R;
-            this.pictureFlappyBird.Location = new System.Drawing.Point(371, 838);
+            this.pictureFlappyBird.Location = new System.Drawing.Point(371, 829);
             this.pictureFlappyBird.Name = "pictureFlappyBird";
             this.pictureFlappyBird.Size = new System.Drawing.Size(284, 351);
             this.pictureFlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -368,7 +443,7 @@ namespace LauncherGames
             // pictureBlasphemous
             // 
             this.pictureBlasphemous.Image = global::LauncherGames.Properties.Resources.z6083747040980_d4b0a0ad0349f10a1d8de33286f14e33;
-            this.pictureBlasphemous.Location = new System.Drawing.Point(37, 838);
+            this.pictureBlasphemous.Location = new System.Drawing.Point(37, 829);
             this.pictureBlasphemous.Name = "pictureBlasphemous";
             this.pictureBlasphemous.Size = new System.Drawing.Size(284, 351);
             this.pictureBlasphemous.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -379,7 +454,7 @@ namespace LauncherGames
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(369, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(369, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 179);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -396,16 +471,20 @@ namespace LauncherGames
             this.Controls.Add(this.panelGameList);
             this.DoubleBuffered = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "LAUNCHER GAMES";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelGameList.ResumeLayout(false);
             this.panelGameList.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLt1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLt2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLittleNightmares)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMouthwashing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureProjectZomboid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLittleNightMares)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBloodyRoar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTheHouseofTheDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFlappyBird)).EndInit();
@@ -421,7 +500,6 @@ namespace LauncherGames
         private System.Windows.Forms.Panel panelGameList;
         private System.Windows.Forms.PictureBox pictureBlasphemous;
         private System.Windows.Forms.PictureBox pictureProjectZomboid;
-        private System.Windows.Forms.PictureBox pictureLittleNightMares;
         private System.Windows.Forms.PictureBox pictureBloodyRoar2;
         private System.Windows.Forms.PictureBox pictureTheHouseofTheDead;
         private System.Windows.Forms.PictureBox pictureFlappyBird;
@@ -444,6 +522,13 @@ namespace LauncherGames
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private Label label25;
+        private Panel panel2;
+        private PictureBox pictureLittleNightmares;
+        private Panel panel3;
+        private Label label26;
+        private PictureBox pictureLt2;
+        private PictureBox pictureLt1;
     }
 }
 

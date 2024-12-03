@@ -33,3 +33,5 @@ D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\LauncherGames.Blasphemous.resou
 D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\Launcher.D5A827EE.Up2Date
 D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\Newtonsoft.Json.dll
 D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\Newtonsoft.Json.xml
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\LauncherGames.LittleNightMares.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\LauncherGames.ProjectZomboid.resources

@@ -8,8 +8,8 @@ namespace LauncherGames
 {
     public partial class Blasphemous : Form
     {
-        private string gameDirectory; // Lưu đường dẫn thư mục game
-        private bool isDownloading = false; // Trạng thái kiểm soát quá trình tải xuống
+        private string gameDirectory; 
+        private bool isDownloading = false; 
 
         public Blasphemous()
         {
@@ -18,14 +18,13 @@ namespace LauncherGames
 
         private void btnInstall_Click(object sender, EventArgs e)
         {
-            // Kiểm tra trạng thái tải xuống
             if (isDownloading)
             {
                 MessageBox.Show("Đang tải xuống, vui lòng đợi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // Kiểm tra trạng thái cài đặt
+            
             var gameState = GameStateManager.GetGameState("Blasphemous");
             if (gameState.IsInstalled)
             {
@@ -34,9 +33,8 @@ namespace LauncherGames
                 return;
             }
 
-            // Tên game
             string gameName = "Blasphemous";
-            string downloadUrl = "https://storage.googleapis.com/drive-bulk-export-anonymous/20241201T124250.281Z/4133399871716478688/788726de-81c2-49fa-8fa2-49399088b930/1/ac229286-4fe7-4b3b-8e4e-166e5fce18c3?authuser"; // Thay bằng URL tải xuống chính xác
+            string downloadUrl = "https://drive.usercontent.google.com/download?id=1SL7evz2O7hpKozM6cTH51OnwCNJg2IOF&export=download&confirm=t&uuid=84560843-beb6-47dd-81e7-8a41ca5ac45d";
 
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
@@ -48,10 +46,8 @@ namespace LauncherGames
                     gameDirectory = folderDialog.SelectedPath;
                     string savePath = Path.Combine(gameDirectory, "Blasphemous.zip");
 
-                    // Đặt trạng thái đang tải xuống
                     isDownloading = true;
 
-                    // Hiển thị tiến trình tải xuống
                     ProgressForm progressForm = new ProgressForm
                     {
                         GameName = gameName,
@@ -63,19 +59,20 @@ namespace LauncherGames
                     {
                         try
                         {
-                            // Giải nén ngay sau khi tải xuống hoàn tất
-                            ZipFile.ExtractToDirectory(savePath, gameDirectory);
+                            // Giải nén sau khi tải xong
+                            string extractPath = Path.Combine(gameDirectory, "Blasphemous");
+                            ZipFile.ExtractToDirectory(savePath, extractPath);
 
-                            // Xóa file ZIP sau khi giải nén
+                            // Xóa file ZIP
                             File.Delete(savePath);
 
-                            // Lưu trạng thái cài đặt game
-                            GameStateManager.SetGameInstalled("Blasphemous", true, gameDirectory);
+                           
+                            GameStateManager.SetGameInstalled("Blasphemous", true, extractPath);
 
-                            // Cập nhật nút bấm
+                           
                             UpdateInstallButtonToPlay();
 
-                            MessageBox.Show($"Tải xuống và giải nén thành công! Game đã được lưu tại: {gameDirectory}");
+                            MessageBox.Show($"Tải xuống và giải nén thành công! Game đã được lưu tại: {extractPath}");
                         }
                         catch (Exception ex)
                         {
@@ -83,7 +80,6 @@ namespace LauncherGames
                         }
                         finally
                         {
-                            // Đặt lại trạng thái tải xuống
                             isDownloading = false;
                         }
                     };
@@ -110,11 +106,11 @@ namespace LauncherGames
                 return;
             }
 
-            string exePath = Path.Combine(gameDirectory, "Blasphemous/Blasphemous.exe");
+            string exePath = Path.Combine(gameDirectory, "Blasphemous/Blasphemous/Blasphemous.exe");
 
             if (File.Exists(exePath))
             {
-                System.Diagnostics.Process.Start(exePath); // Chạy game
+                System.Diagnostics.Process.Start(exePath);
             }
             else
             {
@@ -135,21 +131,23 @@ namespace LauncherGames
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(gameDirectory) && Directory.Exists(gameDirectory))
+                    string targetDirectory = Path.Combine(gameDirectory, "Blasphemous");
+
+                    if (!string.IsNullOrEmpty(targetDirectory) && Directory.Exists(targetDirectory))
                     {
-                        DeleteDirectoryContents(gameDirectory);
+                        DeleteDirectoryContents(targetDirectory);
 
-                        // Xóa trạng thái cài đặt
-                        GameStateManager.SetGameInstalled("Bloody Roar 2", false, null);
+                        Directory.Delete(targetDirectory);
 
-                        // Cập nhật nút bấm
+                        GameStateManager.SetGameInstalled("Blasphemous", false, null);
+
                         UpdatePlayButtonToInstall();
 
                         MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Game không tồn tại hoặc chưa được cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Thư mục game không tồn tại hoặc chưa được cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -165,14 +163,14 @@ namespace LauncherGames
             {
                 foreach (var file in Directory.GetFiles(directoryPath))
                 {
-                    File.SetAttributes(file, FileAttributes.Normal); // Đặt lại thuộc tính file
-                    File.Delete(file); // Xóa file
+                    File.SetAttributes(file, FileAttributes.Normal);
+                    File.Delete(file);
                 }
 
                 foreach (var subDirectory in Directory.GetDirectories(directoryPath))
                 {
-                    DeleteDirectoryContents(subDirectory); // Xóa nội dung trong thư mục con
-                    Directory.Delete(subDirectory);       // Xóa thư mục con
+                    DeleteDirectoryContents(subDirectory);
+                    Directory.Delete(subDirectory);
                 }
             }
             catch (Exception ex)
@@ -185,16 +183,23 @@ namespace LauncherGames
         {
             var gameState = GameStateManager.GetGameState("Blasphemous");
 
-            // Cập nhật `gameDirectory` từ trạng thái
-            gameDirectory = gameState.GameDirectory;
-
-            if (gameState.IsInstalled && !string.IsNullOrEmpty(gameDirectory))
+            if (string.IsNullOrEmpty(gameState.GameDirectory) || !Directory.Exists(gameState.GameDirectory))
             {
-                UpdateInstallButtonToPlay();
+                GameStateManager.SetGameInstalled("Blasphemous", false, null);
+                UpdatePlayButtonToInstall();
             }
             else
             {
-                UpdatePlayButtonToInstall();
+                gameDirectory = gameState.GameDirectory;
+
+                if (gameState.IsInstalled)
+                {
+                    UpdateInstallButtonToPlay();
+                }
+                else
+                {
+                    UpdatePlayButtonToInstall();
+                }
             }
         }
 

@@ -120,7 +120,19 @@
     <Compile Include="InfoMouthWashing.Designer.cs">
       <DependentUpon>InfoMouthWashing.cs</DependentUpon>
     </Compile>
+    <Compile Include="LittleNightMares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LittleNightMares.Designer.cs">
+      <DependentUpon>LittleNightMares.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectZomboid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectZomboid.Designer.cs">
+      <DependentUpon>ProjectZomboid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Blasphemous.resx">
       <DependentUpon>Blasphemous.cs</DependentUpon>
@@ -139,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfoMouthWashing.resx">
       <DependentUpon>InfoMouthWashing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LittleNightMares.resx">
+      <DependentUpon>LittleNightMares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectZomboid.resx">
+      <DependentUpon>ProjectZomboid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,6 +183,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Games\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lngamescomscreenshot03escapingthedarkcorridorjpg-7b17a9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wp8696362.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ltn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wppjz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\build.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yPVuu.qR4e-small-Project-Zomboid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -56,12 +56,12 @@ namespace LauncherGames.Helpers
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Lỗi khi tải trạng thái game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    GameStates = new Dictionary<string, (bool, string)>(); // Khởi tạo lại nếu lỗi
+                    GameStates = new Dictionary<string, (bool, string)>(); 
                 }
             }
             else
             {
-                GameStates = new Dictionary<string, (bool, string)>(); // Tạo mới nếu file không tồn tại
+                GameStates = new Dictionary<string, (bool, string)>(); 
             }
         }
 

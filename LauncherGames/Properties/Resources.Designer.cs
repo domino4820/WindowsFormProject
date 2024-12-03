@@ -83,6 +83,16 @@ namespace LauncherGames.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgr {
+            get {
+                object obj = ResourceManager.GetObject("backgr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bloody_Roar_2___Bringer_of_the_New_Age__PS_Arcade_95_ {
             get {
                 object obj = ResourceManager.GetObject("Bloody_Roar_2_-_Bringer_of_the_New_Age_(PS_Arcade_95)", resourceCulture);
@@ -96,6 +106,16 @@ namespace LauncherGames.Properties {
         internal static System.Drawing.Bitmap BloodyRoar {
             get {
                 object obj = ResourceManager.GetObject("BloodyRoar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap build {
+            get {
+                object obj = ResourceManager.GetObject("build", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,6 +193,26 @@ namespace LauncherGames.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lngamescomscreenshot03escapingthedarkcorridorjpg_7b17a9 {
+            get {
+                object obj = ResourceManager.GetObject("lngamescomscreenshot03escapingthedarkcorridorjpg-7b17a9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ltn {
+            get {
+                object obj = ResourceManager.GetObject("ltn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OIP {
             get {
                 object obj = ResourceManager.GetObject("OIP", resourceCulture);
@@ -243,6 +283,16 @@ namespace LauncherGames.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap R2 {
+            get {
+                object obj = ResourceManager.GetObject("R2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ss_78202944dab8f4e68ba3a9912de466d930bc1dee_1920x1080 {
             get {
                 object obj = ResourceManager.GetObject("ss_78202944dab8f4e68ba3a9912de466d930bc1dee.1920x1080", resourceCulture);
@@ -276,6 +326,36 @@ namespace LauncherGames.Properties {
         internal static System.Drawing.Bitmap wallpapersden_com_flappy_bird_game_popular_1920x1080 {
             get {
                 object obj = ResourceManager.GetObject("wallpapersden.com_flappy-bird-game-popular_1920x1080", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wp8696362 {
+            get {
+                object obj = ResourceManager.GetObject("wp8696362", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wppjz {
+            get {
+                object obj = ResourceManager.GetObject("wppjz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yPVuu_qR4e_small_Project_Zomboid {
+            get {
+                object obj = ResourceManager.GetObject("yPVuu.qR4e-small-Project-Zomboid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

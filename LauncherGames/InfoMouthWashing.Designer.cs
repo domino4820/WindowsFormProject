@@ -90,7 +90,7 @@
             // btnInstall
             // 
             this.btnInstall.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstall.Location = new System.Drawing.Point(53, 564);
+            this.btnInstall.Location = new System.Drawing.Point(53, 603);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(149, 40);
             this.btnInstall.TabIndex = 25;
@@ -101,11 +101,11 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(53, 638);
+            this.btnDelete.Location = new System.Drawing.Point(53, 691);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(149, 40);
             this.btnDelete.TabIndex = 26;
-            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 

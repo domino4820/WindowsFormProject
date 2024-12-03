@@ -3,13 +3,15 @@ using System.IO;
 using System.Windows.Forms;
 using System.IO.Compression;
 using LauncherGames.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LauncherGames
 {
     public partial class BloodyRoar2 : Form
     {
-        private string gameDirectory; // Lưu đường dẫn thư mục game
-        private bool isDownloading = false; // Trạng thái kiểm soát quá trình tải xuống
+        private string gameDirectory; 
+        private bool isDownloading = false; 
 
         public BloodyRoar2()
         {
@@ -18,14 +20,12 @@ namespace LauncherGames
 
         private void btnInstall_Click(object sender, EventArgs e)
         {
-            // Kiểm tra trạng thái tải xuống
             if (isDownloading)
             {
                 MessageBox.Show("Đang tải xuống, vui lòng đợi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // Kiểm tra trạng thái cài đặt
             var gameState = GameStateManager.GetGameState("Bloody Roar 2");
             if (gameState.IsInstalled)
             {
@@ -34,9 +34,8 @@ namespace LauncherGames
                 return;
             }
 
-            // Tên game
-            string gameName = "Bloody Roar 2";
-            string downloadUrl = "https://drive.google.com/uc?export=download&id=1xMR6bwAL4K-VNq_ow81kNuu0kstn0bfK";
+            string gameName = "Bloody Roar 2"; // Tên game
+            string downloadUrl = "https://drive.usercontent.google.com/download?id=1JrTLLWO6JQHjJJ0LzD8-AcKfNZhkE_wH&export=download&confirm=t&uuid=2ba6446a-5e77-4187-ad33-b89f54c9a853"; // Đường dẫn tải xuống
 
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
@@ -48,10 +47,8 @@ namespace LauncherGames
                     gameDirectory = folderDialog.SelectedPath;
                     string savePath = Path.Combine(gameDirectory, "Bloody-Roar-2.zip");
 
-                    // Đặt trạng thái đang tải xuống
                     isDownloading = true;
 
-                    // Hiển thị tiến trình tải xuống
                     ProgressForm progressForm = new ProgressForm
                     {
                         GameName = gameName,
@@ -63,13 +60,16 @@ namespace LauncherGames
                     {
                         try
                         {
-                            // Giải nén ngay sau khi tải xuống hoàn tất
+
                             ZipFile.ExtractToDirectory(savePath, gameDirectory);
 
-                            // Lưu trạng thái cài đặt game
+
+                            File.Delete(savePath);
+
+
                             GameStateManager.SetGameInstalled("Bloody Roar 2", true, gameDirectory);
 
-                            // Cập nhật nút bấm
+
                             UpdateInstallButtonToPlay();
 
                             MessageBox.Show($"Tải xuống và giải nén thành công! Game đã được lưu tại: {gameDirectory}");
@@ -80,7 +80,7 @@ namespace LauncherGames
                         }
                         finally
                         {
-                            // Đặt lại trạng thái tải xuống
+
                             isDownloading = false;
                         }
                     };
@@ -93,6 +93,7 @@ namespace LauncherGames
                 }
             }
         }
+
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
@@ -111,7 +112,7 @@ namespace LauncherGames
 
             if (File.Exists(exePath))
             {
-                System.Diagnostics.Process.Start(exePath); // Chạy game
+                System.Diagnostics.Process.Start(exePath); 
             }
             else
             {
@@ -132,21 +133,26 @@ namespace LauncherGames
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(gameDirectory) && Directory.Exists(gameDirectory))
-                    {
-                        DeleteDirectoryContents(gameDirectory);
 
-                        // Xóa trạng thái cài đặt
+                    string targetDirectory = Path.Combine(gameDirectory, "Bloody-Roar-2");
+
+                    if (!string.IsNullOrEmpty(targetDirectory) && Directory.Exists(targetDirectory))
+                    {
+                        DeleteDirectoryContents(targetDirectory);
+
+
+                        Directory.Delete(targetDirectory);
+
+
                         GameStateManager.SetGameInstalled("Bloody Roar 2", false, null);
 
-                        // Cập nhật nút bấm
                         UpdatePlayButtonToInstall();
 
                         MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Game không tồn tại hoặc chưa được cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Thư mục game không tồn tại hoặc chưa được cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -156,20 +162,21 @@ namespace LauncherGames
             }
         }
 
+
         private void DeleteDirectoryContents(string directoryPath)
         {
             try
             {
                 foreach (var file in Directory.GetFiles(directoryPath))
                 {
-                    File.SetAttributes(file, FileAttributes.Normal); // Đặt lại thuộc tính file
-                    File.Delete(file); // Xóa file
+                    File.SetAttributes(file, FileAttributes.Normal);
+                    File.Delete(file);
                 }
 
                 foreach (var subDirectory in Directory.GetDirectories(directoryPath))
                 {
-                    DeleteDirectoryContents(subDirectory); // Xóa nội dung trong thư mục con
-                    Directory.Delete(subDirectory);       // Xóa thư mục con
+                    DeleteDirectoryContents(subDirectory);
+                    Directory.Delete(subDirectory);
                 }
             }
             catch (Exception ex)
@@ -178,11 +185,12 @@ namespace LauncherGames
             }
         }
 
+
         private void BloodyRoar2_Load(object sender, EventArgs e)
         {
             var gameState = GameStateManager.GetGameState("Bloody Roar 2");
 
-            // Cập nhật `gameDirectory` từ trạng thái
+        
             gameDirectory = gameState.GameDirectory;
 
             if (gameState.IsInstalled && !string.IsNullOrEmpty(gameDirectory))

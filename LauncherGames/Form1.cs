@@ -33,16 +33,20 @@ namespace LauncherGames
             pictureFlappyBird.MouseEnter += Picture_MouseEnter;
             pictureFlappyBird.MouseLeave += Picture_MouseLeave;
 
-            pictureLittleNightMares.MouseEnter += Picture_MouseEnter;
-            pictureLittleNightMares.MouseLeave += Picture_MouseLeave;
-
             pictureProjectZomboid.MouseEnter += Picture_MouseEnter;
             pictureProjectZomboid.MouseLeave += Picture_MouseLeave;
 
             pictureTheHouseofTheDead.MouseEnter += Picture_MouseEnter;
             pictureTheHouseofTheDead.MouseLeave += Picture_MouseLeave;
 
+            pictureLittleNightmares.MouseEnter += Picture_MouseEnter;
+            pictureLittleNightmares.MouseLeave += Picture_MouseLeave;
 
+            pictureLt1.MouseEnter += Picture_MouseEnter;
+            pictureLt1.MouseLeave += Picture_MouseLeave;
+
+            pictureLt2.MouseEnter += Picture_MouseEnter;
+            pictureLt2.MouseLeave += Picture_MouseLeave;
 
 
         }
@@ -90,6 +94,18 @@ namespace LauncherGames
         {
             Blasphemous blasphemous = new Blasphemous();
             blasphemous.Show();
+        }
+
+        private void pictureProjectZomboid_Click(object sender, EventArgs e)
+        {
+            ProjectZomboid projectZomboid = new ProjectZomboid();
+            projectZomboid.Show();
+        }
+
+        private void pictureLittleNightmares_Click(object sender, EventArgs e)
+        {
+            LittleNightMares littleNightMares = new LittleNightMares();
+            littleNightMares.Show();
         }
     }
 }
