@@ -1,0 +1,30 @@
+{
+  "Bloody Roar 2": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Mouthwashing": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Blasphemous": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Flappy Bird": {
+    "Item1": true,
+    "Item2": "D:\\game"
+  },
+  "Little Nightmares": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Project Zomboid": {
+    "Item1": false,
+    "Item2": null
+  },
+  "Bloody-Roar-2": {
+    "Item1": false,
+    "Item2": null
+  }
+}
