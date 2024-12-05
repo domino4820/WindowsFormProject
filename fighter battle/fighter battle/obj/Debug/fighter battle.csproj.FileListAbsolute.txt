@@ -1,0 +1,12 @@
+C:\Users\Dat\source\repos\fighter battle\fighter battle\bin\Debug\fighter battle.exe.config
+C:\Users\Dat\source\repos\fighter battle\fighter battle\bin\Debug\fighter battle.exe
+C:\Users\Dat\source\repos\fighter battle\fighter battle\bin\Debug\fighter battle.pdb
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.csproj.AssemblyReference.cache
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter_battle.Properties.Resources.resources
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.csproj.GenerateResource.cache
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.csproj.CoreCompileInputs.cache
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.exe
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.pdb
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter_battle.FormGame.resources
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\Interop.WMPLib.dll
+C:\Users\Dat\source\repos\fighter battle\fighter battle\obj\Debug\fighter battle.csproj.ResolveComReference.cache

@@ -1,2 +1,0 @@
-# WindowsFormProject
-Nhóm 6
