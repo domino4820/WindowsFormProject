@@ -1,0 +1,56 @@
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.csproj.AssemblyReference.cache
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Blasphemous.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.BloodyRoar2.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProgressForm.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.FlappyBird.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Form1.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.InfoMouthWashing.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.LittleNightMares.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProjectZomboid.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Properties.Resources.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.SpaceShooter.resources
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.csproj.GenerateResource.cache
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.GeneratedMSBuildEditorConfig.editorconfig
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.AssemblyInfoInputs.cache
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.AssemblyInfo.cs
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.csproj.CoreCompileInputs.cache
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.exe
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.dll.config
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.deps.json
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.runtimeconfig.json
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.dll
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\LauncherGames.pdb
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\JsonConverter.Abstractions.dll
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\Launcher.D5A827EE.Up2Date
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.dll
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\refint\LauncherGames.dll
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.pdb
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.genruntimeconfig.cache
+D:\WINFORM\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\ref\LauncherGames.dll
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.deps.json
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.runtimeconfig.json
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\score.txt
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.exe
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\00.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\01.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\02.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\03.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\04.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\05.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\06.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\07.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\08.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\09.gif
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\00.png
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\01.png
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\02.png
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\03.png
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\sound\hit.wav
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\sound\jumping.wav
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy-Bird.cs
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\GameScreen.cs
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\HelpScreen.cs
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\flappyBirdV3Icon.ico
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.dll
+D:\WINFORM\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.pdb

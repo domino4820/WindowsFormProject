@@ -1,0 +1,40 @@
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\score.txt
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy Bird Game.exe
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\00.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\01.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\02.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\03.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\04.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\05.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\06.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\07.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\08.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\birds\09.gif
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\pipes\00.png
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\pipes\01.png
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\pipes\02.png
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\pipes\03.png
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\sound\hit.wav
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\sound\jumping.wav
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy-Bird.cs
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\GameScreen.cs
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\HelpScreen.cs
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\tainguyen\flappyBirdV3Icon.ico
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy Bird Game.deps.json
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy Bird Game.runtimeconfig.json
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy Bird Game.dll
+D:\WINFORM\LauncherGames\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Flappy Bird Game.pdb
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy_Bird_Game.GameScreen.resources
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy_Bird_Game.HelpScreen.resources
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy_Bird_Game.Properties.Resources.resources
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.csproj.GenerateResource.cache
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.GeneratedMSBuildEditorConfig.editorconfig
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.AssemblyInfoInputs.cache
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.AssemblyInfo.cs
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.csproj.CoreCompileInputs.cache
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.dll
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\refint\Flappy Bird Game.dll
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.pdb
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.genruntimeconfig.cache
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\ref\Flappy Bird Game.dll
+D:\WINFORM\LauncherGames\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy_Bird_Game.FlappyBird_Project.resources
