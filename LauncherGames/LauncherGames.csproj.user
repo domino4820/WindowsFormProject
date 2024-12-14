@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Blasphemous.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BloodyRoar2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Downloads.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FlappyBird.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="InfoMouthWashing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LittleNightMares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProjectZomboid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SpaceShooter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
