@@ -22,10 +22,16 @@
     <Compile Update="LittleNightMares.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ProjectZomboid.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SpaceShooter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

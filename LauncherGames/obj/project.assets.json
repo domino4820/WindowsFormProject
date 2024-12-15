@@ -4694,11 +4694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WindowsFormProject-net8-upgrade\\LauncherGames\\LauncherGames.csproj",
+      "projectUniqueName": "D:\\WindowsFormProject\\LauncherGames\\LauncherGames.csproj",
       "projectName": "LauncherGames",
-      "projectPath": "D:\\WindowsFormProject-net8-upgrade\\LauncherGames\\LauncherGames.csproj",
+      "projectPath": "D:\\WindowsFormProject\\LauncherGames\\LauncherGames.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\WindowsFormProject-net8-upgrade\\LauncherGames\\obj\\",
+      "outputPath": "D:\\WindowsFormProject\\LauncherGames\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4719,8 +4719,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows7.0",
           "projectReferences": {
-            "D:\\WindowsFormProject-net8-upgrade\\Flappy Bird Game\\Flappy Bird Game.csproj": {
-              "projectPath": "D:\\WindowsFormProject-net8-upgrade\\Flappy Bird Game\\Flappy Bird Game.csproj"
+            "D:\\WindowsFormProject\\Flappy Bird Game\\Flappy Bird Game.csproj": {
+              "projectPath": "D:\\WindowsFormProject\\Flappy Bird Game\\Flappy Bird Game.csproj"
             }
           }
         }

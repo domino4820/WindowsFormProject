@@ -23,6 +23,12 @@ namespace Flappy_Bird_Game
             panelLogin.Visible = true;
             panelRegister.Visible = false;
         }
+
+        public string LoggedInUsername { get; private set; }
+
+        private bool isUserLoggedIn = false;
+        private string loggedInUsername = "";
+
         private void lblGoToRegister_Click(object sender, EventArgs e)
         {
             panelLogin.Visible = false;
@@ -38,13 +44,27 @@ namespace Flappy_Bird_Game
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+            string confirmPassword = txtPassword2.Text;
             string fullName = txtFullName.Text;
             string phoneNumber = txtPhoneNumber.Text;
             string email = txtEmail.Text;
 
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(fullName) ||
+                string.IsNullOrWhiteSpace(phoneNumber) || string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo");
+                return;
+            }
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại!", "Lỗi");
+                return;
+            }
 
             string connectionString = "Server=DESKTOP-83LI0FP;Database=LauncherGames;Trusted_Connection=True;TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -62,6 +82,7 @@ namespace Flappy_Bird_Game
                         return;
                     }
                 }
+
                 string query = "INSERT INTO Users (Username, Password, FullName, PhoneNumber, Email, Balance, CreatedAt) " +
                                "VALUES (@Username, @Password, @FullName, @PhoneNumber, @Email, 0, GETDATE())";
 
@@ -77,6 +98,7 @@ namespace Flappy_Bird_Game
                     if (result > 0)
                     {
                         MessageBox.Show("Đăng ký thành công!");
+                        ClearRegisterFields();
                     }
                     else
                     {
@@ -86,6 +108,7 @@ namespace Flappy_Bird_Game
             }
         }
 
+
         private void ClearRegisterFields()
         {
             txtUsername.Text = "";
@@ -93,6 +116,7 @@ namespace Flappy_Bird_Game
             txtFullName.Text = "";
             txtPhoneNumber.Text = "";
             txtEmail.Text = "";
+            txtPassword2.Text = "";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -107,7 +131,7 @@ namespace Flappy_Bird_Game
                 return;
             }
 
-                string connectionString = "Server=DESKTOP-83LI0FP;Database=LauncherGames;Trusted_Connection=True;TrustServerCertificate=True;";
+            string connectionString = "Server=DESKTOP-83LI0FP;Database=LauncherGames;Trusted_Connection=True;TrustServerCertificate=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -126,9 +150,12 @@ namespace Flappy_Bird_Game
                         if (result > 0)
                         {
                             MessageBox.Show("Đăng nhập thành công!", "Thông báo");
-                            Form1 form1 = new Form1();
-                            form1.ShowDialog();
+                            LoggedInUsername = username;
+                            DialogResult = DialogResult.OK;
+                            //Form1 form1 = new Form1();
+                            //form1.ShowDialog();
                             this.Close();
+
                         }
                         else
                         {
@@ -143,7 +170,14 @@ namespace Flappy_Bird_Game
             }
         }
 
+        private void txtPassword2_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void Register_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

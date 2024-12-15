@@ -45,7 +45,7 @@
             txtPhoneNumber = new TextBox();
             lblBackToLogin = new Label();
             label14 = new Label();
-            textBox7 = new TextBox();
+            txtPassword2 = new TextBox();
             label9 = new Label();
             txtPassword = new TextBox();
             txtFullName = new TextBox();
@@ -154,6 +154,7 @@
             txtLoginPassword.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLoginPassword.Location = new Point(17, 228);
             txtLoginPassword.Name = "txtLoginPassword";
+            txtLoginPassword.PasswordChar = '*';
             txtLoginPassword.Size = new Size(397, 38);
             txtLoginPassword.TabIndex = 2;
             // 
@@ -194,7 +195,7 @@
             panelRegister.Controls.Add(txtPhoneNumber);
             panelRegister.Controls.Add(lblBackToLogin);
             panelRegister.Controls.Add(label14);
-            panelRegister.Controls.Add(textBox7);
+            panelRegister.Controls.Add(txtPassword2);
             panelRegister.Controls.Add(label9);
             panelRegister.Controls.Add(txtPassword);
             panelRegister.Controls.Add(txtFullName);
@@ -218,7 +219,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(17, 346);
+            label5.Location = new Point(17, 334);
             label5.Name = "label5";
             label5.Size = new Size(112, 19);
             label5.TabIndex = 17;
@@ -227,7 +228,7 @@
             // txtPhoneNumber
             // 
             txtPhoneNumber.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPhoneNumber.Location = new Point(17, 368);
+            txtPhoneNumber.Location = new Point(17, 356);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(397, 38);
             txtPhoneNumber.TabIndex = 16;
@@ -249,26 +250,28 @@
             label14.AutoSize = true;
             label14.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(17, 503);
+            label14.Location = new Point(17, 492);
             label14.Name = "label14";
             label14.Size = new Size(159, 19);
             label14.TabIndex = 14;
             label14.Text = "Xác nhận mật khẩu";
             // 
-            // textBox7
+            // txtPassword2
             // 
-            textBox7.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox7.Location = new Point(17, 526);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(397, 38);
-            textBox7.TabIndex = 13;
+            txtPassword2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword2.Location = new Point(17, 514);
+            txtPassword2.Name = "txtPassword2";
+            txtPassword2.PasswordChar = '*';
+            txtPassword2.Size = new Size(397, 38);
+            txtPassword2.TabIndex = 13;
+            txtPassword2.TextChanged += txtPassword2_TextChanged;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(17, 424);
+            label9.Location = new Point(17, 414);
             label9.Name = "label9";
             label9.Size = new Size(80, 19);
             label9.TabIndex = 12;
@@ -277,15 +280,16 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(17, 446);
+            txtPassword.Location = new Point(17, 436);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(397, 38);
             txtPassword.TabIndex = 11;
             // 
             // txtFullName
             // 
             txtFullName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFullName.Location = new Point(17, 284);
+            txtFullName.Location = new Point(17, 274);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(397, 38);
             txtFullName.TabIndex = 10;
@@ -295,7 +299,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.White;
-            label13.Location = new Point(17, 262);
+            label13.Location = new Point(17, 252);
             label13.Name = "label13";
             label13.Size = new Size(84, 19);
             label13.TabIndex = 9;
@@ -306,7 +310,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Arial", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(51, 571);
+            label7.Location = new Point(51, 555);
             label7.Name = "label7";
             label7.Size = new Size(227, 16);
             label7.TabIndex = 8;
@@ -317,7 +321,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 7.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(276, 571);
+            label8.Location = new Point(276, 556);
             label8.Name = "label8";
             label8.Size = new Size(138, 16);
             label8.TabIndex = 7;
@@ -328,7 +332,7 @@
             btnRegister.BackColor = Color.FromArgb(64, 64, 64);
             btnRegister.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(17, 606);
+            btnRegister.Location = new Point(17, 598);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(397, 43);
             btnRegister.TabIndex = 6;
@@ -395,6 +399,7 @@
             Controls.Add(pictureBox1);
             Name = "Register";
             Text = "Dangki";
+            Load += Register_Load;
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -428,7 +433,7 @@
         private TextBox txtUsername;
         private Label label12;
         private Label label14;
-        private TextBox textBox7;
+        private TextBox txtPassword2;
         private Label label9;
         private TextBox txtPassword;
         private Label lblBackToLogin;

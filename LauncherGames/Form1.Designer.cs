@@ -30,13 +30,16 @@ namespace LauncherGames
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panelGameList = new Panel();
-            CreateTableLayoutMenu = new TableLayoutPanel();
-            textBox2 = new TextBox();
-            btnlogin = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            pictureBox1 = new PictureBox();
+            toolStrip1 = new ToolStrip();
+            toolStripSplitLogin = new ToolStripSplitButton();
+            LoginToolStripenuItem = new ToolStripMenuItem();
+            sốDưToolStripMenuItem = new ToolStripMenuItem();
+            dịchVụĐăngKíToolStripMenuItem = new ToolStripMenuItem();
+            điềuKhoảnToolStripMenuItem = new ToolStripMenuItem();
+            đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
+            toolStripLabel1 = new ToolStripLabel();
             label26 = new Label();
             panel3 = new Panel();
             label25 = new Label();
@@ -69,8 +72,7 @@ namespace LauncherGames
             pictureFlappyBird = new PictureBox();
             pictureBlasphemous = new PictureBox();
             panelGameList.SuspendLayout();
-            CreateTableLayoutMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            toolStrip1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureLt1).BeginInit();
@@ -90,7 +92,7 @@ namespace LauncherGames
             // 
             panelGameList.AutoScroll = true;
             panelGameList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panelGameList.Controls.Add(CreateTableLayoutMenu);
+            panelGameList.Controls.Add(toolStrip1);
             panelGameList.Controls.Add(label26);
             panelGameList.Controls.Add(panel3);
             panelGameList.Controls.Add(panel2);
@@ -113,89 +115,89 @@ namespace LauncherGames
             panelGameList.Location = new Point(0, 0);
             panelGameList.Margin = new Padding(3, 4, 3, 4);
             panelGameList.Name = "panelGameList";
-            panelGameList.Size = new Size(1224, 1055);
+            panelGameList.Size = new Size(1233, 1055);
             panelGameList.TabIndex = 4;
             panelGameList.Paint += panelGameList_Paint;
             // 
-            // CreateTableLayoutMenu
+            // toolStrip1
             // 
-            CreateTableLayoutMenu.ColumnCount = 5;
-            CreateTableLayoutMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.78162F));
-            CreateTableLayoutMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.14065F));
-            CreateTableLayoutMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.1406555F));
-            CreateTableLayoutMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.9370766F));
-            CreateTableLayoutMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 260F));
-            CreateTableLayoutMenu.Controls.Add(textBox2, 3, 0);
-            CreateTableLayoutMenu.Controls.Add(btnlogin, 4, 0);
-            CreateTableLayoutMenu.Controls.Add(button1, 1, 0);
-            CreateTableLayoutMenu.Controls.Add(button2, 2, 0);
-            CreateTableLayoutMenu.Controls.Add(pictureBox1, 0, 0);
-            CreateTableLayoutMenu.Dock = DockStyle.Top;
-            CreateTableLayoutMenu.Location = new Point(0, 0);
-            CreateTableLayoutMenu.Name = "CreateTableLayoutMenu";
-            CreateTableLayoutMenu.RowCount = 1;
-            CreateTableLayoutMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            CreateTableLayoutMenu.Size = new Size(1212, 50);
-            CreateTableLayoutMenu.TabIndex = 35;
+            toolStrip1.BackColor = Color.Black;
+            toolStrip1.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripSplitLogin, toolStripLabel1 });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1212, 51);
+            toolStrip1.TabIndex = 35;
+            toolStrip1.Text = "toolStrip1";
             // 
-            // textBox2
+            // toolStripSplitLogin
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(574, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(374, 27);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "Tìm kiếm";
+            toolStripSplitLogin.Alignment = ToolStripItemAlignment.Right;
+            toolStripSplitLogin.AutoSize = false;
+            toolStripSplitLogin.BackColor = Color.Black;
+            toolStripSplitLogin.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripSplitLogin.DropDownItems.AddRange(new ToolStripItem[] { LoginToolStripenuItem, sốDưToolStripMenuItem, dịchVụĐăngKíToolStripMenuItem, điềuKhoảnToolStripMenuItem, đăngXuấtToolStripMenuItem });
+            toolStripSplitLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripSplitLogin.ForeColor = Color.Black;
+            toolStripSplitLogin.Image = (Image)resources.GetObject("toolStripSplitLogin.Image");
+            toolStripSplitLogin.ImageScaling = ToolStripItemImageScaling.None;
+            toolStripSplitLogin.ImageTransparentColor = Color.Magenta;
+            toolStripSplitLogin.Name = "toolStripSplitLogin";
+            toolStripSplitLogin.Size = new Size(50, 48);
+            toolStripSplitLogin.Text = "toolStripSplitButton1";
             // 
-            // btnlogin
+            // LoginToolStripenuItem
             // 
-            btnlogin.Dock = DockStyle.Fill;
-            btnlogin.FlatStyle = FlatStyle.Flat;
-            btnlogin.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnlogin.ForeColor = Color.White;
-            btnlogin.Location = new Point(954, 3);
-            btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(255, 44);
-            btnlogin.TabIndex = 4;
-            btnlogin.Text = "Đăng nhập/Đăng ký";
-            btnlogin.UseVisualStyleBackColor = true;
-            btnlogin.Click += btnlogin_Click;
+            LoginToolStripenuItem.BackColor = Color.Black;
+            LoginToolStripenuItem.ForeColor = Color.White;
+            LoginToolStripenuItem.Image = (Image)resources.GetObject("LoginToolStripenuItem.Image");
+            LoginToolStripenuItem.Name = "LoginToolStripenuItem";
+            LoginToolStripenuItem.Size = new Size(307, 36);
+            LoginToolStripenuItem.Text = "Đăng nhập/Đăng ký";
+            LoginToolStripenuItem.Click += LoginToolStripenuItem_Click;
             // 
-            // button1
+            // sốDưToolStripMenuItem
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(172, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(195, 44);
-            button1.TabIndex = 0;
-            button1.Text = "Trang chủ";
-            button1.UseVisualStyleBackColor = true;
+            sốDưToolStripMenuItem.BackColor = Color.Black;
+            sốDưToolStripMenuItem.ForeColor = Color.White;
+            sốDưToolStripMenuItem.Name = "sốDưToolStripMenuItem";
+            sốDưToolStripMenuItem.Size = new Size(307, 36);
+            sốDưToolStripMenuItem.Text = "Số dư";
+            sốDưToolStripMenuItem.Click += sốDưToolStripMenuItem_Click;
             // 
-            // button2
+            // dịchVụĐăngKíToolStripMenuItem
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(373, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(195, 44);
-            button2.TabIndex = 1;
-            button2.Text = "Cửa hàng";
-            button2.UseVisualStyleBackColor = true;
+            dịchVụĐăngKíToolStripMenuItem.BackColor = Color.Black;
+            dịchVụĐăngKíToolStripMenuItem.ForeColor = Color.White;
+            dịchVụĐăngKíToolStripMenuItem.Name = "dịchVụĐăngKíToolStripMenuItem";
+            dịchVụĐăngKíToolStripMenuItem.Size = new Size(307, 36);
+            dịchVụĐăngKíToolStripMenuItem.Text = "Dịch vụ đăng kí";
             // 
-            // pictureBox1
+            // điềuKhoảnToolStripMenuItem
             // 
-            pictureBox1.Location = new Point(3, 4);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(163, 42);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            điềuKhoảnToolStripMenuItem.BackColor = Color.Black;
+            điềuKhoảnToolStripMenuItem.ForeColor = Color.White;
+            điềuKhoảnToolStripMenuItem.Name = "điềuKhoảnToolStripMenuItem";
+            điềuKhoảnToolStripMenuItem.Size = new Size(307, 36);
+            điềuKhoảnToolStripMenuItem.Text = "Điều khoản";
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            đăngXuấtToolStripMenuItem.BackColor = SystemColors.ActiveCaptionText;
+            đăngXuấtToolStripMenuItem.ForeColor = Color.White;
+            đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            đăngXuấtToolStripMenuItem.Size = new Size(307, 36);
+            đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
+            // 
+            // toolStripLabel1
+            // 
+            toolStripLabel1.Alignment = ToolStripItemAlignment.Right;
+            toolStripLabel1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(73, 48);
+            toolStripLabel1.Text = "Hồ sơ";
             // 
             // label26
             // 
@@ -388,7 +390,7 @@ namespace LauncherGames
             panel1.Location = new Point(-3, 344);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1206, 509);
+            panel1.Size = new Size(1215, 509);
             panel1.TabIndex = 14;
             // 
             // label8
@@ -556,7 +558,7 @@ namespace LauncherGames
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.Black;
-            ClientSize = new Size(1224, 1055);
+            ClientSize = new Size(1233, 1055);
             Controls.Add(panelGameList);
             DoubleBuffered = true;
             Margin = new Padding(3, 4, 3, 4);
@@ -565,9 +567,8 @@ namespace LauncherGames
             Load += Form1_Load;
             panelGameList.ResumeLayout(false);
             panelGameList.PerformLayout();
-            CreateTableLayoutMenu.ResumeLayout(false);
-            CreateTableLayoutMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureLt1).EndInit();
@@ -618,12 +619,14 @@ namespace LauncherGames
         private Label label26;
         private PictureBox pictureLt2;
         private PictureBox pictureLt1;
-        private TableLayoutPanel CreateTableLayoutMenu;
-        private TextBox textBox2;
-        private Button button1;
-        private Button button2;
-        private PictureBox pictureBox1;
-        private Button btnlogin;
+        private ToolStrip toolStrip1;
+        private ToolStripSplitButton toolStripSplitLogin;
+        private ToolStripLabel toolStripLabel1;
+        private ToolStripMenuItem LoginToolStripenuItem;
+        private ToolStripMenuItem sốDưToolStripMenuItem;
+        private ToolStripMenuItem dịchVụĐăngKíToolStripMenuItem;
+        private ToolStripMenuItem điềuKhoảnToolStripMenuItem;
+        private ToolStripMenuItem đăngXuấtToolStripMenuItem;
     }
 }
 

@@ -20,6 +20,9 @@ namespace LauncherGames
             InitializeComponent();
         }
 
+        private bool isUserLoggedIn = false;
+        private string loggedInUsername = "";
+
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureMouthwashing.MouseEnter += Picture_MouseEnter;
@@ -52,7 +55,7 @@ namespace LauncherGames
             spaceshooter.MouseEnter += Picture_MouseEnter;
             spaceshooter.MouseLeave += Picture_MouseLeave;
 
-
+            UpdateLoginMenu();
         }
 
         private void Picture_MouseEnter(object sender, EventArgs e)
@@ -125,8 +128,71 @@ namespace LauncherGames
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Register registerForm = new Register();
             registerForm.ShowDialog();
+            this.Show();
+        }
+
+        private void LoginToolStripenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (!isUserLoggedIn)
+            {
+                // Mở Form đăng nhập
+                Register loginForm = new Register();
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Nếu đăng nhập thành công, cập nhật trạng thái
+                    isUserLoggedIn = true;
+                    loggedInUsername = loginForm.LoggedInUsername; // Lấy tên người dùng từ LoginForm
+                    UpdateLoginMenu();
+                }
+            }
+            else
+            {
+                // Mở Form hồ sơ
+                ProfileForm profileForm = new ProfileForm(loggedInUsername);
+                profileForm.ShowDialog();
+            }
+            this.Show();
+        }
+
+        private void UpdateLoginMenu()
+        {
+            if (isUserLoggedIn)
+            {
+                LoginToolStripenuItem.Text = "Hồ sơ"; // Đổi tên thành "Hồ sơ"
+                //LoginToolStripenuItem.Image = Properties.Resources.ProfileIcon; // Thay đổi icon (nếu cần)
+            }
+            else
+            {
+                LoginToolStripenuItem.Text = "Đăng nhập/Đăng ký";
+                //LoginToolStripenuItem.Image = Properties.Resources.LoginIcon;
+            }
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isUserLoggedIn = false;
+            loggedInUsername = null;
+            LoginToolStripenuItem.Text = "Đăng nhập/Đăng ký";
+            // Hiển thị thông báo cho người dùng
+            MessageBox.Show("Bạn đã đăng xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Đóng Form hiện tại 
+            //this.Hide();
+            //LoginForm loginForm = new LoginForm();
+            //loginForm.ShowDialog();
+
+            // Sau khi đóng Form đăng nhập, đóng luôn Form chính
+            //this.Close();
+        }
+
+        private void sốDưToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TransactionForm transactionForm = new TransactionForm(loggedInUsername);
+            transactionForm.ShowDialog();
         }
     }
 }
