@@ -54,6 +54,14 @@
               "target": "Package",
               "version": "[5.2.2, )"
             },
+            "PayPal": {
+              "target": "Package",
+              "version": "[1.9.1, )"
+            },
+            "RestApiSDK": {
+              "target": "Package",
+              "version": "[0.11.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.9.0, )"
@@ -163,6 +171,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "PayPal": {
+              "target": "Package",
+              "version": "[1.9.1, )"
+            },
+            "RestApiSDK": {
+              "target": "Package",
+              "version": "[0.11.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

@@ -760,6 +760,39 @@
           }
         }
       },
+      "PayPal/1.9.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/net451/PayPal.dll": {
+            "assemblyVersion": "1.9.1.0",
+            "fileVersion": "1.9.1.0"
+          }
+        }
+      },
+      "PayPalCoreSDK/1.5.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/net451/PayPalCoreSDK.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
+        }
+      },
+      "RestApiSDK/0.11.0": {
+        "dependencies": {
+          "PayPalCoreSDK": "1.5.1"
+        },
+        "runtime": {
+          "lib/net45/RestApiSDK.dll": {
+            "assemblyVersion": "0.11.0.0",
+            "fileVersion": "0.11.0.0"
+          }
+        }
+      },
       "runtime.native.System.Data.SqlClient.sni/4.4.0": {
         "dependencies": {
           "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
@@ -1427,6 +1460,27 @@
       "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
+    "PayPal/1.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b3vq6Lc9CwSooCX2tsZ02zb7E/K/cA6EILCoMynue+ZeVuitJNqt0YwxPnp7uN0Pccob02oDlpAjRLH+GRCRxA==",
+      "path": "paypal/1.9.1",
+      "hashPath": "paypal.1.9.1.nupkg.sha512"
+    },
+    "PayPalCoreSDK/1.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SaF9lTJdJsIfTSBgxcCAPCJPhPMkPnfgfhfWFw0KbFlarbKb8s3XrblL3aOOkKxi2gXoVIOICulNqHWyGM1mLg==",
+      "path": "paypalcoresdk/1.5.1",
+      "hashPath": "paypalcoresdk.1.5.1.nupkg.sha512"
+    },
+    "RestApiSDK/0.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uexfc/d0uEYD98dkCBqLHcJEMNZW3MBOlaTg93acTcxhKOKKTZITl7ghS7mYEF0szPJL/ueJiPOB56eQtA6ywQ==",
+      "path": "restapisdk/0.11.0",
+      "hashPath": "restapisdk.0.11.0.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",

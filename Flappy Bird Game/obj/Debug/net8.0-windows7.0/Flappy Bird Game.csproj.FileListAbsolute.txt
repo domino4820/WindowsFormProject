@@ -203,3 +203,5 @@ D:\WindowsFormProject\Flappy Bird Game\obj\Debug\net8.0-windows7.0\refint\Flappy
 D:\WindowsFormProject\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.pdb
 D:\WindowsFormProject\Flappy Bird Game\obj\Debug\net8.0-windows7.0\Flappy Bird Game.genruntimeconfig.cache
 D:\WindowsFormProject\Flappy Bird Game\obj\Debug\net8.0-windows7.0\ref\Flappy Bird Game.dll
+D:\WindowsFormProject\Flappy Bird Game\bin\Debug\net8.0-windows7.0\Newtonsoft.Json.dll
+D:\WindowsFormProject\Flappy Bird Game\bin\Debug\net8.0-windows7.0\PayPal.dll

@@ -163,12 +163,18 @@ namespace LauncherGames
             if (isUserLoggedIn)
             {
                 LoginToolStripenuItem.Text = "Hồ sơ"; // Đổi tên thành "Hồ sơ"
-                //LoginToolStripenuItem.Image = Properties.Resources.ProfileIcon; // Thay đổi icon (nếu cần)
+                sốDưToolStripMenuItem.Visible = true; // Hiển thị mục "Số dư"
+                dịchVụĐăngKíToolStripMenuItem.Visible = true; // Hiển thị mục "Dịch vụ đăng ký"
+                điềuKhoảnToolStripMenuItem.Visible = true; // Hiển thị mục "Điều khoản"
+                đăngXuấtToolStripMenuItem.Visible = true; // Hiển thị mục "Đăng xuất"
             }
             else
             {
                 LoginToolStripenuItem.Text = "Đăng nhập/Đăng ký";
-                //LoginToolStripenuItem.Image = Properties.Resources.LoginIcon;
+                sốDưToolStripMenuItem.Visible = false; // Ẩn mục "Số dư"
+                dịchVụĐăngKíToolStripMenuItem.Visible = false; // Ẩn mục "Dịch vụ đăng ký"
+                điềuKhoảnToolStripMenuItem.Visible = false; // Ẩn mục "Điều khoản"
+                đăngXuấtToolStripMenuItem.Visible = false; // Ẩn mục "Đăng xuất"
             }
         }
 
