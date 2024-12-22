@@ -1,0 +1,17 @@
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.deps.json
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.runtimeconfig.json
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.dll
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.pdb
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.DAL.dll
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.DAL.pdb
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.csproj.AssemblyReference.cache
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.AssemblyInfoInputs.cache
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.AssemblyInfo.cs
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.csproj.CoreCompileInputs.cache
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\Launcher.A7A0E98B.Up2Date
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.dll
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\refint\LauncherGames.BLL.dll
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.pdb
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.genruntimeconfig.cache
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\ref\LauncherGames.BLL.dll
