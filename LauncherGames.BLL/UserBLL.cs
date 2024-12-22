@@ -44,5 +44,17 @@ namespace LauncherGames.BLL
         {
             return userDAL.GetAllUsers();
         }
+
+        public User GetUserByUsername(string username)
+        {
+            return userDAL.GetUserByUsername(username);
+        }
+
+        public void ChangePassword(string username, string newPassword)
+        {
+            userDAL.ChangePassword(username, newPassword);
+        }
+
+
     }
 }

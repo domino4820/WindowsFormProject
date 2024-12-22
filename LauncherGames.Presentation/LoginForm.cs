@@ -80,9 +80,11 @@ namespace WinForms_Subject
             if (isAuthenticated)
             {
                 ClearTextBoxes(pnlLogin);
-                LauncherForm launcherForm = new LauncherForm();
-                launcherForm.Show();
+                int userId = userBLL.GetUserByUsername(username).UserId;
+                LauncherForm launcherForm = new LauncherForm(username,userId);
+
                 this.Hide();
+                launcherForm.Show();
             }
             else
             {

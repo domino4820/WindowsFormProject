@@ -60,29 +60,28 @@ namespace LauncherGames.DAL
 
         public void UpdateUser(User user)
         {
-            string query = "UPDATE Users SET Username = @Username, Password = @Password, FullName = @FullName, PhoneNumber = @PhoneNumber, " +
-                           "Email = @Email, Balance = @Balance, IsAdmin = @IsAdmin, IsBanned = @IsBanned, Avatar = @Avatar, CreatedAt = @CreatedAt " +
+            string query = "UPDATE Users SET FullName = @FullName, PhoneNumber = @PhoneNumber, Email = @Email, " +
+                           "Password = @Password, Balance = @Balance, IsAdmin = @IsAdmin, IsBanned = @IsBanned, Avatar = @Avatar " +
                            "WHERE UserId = @UserId";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@UserId", user.UserId);
-                cmd.Parameters.AddWithValue("@Username", user.Username);
-                cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@FullName", user.FullName);
                 cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
                 cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Balance", user.Balance);
                 cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
                 cmd.Parameters.AddWithValue("@IsBanned", user.IsBanned);
-                cmd.Parameters.AddWithValue("@Avatar", user.Avatar);
-                cmd.Parameters.AddWithValue("@CreatedAt", user.CreatedAt);
+                cmd.Parameters.AddWithValue("@Avatar", (object)user.Avatar ?? DBNull.Value);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         public List<User> GetAllUsers()
         {
@@ -149,5 +148,56 @@ namespace LauncherGames.DAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public User GetUserByUsername(string username)
+        {
+            User user = null;
+            string query = "SELECT UserId, Username, FullName, PhoneNumber, Email, Password, Balance, IsAdmin, IsBanned, Avatar, CreatedAt FROM Users WHERE Username = @Username";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    user = new User
+                    {
+                        UserId = (int)reader["UserId"],
+                        Username = reader["Username"].ToString(),
+                        FullName = reader["FullName"].ToString(),
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Password = reader["Password"].ToString(),
+                        Balance = (decimal)reader["Balance"],
+                        IsAdmin = (bool)reader["IsAdmin"],
+                        IsBanned = (bool)reader["IsBanned"],
+                        Avatar = reader["Avatar"].ToString(),
+                        CreatedAt = (DateTime)reader["CreatedAt"]
+                    };
+                }
+            }
+
+            return user;
+        }
+
+        public void ChangePassword(string username, string newPassword)
+        {
+            string query = "UPDATE Users SET Password = @Password WHERE Username = @Username";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Password", newPassword);
+                cmd.Parameters.AddWithValue("@Username", username);
+                conn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
     }
 }

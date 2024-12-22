@@ -87,23 +87,25 @@
             tsProfile_HoSo.BackColor = Color.Black;
             tsProfile_HoSo.ForeColor = Color.White;
             tsProfile_HoSo.Name = "tsProfile_HoSo";
-            tsProfile_HoSo.Size = new Size(207, 36);
+            tsProfile_HoSo.Size = new Size(224, 36);
             tsProfile_HoSo.Text = "Hồ sơ";
+            tsProfile_HoSo.Click += tsProfile_HoSo_Click;
             // 
             // tsProfile_SoDu
             // 
             tsProfile_SoDu.BackColor = Color.Black;
             tsProfile_SoDu.ForeColor = Color.White;
             tsProfile_SoDu.Name = "tsProfile_SoDu";
-            tsProfile_SoDu.Size = new Size(207, 36);
+            tsProfile_SoDu.Size = new Size(224, 36);
             tsProfile_SoDu.Text = "Số dư";
+            tsProfile_SoDu.Click += tsProfile_SoDu_Click;
             // 
             // tsProfile_ThuVien
             // 
             tsProfile_ThuVien.BackColor = Color.Black;
             tsProfile_ThuVien.ForeColor = Color.White;
             tsProfile_ThuVien.Name = "tsProfile_ThuVien";
-            tsProfile_ThuVien.Size = new Size(207, 36);
+            tsProfile_ThuVien.Size = new Size(224, 36);
             tsProfile_ThuVien.Text = "Thư viện";
             // 
             // tsProfile_Logout
@@ -111,7 +113,7 @@
             tsProfile_Logout.BackColor = Color.Black;
             tsProfile_Logout.ForeColor = Color.White;
             tsProfile_Logout.Name = "tsProfile_Logout";
-            tsProfile_Logout.Size = new Size(207, 36);
+            tsProfile_Logout.Size = new Size(224, 36);
             tsProfile_Logout.Text = "Đăng xuất";
             // 
             // toolStripSeparator2
@@ -256,9 +258,9 @@
             flpReleasedGames.BackColor = Color.Black;
             flpReleasedGames.FlowDirection = FlowDirection.TopDown;
             flpReleasedGames.ForeColor = Color.White;
-            flpReleasedGames.Location = new Point(0, 717);
+            flpReleasedGames.Location = new Point(0, 742);
             flpReleasedGames.Name = "flpReleasedGames";
-            flpReleasedGames.Size = new Size(1117, 415);
+            flpReleasedGames.Size = new Size(1117, 390);
             flpReleasedGames.TabIndex = 2;
             flpReleasedGames.WrapContents = false;
             // 
@@ -270,7 +272,7 @@
             flpUpcomingGames.ForeColor = Color.White;
             flpUpcomingGames.Location = new Point(0, 1290);
             flpUpcomingGames.Name = "flpUpcomingGames";
-            flpUpcomingGames.Size = new Size(1117, 351);
+            flpUpcomingGames.Size = new Size(1117, 390);
             flpUpcomingGames.TabIndex = 1;
             flpUpcomingGames.WrapContents = false;
             // 
@@ -282,7 +284,7 @@
             flpNewReleases.ForeColor = Color.White;
             flpNewReleases.Location = new Point(0, 207);
             flpNewReleases.Name = "flpNewReleases";
-            flpNewReleases.Size = new Size(1117, 383);
+            flpNewReleases.Size = new Size(1117, 357);
             flpNewReleases.TabIndex = 0;
             flpNewReleases.WrapContents = false;
             // 

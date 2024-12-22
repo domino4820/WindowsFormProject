@@ -73,5 +73,37 @@ namespace LauncherGames.DAL
 
             return games;
         }
+
+        public Game GetGameById(int gameId)
+        {
+            Game game = null;
+            string query = "SELECT GameId, GameName, Description, Price, IsExclusive, GameImage, CreatedAt, DownloadPath, RunPath FROM Games WHERE GameId = @GameId";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@GameId", gameId);
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    game = new Game
+                    {
+                        GameId = (int)reader["GameId"],
+                        GameName = reader["GameName"].ToString(),
+                        Description = reader["Description"].ToString(),
+                        Price = (decimal)reader["Price"],
+                        IsExclusive = (bool)reader["IsExclusive"],
+                        GameImage = reader["GameImage"].ToString(),
+                        CreatedAt = (DateTime)reader["CreatedAt"],
+                        DownloadPath = reader["DownloadPath"].ToString(),
+                        RunPath = reader["RunPath"].ToString()
+                    };
+                }
+            }
+
+            return game;
+        }
     }
 }

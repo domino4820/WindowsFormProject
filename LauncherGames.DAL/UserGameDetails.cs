@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client;
 
 namespace LauncherGames.DAL
 {
@@ -15,5 +16,6 @@ namespace LauncherGames.DAL
         public bool IsInstalled { get; set; }
         public string InstallationPath { get; set; }
         public DateTime? PurchaseDate { get; set; }
+        public string DownloadPath { get; set; }
     }
 }

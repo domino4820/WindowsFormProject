@@ -15,3 +15,4 @@ D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\refint\
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.pdb
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.genruntimeconfig.cache
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\ref\LauncherGames.BLL.dll
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.sourcelink.json

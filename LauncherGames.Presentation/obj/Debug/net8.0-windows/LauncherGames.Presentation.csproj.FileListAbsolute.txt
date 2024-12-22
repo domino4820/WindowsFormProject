@@ -163,3 +163,6 @@ D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\ref\LauncherGames.Presentation.dll
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\LauncherGames.Presentation.ProgressForm.resources
 D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\LauncherGames.Presentation.GameForm.resources
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\LauncherGames.Presentation.sourcelink.json
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\LauncherGames.Presentation.ProfileForm.resources
+D:\WINFORM\LauncherGames.Presentation\LauncherGames.Presentation\obj\Debug\net8.0-windows\LauncherGames.Presentation.TransactionForm.resources

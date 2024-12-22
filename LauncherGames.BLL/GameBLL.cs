@@ -21,5 +21,7 @@ namespace LauncherGames.BLL
         {
             return gameDAL.GetAllGames();
         }
+
+        
     }
 }
