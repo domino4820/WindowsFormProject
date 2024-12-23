@@ -208,6 +208,9 @@ namespace LauncherGames.Presentation
 
         private void OpenGameForm(Game game)
         {
+            // Kiểm tra nếu gameName hoặc InstallationPath là null hoặc rỗng
+            var userGameDetails = userGameDetailsDAL.GetUserGameDetails(currentUserId, game.GameId);
+
             GameForm gameForm = new GameForm(
                 currentUserId,
                 game.GameName,
@@ -222,6 +225,7 @@ namespace LauncherGames.Presentation
             );
             gameForm.Show();
         }
+
 
 
         private bool CheckIfUserPurchasedGame(int gameId)

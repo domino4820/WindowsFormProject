@@ -18,7 +18,6 @@ namespace LauncherGames.Presentation
         public ProgressForm(string downloadUrl)
         {
             InitializeComponent();
-            DownloadUrl = downloadUrl;
 
         }
 

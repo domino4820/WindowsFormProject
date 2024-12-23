@@ -1,5 +1,4 @@
 ﻿using LauncherGames.DAL;
-
 namespace LauncherGames.BLL
 {
     public class PurchaseBLL
@@ -7,7 +6,7 @@ namespace LauncherGames.BLL
         private UserDAL userDAL;
         private GameDAL gameDAL;
         private TransactionDAL transactionDAL;
-        private UserGameDetailsDAL userGameDetailsDAL;
+        private readonly UserGameDetailsDAL userGameDetailsDAL = new UserGameDetailsDAL();
 
         public PurchaseBLL()
         {
@@ -51,6 +50,9 @@ namespace LauncherGames.BLL
             };
             transactionDAL.AddTransaction(transaction);
 
+            // Lấy DownloadPath từ bảng Games
+            string downloadPath = game.DownloadPath;
+
             // Cập nhật thông tin vào UserGameDetails
             UserGameDetails userGameDetails = new UserGameDetails
             {
@@ -58,9 +60,10 @@ namespace LauncherGames.BLL
                 GameId = game.GameId,
                 IsPurchased = true,
                 IsInstalled = false,
-                PurchaseDate = DateTime.Now
+                PurchaseDate = DateTime.Now,
+                DownloadPath = downloadPath
             };
-            userGameDetailsDAL.AddOrUpdateUserGameDetails(userGameDetails);
+            UserGameDetailsDAL.AddOrUpdateUserGameDetails(userGameDetails);
 
             return true;
         }

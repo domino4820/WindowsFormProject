@@ -1,0 +1,23 @@
+Attempted to delete game Bloody-Roar-2 (ID: 1) but file was not found at DefaultInstallationPath at 12/24/2024 12:47:29 AM
+Error deleting game Bloody-Roar-2 (ID: 1) for user 0 at 12/24/2024 12:50:02 AM: Value cannot be null. (Parameter 'path1')
+Error deleting game Bloody-Roar-2 (ID: 1) for user 0 at 12/24/2024 12:54:57 AM: Value cannot be null. (Parameter 'InstallationPath hoặc gameName không được để trống.')
+Error deleting game Bloody-Roar-2 (ID: 1) for user 3 at 12/24/2024 1:09:48 AM: Value cannot be null. (Parameter 'InstallationPath hoặc gameName không được để trống.')
+Error deleting game Bloody-Roar-2 (ID: 1) for user 3 at 12/24/2024 1:15:50 AM: Value cannot be null. (Parameter 'InstallationPath hoặc gameName không được để trống.')
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:30:21 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from D:\game at 12/24/2024 1:31:45 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from D:\game at 12/24/2024 1:41:18 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from D:\game at 12/24/2024 1:41:20 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:43:07 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:43:12 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:44:42 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:46:04 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:48:25 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:48:35 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:48:46 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:48:55 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:49:09 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:53:27 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 1:56:10 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from D:\game at 12/24/2024 2:06:00 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from D:\game at 12/24/2024 2:12:34 AM
+User 3 deleted game Bloody-Roar-2 (ID: 1) from  at 12/24/2024 2:15:13 AM

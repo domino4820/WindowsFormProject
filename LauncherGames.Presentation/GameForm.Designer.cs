@@ -128,7 +128,7 @@
             btnDeleteGame.TabIndex = 7;
             btnDeleteGame.Text = "Xóa game";
             btnDeleteGame.UseVisualStyleBackColor = true;
-            btnDeleteGame.Click += btnDeleteGame_Click;
+            btnDeleteGame.Click += btnDelete_Click;
             // 
             // lstFeedback
             // 

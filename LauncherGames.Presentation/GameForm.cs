@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO.Compression;
 using System.Windows.Forms;
 using LauncherGames.BLL;
 using LauncherGames.DAL;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.ApplicationServices;
+using NLog;
 
 namespace LauncherGames.Presentation
 {
@@ -24,6 +27,9 @@ namespace LauncherGames.Presentation
         private string gameDirectory;
         private bool isDownloading = false;
         private GameManager gameManager;
+        private UserGameDetailsDAL userGameDetailsDAL;
+        private int userId;
+        private string InstallationPath;
 
         public GameForm(int userId, string gameName, string gameImage, decimal gamePrice, string downloadPath, string runPath, string description, bool isPurchased, bool isInstalled, int gameId)
         {
@@ -37,9 +43,10 @@ namespace LauncherGames.Presentation
             this.isInstalled = isInstalled;
             this.gameId = gameId;
             this.description = description;
-            this.currentUserId = userId;
+            this.userId = userId;
             userDAL = new UserDAL();
             gameManager = new GameManager();
+            userGameDetailsDAL = new UserGameDetailsDAL();
             gameManager.DownloadCompleted += OnDownloadCompleted;
         }
 
@@ -51,32 +58,58 @@ namespace LauncherGames.Presentation
             lblPrice.Text = gamePrice == 0 ? "Free" : $"{gamePrice:C}";
             txtGameDescription.Text = description;
 
-            // Update button visibility based on game status
-            btnPurchase.Visible = !isPurchased;
-            btnInstall.Visible = isPurchased && !isInstalled;
-            btnPlay.Visible = isInstalled;
-            UpdateButtonState(currentUserId, gameId);
+            // Check if the game is purchased by the user
+            var gameDetails = userGameDetailsDAL.GetUserGameDetails(userId, gameId);
+            if (gameDetails != null)
+            {
+                // Use local variables instead of readonly fields
+                bool isGamePurchased = gameDetails.IsPurchased;
+                bool isGameInstalled = gameDetails.IsInstalled;
+
+                // Update button visibility based on game status
+                btnPurchase.Visible = !isGamePurchased;
+                btnInstall.Visible = isGamePurchased && !isGameInstalled;
+                btnPlay.Visible = isGameInstalled;
+            }
+            else
+            {
+                // Update button visibility based on game status
+                btnPurchase.Visible = !isPurchased;
+                btnInstall.Visible = isPurchased && !isInstalled;
+                btnPlay.Visible = isInstalled;
+            }
+
+            UpdateButtonState(userId, gameId);
         }
+
+
 
 
         private void btnPurchase_Click(object sender, EventArgs e)
         {
-
-
+            if (userId <= 0)
+            {
+                MessageBox.Show("Invalid user ID.", "Error");
+                return;
+            }
 
             PurchaseBLL purchaseBLL = new PurchaseBLL();
-            bool success = purchaseBLL.BuyGame(currentUserId, gameId);
+            bool success = purchaseBLL.BuyGame(userId, gameId);
 
             if (success)
             {
+                // Mark the game as purchased for the user
+                userGameDetailsDAL.MarkGameAsPurchased(userId, gameId);
+
                 MessageBox.Show("Mua game thành công!", "Thông báo");
-                UpdateButtonState(currentUserId, gameId);
+                UpdateButtonState(userId, gameId);
             }
             else
             {
                 MessageBox.Show("Không đủ số dư để mua game.", "Lỗi");
             }
         }
+
 
         private async void btnInstall_Click(object sender, EventArgs e)
         {
@@ -86,15 +119,12 @@ namespace LauncherGames.Presentation
                 return;
             }
 
-            var gameState = GameStateManager.GetGameState(gameId);
-            if (gameState.IsInstalled)
+            string downloadPath = UserGameDetailsDAL.GetDownloadPath(userId, gameId);
+            if (string.IsNullOrEmpty(downloadPath))
             {
-                MessageBox.Show("Game đã được cài đặt. Đang khởi động.");
-                PlayGame();
+                MessageBox.Show("Không tìm thấy đường dẫn tải xuống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            string downloadUrl = gameState.DownloadPath;
 
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
@@ -106,22 +136,14 @@ namespace LauncherGames.Presentation
                     gameDirectory = folderDialog.SelectedPath;
                     isDownloading = true;
 
-                    ProgressForm progressForm = new ProgressForm(downloadUrl)
+                    using (ProgressForm progressForm = new ProgressForm(downloadPath))
                     {
-                        GameName = gameName,
-                        DownloadUrl = downloadUrl,
-                        SavePath = Path.Combine(gameDirectory, $"{gameName}.zip")
-                    };
+                        progressForm.SavePath = Path.Combine(gameDirectory, $"{gameId}.zip");
+                        progressForm.Show();
 
-                    progressForm.Show();
+                        await DownloadAndInstallGame(downloadPath, gameDirectory, progressForm);
+                    }
 
-                    // Bắt đầu quá trình tải xuống và cài đặt
-                    gameManager.ProgressChanged += progressForm.UpdateProgress;
-                    await gameManager.DownloadAndInstallGameAsync(gameName, downloadUrl, gameDirectory);
-
-                    // Đóng form tiến trình khi quá trình tải xuống hoàn tất
-                    progressForm.Close();
-                    gameManager.ProgressChanged -= progressForm.UpdateProgress;
                 }
                 else
                 {
@@ -131,11 +153,69 @@ namespace LauncherGames.Presentation
         }
 
 
+        private async Task DownloadAndInstallGame(string downloadUrl, string saveDirectory, ProgressForm progressForm)
+        {
+            string savePath = Path.Combine(saveDirectory, $"{gameId}.zip");
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead))
+                    {
+                        response.EnsureSuccessStatusCode();
+
+                        using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                        {
+                            var totalBytes = response.Content.Headers.ContentLength;
+                            var totalBytesRead = 0L;
+                            var buffer = new byte[8192];
+                            var bytesRead = 0;
+
+                            while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                            {
+                                await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                totalBytesRead += bytesRead;
+
+                                if (totalBytes.HasValue)
+                                {
+                                    var progress = (int)((totalBytesRead * 100) / totalBytes.Value);
+                                    progressForm.UpdateProgress(progress);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (savePath.EndsWith(".zip"))
+                {
+                    ZipFile.ExtractToDirectory(savePath, saveDirectory);
+                    File.Delete(savePath);
+                }
+                InstallationPath = saveDirectory;
+                UserGameDetailsDAL.SetGameInstalled(userId, gameId, saveDirectory, true);
+                
+                UpdateButtonState(userId, gameId);
+                MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isDownloading = false;
+                progressForm.Close();
+            }
+        }
+
+
+
         private void OnDownloadCompleted()
         {
             isDownloading = false;
-            UpdateButtonState(currentUserId, gameId);
-            MessageBox.Show($"Tải xuống và giải nén thành công! Game đã được lưu tại: {gameDirectory}");
+            InstallationPath = gameDirectory;
+            UpdateButtonState(userId, gameId);
+            MessageBox.Show($"Tải xuống và giải nén thành công! Game đã được lưu tại: {InstallationPath}");
         }
 
 
@@ -153,7 +233,7 @@ namespace LauncherGames.Presentation
                 return;
             }
 
-            string exePath = Path.Combine(gameDirectory, $"{gameName}/{gameName}.exe");
+            string exePath = Path.Combine(gameDirectory, $"{gameId}/{gameId}.exe");
 
             if (File.Exists(exePath))
             {
@@ -165,10 +245,6 @@ namespace LauncherGames.Presentation
             }
         }
 
-        private void InstallGame()
-        {
-            // Logic to install the game to DownloadPath
-        }
 
         private void DeductBalance(decimal amount)
         {
@@ -215,7 +291,8 @@ namespace LauncherGames.Presentation
             }
         }
 
-        private void btnDeleteGame_Click(object sender, EventArgs e)
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
                 "Bạn có chắc chắn muốn xóa game này không?",
@@ -226,11 +303,23 @@ namespace LauncherGames.Presentation
 
             if (result == DialogResult.Yes)
             {
+                string logMessage = $"User {userId} deleted game {gameName} (ID: {gameId}) from {InstallationPath} at {DateTime.Now}";
+                WriteLog(logMessage);
                 try
                 {
-                    gameManager.DeleteGame(gameName, gameDirectory);
-                    UpdateButtonState(currentUserId, gameId);
-                    MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string gameFilePath = Path.Combine(InstallationPath,gameName);
+                    if (File.Exists(gameFilePath))
+                    {
+                        DeleteDirectoryContents(gameFilePath);
+                        Directory.Delete(gameFilePath);
+                        UserGameDetailsDAL.DeleteGame(userId, gameId);
+                        UpdatePlayButtonToInstall();
+                        MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thư mục game không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -238,5 +327,47 @@ namespace LauncherGames.Presentation
                 }
             }
         }
+
+        private void DeleteDirectoryContents(string directoryPath)
+        {
+            try
+            {
+                foreach (var file in Directory.GetFiles(directoryPath))
+                {
+                    File.SetAttributes(file, FileAttributes.Normal);
+                    File.Delete(file);
+                }
+
+                foreach (var subDirectory in Directory.GetDirectories(directoryPath))
+                {
+                    DeleteDirectoryContents(subDirectory);
+                    Directory.Delete(subDirectory);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xóa nội dung thư mục: {directoryPath}\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdatePlayButtonToInstall()
+        {
+            btnInstall.Text = "Install";
+            btnInstall.Click -= btnPlay_Click;
+            btnInstall.Click += btnInstall_Click;
+        }
+
+        private void WriteLog(string message)
+        {
+            string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs", "gameDeletionLog.txt");
+            Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
+
+            using (StreamWriter writer = new StreamWriter(logFilePath, true))
+            {
+                writer.WriteLine(message);
+            }
+        }
     }
 }
+
+
