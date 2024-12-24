@@ -53,6 +53,7 @@
             flpReleasedGames = new FlowLayoutPanel();
             flpUpcomingGames = new FlowLayoutPanel();
             flpNewReleases = new FlowLayoutPanel();
+            aministratorToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1.SuspendLayout();
             pnlLauncher.SuspendLayout();
             SuspendLayout();
@@ -74,7 +75,7 @@
             toolStripButton1.Alignment = ToolStripItemAlignment.Right;
             toolStripButton1.BackColor = Color.Black;
             toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { tsProfile_HoSo, tsProfile_SoDu, tsProfile_ThuVien, tsProfile_Logout });
+            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { tsProfile_HoSo, tsProfile_SoDu, tsProfile_ThuVien, tsProfile_Logout, aministratorToolStripMenuItem });
             toolStripButton1.ForeColor = Color.Black;
             toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
             toolStripButton1.ImageTransparentColor = Color.Magenta;
@@ -87,7 +88,7 @@
             tsProfile_HoSo.BackColor = Color.Black;
             tsProfile_HoSo.ForeColor = Color.White;
             tsProfile_HoSo.Name = "tsProfile_HoSo";
-            tsProfile_HoSo.Size = new Size(224, 36);
+            tsProfile_HoSo.Size = new Size(229, 36);
             tsProfile_HoSo.Text = "Hồ sơ";
             tsProfile_HoSo.Click += tsProfile_HoSo_Click;
             // 
@@ -96,7 +97,7 @@
             tsProfile_SoDu.BackColor = Color.Black;
             tsProfile_SoDu.ForeColor = Color.White;
             tsProfile_SoDu.Name = "tsProfile_SoDu";
-            tsProfile_SoDu.Size = new Size(224, 36);
+            tsProfile_SoDu.Size = new Size(229, 36);
             tsProfile_SoDu.Text = "Số dư";
             tsProfile_SoDu.Click += tsProfile_SoDu_Click;
             // 
@@ -105,7 +106,7 @@
             tsProfile_ThuVien.BackColor = Color.Black;
             tsProfile_ThuVien.ForeColor = Color.White;
             tsProfile_ThuVien.Name = "tsProfile_ThuVien";
-            tsProfile_ThuVien.Size = new Size(224, 36);
+            tsProfile_ThuVien.Size = new Size(229, 36);
             tsProfile_ThuVien.Text = "Thư viện";
             // 
             // tsProfile_Logout
@@ -113,7 +114,7 @@
             tsProfile_Logout.BackColor = Color.Black;
             tsProfile_Logout.ForeColor = Color.White;
             tsProfile_Logout.Name = "tsProfile_Logout";
-            tsProfile_Logout.Size = new Size(224, 36);
+            tsProfile_Logout.Size = new Size(229, 36);
             tsProfile_Logout.Text = "Đăng xuất";
             // 
             // toolStripSeparator2
@@ -288,6 +289,15 @@
             flpNewReleases.TabIndex = 0;
             flpNewReleases.WrapContents = false;
             // 
+            // aministratorToolStripMenuItem
+            // 
+            aministratorToolStripMenuItem.BackColor = SystemColors.ActiveCaptionText;
+            aministratorToolStripMenuItem.ForeColor = Color.White;
+            aministratorToolStripMenuItem.Name = "aministratorToolStripMenuItem";
+            aministratorToolStripMenuItem.Size = new Size(229, 36);
+            aministratorToolStripMenuItem.Text = "Aministrator";
+            aministratorToolStripMenuItem.Click += aministratorToolStripMenuItem_Click;
+            // 
             // LauncherForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -334,5 +344,6 @@
         private FlowLayoutPanel flpUpcomingGames;
         private FlowLayoutPanel flpReleasedGames;
         private Label label1;
+        private ToolStripMenuItem aministratorToolStripMenuItem;
     }
 }

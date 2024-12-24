@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "D:\\WINFORM\\LauncherGames.Presentation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\adminform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\adminform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\launcherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\launcherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|d:\\winform\\launchergames.presentation\\launchergames.dal\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|solutionrelative:launchergames.dal\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|d:\\winform\\launchergames.presentation\\launchergames.dal\\usergamedetailsdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|solutionrelative:launchergames.dal\\usergamedetailsdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5EEAA75D-A3BF-4B2C-ABDC-93C59464C26C}|LauncherGames.BLL\\LauncherGames.BLL.csproj|d:\\winform\\launchergames.presentation\\launchergames.bll\\gamebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EEAA75D-A3BF-4B2C-ABDC-93C59464C26C}|LauncherGames.BLL\\LauncherGames.BLL.csproj|solutionrelative:launchergames.bll\\gamebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|d:\\winform\\launchergames.presentation\\launchergames.dal\\usergamedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|solutionrelative:launchergames.dal\\usergamedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\launcherform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\launcherform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EEAA75D-A3BF-4B2C-ABDC-93C59464C26C}|LauncherGames.BLL\\LauncherGames.BLL.csproj|d:\\winform\\launchergames.presentation\\launchergames.bll\\purchasebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EEAA75D-A3BF-4B2C-ABDC-93C59464C26C}|LauncherGames.BLL\\LauncherGames.BLL.csproj|solutionrelative:launchergames.bll\\purchasebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\launcherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\launcherform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|d:\\winform\\launchergames.presentation\\launchergames.dal\\userdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|solutionrelative:launchergames.dal\\userdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|d:\\winform\\launchergames.presentation\\launchergames.dal\\gamedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F77DECB-416D-46C7-B1F8-B919E5C8F679}|LauncherGames.DAL\\LauncherGames.DAL.csproj|solutionrelative:launchergames.dal\\gamedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|d:\\winform\\launchergames.presentation\\launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D8D2F85C-AADF-4646-BA46-18A8E8D54EDB}|LauncherGames.Presentation\\LauncherGames.Presentation.csproj|solutionrelative:launchergames.presentation\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,85 +54,147 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserGameDetails.cs",
-              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserGameDetails.cs",
-              "RelativeDocumentMoniker": "LauncherGames.DAL\\UserGameDetails.cs",
-              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserGameDetails.cs",
-              "RelativeToolTip": "LauncherGames.DAL\\UserGameDetails.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAawBAAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AdminForm.cs [Design]",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\AdminForm.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.cs [Design]",
+              "RelativeToolTip": "LauncherGames.Presentation\\AdminForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:55:26.506Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserGameDetailsDAL.cs",
-              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserGameDetailsDAL.cs",
-              "RelativeDocumentMoniker": "LauncherGames.DAL\\UserGameDetailsDAL.cs",
-              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserGameDetailsDAL.cs",
-              "RelativeToolTip": "LauncherGames.DAL\\UserGameDetailsDAL.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAqwM0AAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:45:48.552Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Game.cs",
-              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\Game.cs",
-              "RelativeDocumentMoniker": "LauncherGames.DAL\\Game.cs",
-              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\Game.cs",
-              "RelativeToolTip": "LauncherGames.DAL\\Game.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:08:04.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T10:50:13.222Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LauncherForm.cs",
-              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs",
-              "RelativeDocumentMoniker": "LauncherGames.Presentation\\LauncherForm.cs",
-              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs",
-              "RelativeToolTip": "LauncherGames.Presentation\\LauncherForm.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAAwNUAAAAkAAAAAAAAAA==",
+              "Title": "AdminForm.Designer.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.Designer.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\AdminForm.Designer.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.Designer.cs",
+              "RelativeToolTip": "LauncherGames.Presentation\\AdminForm.Designer.cs",
+              "ViewState": "AgIAAFYCAAAAAAAAAAD4v2YCAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:05:48.069Z",
+              "WhenOpened": "2024-12-24T10:49:56.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "LauncherForm.Designer.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.Designer.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\LauncherForm.Designer.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.Designer.cs",
+              "RelativeToolTip": "LauncherGames.Presentation\\LauncherForm.Designer.cs",
+              "ViewState": "AgIAABoBAAAAAAAAAAAEwCoBAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T10:45:28.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "GameForm.cs",
               "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\GameForm.cs",
               "RelativeDocumentMoniker": "LauncherGames.Presentation\\GameForm.cs",
               "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\GameForm.cs",
               "RelativeToolTip": "LauncherGames.Presentation\\GameForm.cs",
-              "ViewState": "AgIAACkBAAAAAAAAAAAQwDUBAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAuwBsBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:43:05.392Z",
+              "WhenOpened": "2024-12-24T10:44:57.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "PurchaseBLL.cs",
-              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.BLL\\PurchaseBLL.cs",
-              "RelativeDocumentMoniker": "LauncherGames.BLL\\PurchaseBLL.cs",
-              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.BLL\\PurchaseBLL.cs",
-              "RelativeToolTip": "LauncherGames.BLL\\PurchaseBLL.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAAEEAAABLAAAAAAAAAA==",
+              "Title": "GameBLL.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.BLL\\GameBLL.cs",
+              "RelativeDocumentMoniker": "LauncherGames.BLL\\GameBLL.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.BLL\\GameBLL.cs",
+              "RelativeToolTip": "LauncherGames.BLL\\GameBLL.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwBUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:26:30.503Z",
+              "WhenOpened": "2024-12-24T10:44:46.79Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserDAL.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserDAL.cs",
+              "RelativeDocumentMoniker": "LauncherGames.DAL\\UserDAL.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\UserDAL.cs",
+              "RelativeToolTip": "LauncherGames.DAL\\UserDAL.cs",
+              "ViewState": "AgIAANsAAAAAAAAAAAAAwPEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T10:29:16.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GameDAL.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\GameDAL.cs",
+              "RelativeDocumentMoniker": "LauncherGames.DAL\\GameDAL.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.DAL\\GameDAL.cs",
+              "RelativeToolTip": "LauncherGames.DAL\\GameDAL.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAQwHUAAACpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T10:26:49.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GameForm.cs [Design]",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\GameForm.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\GameForm.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\GameForm.cs [Design]",
+              "RelativeToolTip": "LauncherGames.Presentation\\GameForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T09:47:07.356Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LauncherForm.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\LauncherForm.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs",
+              "RelativeToolTip": "LauncherGames.Presentation\\LauncherForm.cs",
+              "ViewState": "AgIAABoBAAAAAAAAAAAAACEBAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T09:42:16.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminForm.cs",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\AdminForm.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\AdminForm.cs",
+              "RelativeToolTip": "LauncherGames.Presentation\\AdminForm.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAAH4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T09:38:07.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LauncherForm.cs [Design]",
+              "DocumentMoniker": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs",
+              "RelativeDocumentMoniker": "LauncherGames.Presentation\\LauncherForm.cs",
+              "ToolTip": "D:\\WINFORM\\LauncherGames.Presentation\\LauncherGames.Presentation\\LauncherForm.cs [Design]",
+              "RelativeToolTip": "LauncherGames.Presentation\\LauncherForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T08:58:03.267Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

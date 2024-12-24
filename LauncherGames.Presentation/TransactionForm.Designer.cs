@@ -28,46 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionForm));
-            dataGridViewTransactions = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             lblSoDu = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
             button1 = new Button();
-            groupBox3 = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTransactions).BeginInit();
+            dataGridViewTransactions = new DataGridView();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTransactions).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridViewTransactions
-            // 
-            dataGridViewTransactions.AllowUserToAddRows = false;
-            dataGridViewTransactions.AllowUserToDeleteRows = false;
-            dataGridViewTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewTransactions.BackgroundColor = Color.Black;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Black;
-            dataGridViewCellStyle1.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTransactions.Dock = DockStyle.Fill;
-            dataGridViewTransactions.GridColor = Color.Black;
-            dataGridViewTransactions.Location = new Point(3, 30);
-            dataGridViewTransactions.Name = "dataGridViewTransactions";
-            dataGridViewTransactions.ReadOnly = true;
-            dataGridViewTransactions.RowHeadersWidth = 51;
-            dataGridViewTransactions.Size = new Size(1129, 293);
-            dataGridViewTransactions.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -119,7 +94,7 @@
             groupBox2.Controls.Add(button1);
             groupBox2.Font = new Font("Arial Narrow", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(469, 107);
+            groupBox2.Location = new Point(470, 79);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(552, 309);
             groupBox2.TabIndex = 2;
@@ -129,24 +104,45 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(57, 81);
+            button1.Location = new Point(52, 46);
             button1.Name = "button1";
             button1.Size = new Size(443, 99);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // dataGridViewTransactions
             // 
-            groupBox3.AutoSize = true;
-            groupBox3.Controls.Add(dataGridViewTransactions);
-            groupBox3.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(0, 422);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1135, 326);
-            groupBox3.TabIndex = 3;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Lịch sử giao dịch";
+            dataGridViewTransactions.AllowUserToAddRows = false;
+            dataGridViewTransactions.AllowUserToDeleteRows = false;
+            dataGridViewTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewTransactions.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTransactions.GridColor = Color.Black;
+            dataGridViewTransactions.Location = new Point(-2, 447);
+            dataGridViewTransactions.Name = "dataGridViewTransactions";
+            dataGridViewTransactions.ReadOnly = true;
+            dataGridViewTransactions.RowHeadersWidth = 51;
+            dataGridViewTransactions.Size = new Size(1143, 280);
+            dataGridViewTransactions.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 404);
+            label1.Name = "label1";
+            label1.Size = new Size(169, 28);
+            label1.TabIndex = 3;
+            label1.Text = "Lịch sử giao dịch";
             // 
             // TransactionForm
             // 
@@ -154,31 +150,30 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1135, 725);
-            Controls.Add(groupBox3);
+            Controls.Add(label1);
+            Controls.Add(dataGridViewTransactions);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "TransactionForm";
             Text = "TransactionForm";
             Load += TransactionForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTransactions).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTransactions).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridViewTransactions;
         private GroupBox groupBox1;
         private Label label2;
         private PictureBox pictureBox1;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
         private Button button1;
         private Label lblSoDu;
+        private DataGridView dataGridViewTransactions;
+        private Label label1;
     }
 }

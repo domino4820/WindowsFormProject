@@ -71,7 +71,7 @@
             txtGameDescription.Multiline = true;
             txtGameDescription.Name = "txtGameDescription";
             txtGameDescription.ReadOnly = true;
-            txtGameDescription.Size = new Size(1008, 27);
+            txtGameDescription.Size = new Size(1008, 636);
             txtGameDescription.TabIndex = 2;
             txtGameDescription.Text = " ";
             // 
@@ -135,7 +135,7 @@
             lstFeedback.BackColor = Color.Black;
             lstFeedback.ForeColor = Color.White;
             lstFeedback.FormattingEnabled = true;
-            lstFeedback.Location = new Point(55, 972);
+            lstFeedback.Location = new Point(55, 1320);
             lstFeedback.Name = "lstFeedback";
             lstFeedback.Size = new Size(1008, 104);
             lstFeedback.TabIndex = 8;
@@ -175,6 +175,7 @@
             Controls.Add(btnInstall);
             Controls.Add(btnPlay);
             Name = "GameForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GameForm";
             Load += GameForm_Load;
             ((System.ComponentModel.ISupportInitialize)picBoxGame).EndInit();

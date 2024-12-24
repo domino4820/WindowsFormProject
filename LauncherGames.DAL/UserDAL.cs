@@ -117,23 +117,36 @@ namespace LauncherGames.DAL
             return users;
         }
 
-        public decimal GetUserBalance(int userId)
+        public static decimal GetUserBalance(int userId)
         {
-            string query = "SELECT Balance FROM Users WHERE UserId = @UserId";
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                string query = "SELECT Balance FROM Users WHERE UserId = @UserId";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@UserId", userId);
-                conn.Open();
 
-                object result = cmd.ExecuteScalar();
-                if (result != null)
-                {
-                    return (decimal)result;
-                }
-                return 0;
+                conn.Open();
+                return (decimal)cmd.ExecuteScalar();
             }
         }
+
+        public static void AddBalance(int userId, decimal amount)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Users SET Balance = Balance + @Amount WHERE UserId = @UserId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@Amount", amount);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
 
         public void UpdateUserBalance(int userId, decimal newBalance)
         {
@@ -198,6 +211,32 @@ namespace LauncherGames.DAL
             }
         }
 
+        public static void BanUser(int userId)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Users SET IsBanned = 1 WHERE UserId = @UserId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
 
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static bool IsUserAdmin(int userId)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT IsAdmin FROM Users WHERE UserId = @UserId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+
+                conn.Open();
+                return (bool)cmd.ExecuteScalar();
+            }
+        }
     }
 }

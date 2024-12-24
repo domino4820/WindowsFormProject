@@ -41,37 +41,90 @@ namespace LauncherGames.DAL
             return games;
         }
 
-        public List<Game> GetAllGames()
+        public static List<Game> GetAllGames()
         {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             List<Game> games = new List<Game>();
-            string query = "SELECT * FROM Games";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                string query = "SELECT * FROM Games";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                conn.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    Game game = new Game
+                    while (reader.Read())
                     {
-                        GameId = (int)reader["GameId"],
-                        GameName = (string)reader["GameName"],
-                        Description = reader["Description"] as string,
-                        Price = (decimal)reader["Price"],
-                        IsExclusive = (bool)reader["IsExclusive"],
-                        GameImage = reader["GameImage"] as string,
-                        CreatedAt = (DateTime)reader["CreatedAt"],
-                        DownloadPath = reader["DownloadPath"] as string,
-                        RunPath = reader["RunPath"] as string,
-                        ReleaseStatus = reader["ReleaseStatus"] as string
-                    };
-                    games.Add(game);
+                        Game game = new Game
+                        {
+                            GameId = reader.GetInt32(reader.GetOrdinal("GameId")),
+                            GameName = reader.GetString(reader.GetOrdinal("GameName")),
+                            Description = reader.GetString(reader.GetOrdinal("Description")),
+                            Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                            GameImage = reader.GetString(reader.GetOrdinal("GameImage")),
+                            DownloadPath = reader.GetString(reader.GetOrdinal("DownloadPath")),
+                            ReleaseStatus = reader.GetString(reader.GetOrdinal("ReleaseStatus"))
+                        };
+                        games.Add(game);
+                    }
                 }
             }
 
             return games;
+        }
+
+        public static void AddGame(Game game)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO Games (GameName, Description, Price, GameImage, DownloadPath, ReleaseStatus) VALUES (@GameName, @Description, @Price, @GameImage, @DownloadPath, @ReleaseStatus)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@GameName", game.GameName);
+                cmd.Parameters.AddWithValue("@Description", game.Description);
+                cmd.Parameters.AddWithValue("@Price", game.Price);
+                cmd.Parameters.AddWithValue("@GameImage", game.GameImage);
+                cmd.Parameters.AddWithValue("@DownloadPath", game.DownloadPath);
+                cmd.Parameters.AddWithValue("@ReleaseStatus", game.ReleaseStatus);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateGame(Game game)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Games SET GameName = @GameName, Description = @Description, Price = @Price, GameImage = @GameImage, DownloadPath = @DownloadPath, ReleaseStatus = @ReleaseStatus WHERE GameId = @GameId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@GameId", game.GameId);
+                cmd.Parameters.AddWithValue("@GameName", game.GameName);
+                cmd.Parameters.AddWithValue("@Description", game.Description);
+                cmd.Parameters.AddWithValue("@Price", game.Price);
+                cmd.Parameters.AddWithValue("@GameImage", game.GameImage);
+                cmd.Parameters.AddWithValue("@DownloadPath", game.DownloadPath);
+                cmd.Parameters.AddWithValue("@ReleaseStatus", game.ReleaseStatus);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void DeleteGame(int gameId)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Games WHERE GameId = @GameId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@GameId", gameId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public Game GetGameById(int gameId)

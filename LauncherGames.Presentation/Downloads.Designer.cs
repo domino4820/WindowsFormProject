@@ -87,9 +87,9 @@
             lblStatus.ForeColor = Color.White;
             lblStatus.Location = new Point(25, 43);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(55, 23);
+            lblStatus.Size = new Size(323, 23);
             lblStatus.TabIndex = 24;
-            lblStatus.Text = "label1";
+            lblStatus.Text = "Đang tiến hành lấy dữ liệu, vui lòng đợi...";
             // 
             // ProgressForm
             // 

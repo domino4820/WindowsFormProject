@@ -19,7 +19,7 @@ namespace LauncherGames.BLL
 
         public List<Game> GetAllGames()
         {
-            return gameDAL.GetAllGames();
+            return GameDAL.GetAllGames();
         }
 
         

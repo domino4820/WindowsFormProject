@@ -110,47 +110,72 @@ namespace LauncherGames.DAL
         {
             UserGameDetails userGameDetails = null;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                string query = "SELECT * FROM UserGameDetails WHERE UserId = @UserId AND GameId = @GameId";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@UserId", userId);
-                cmd.Parameters.AddWithValue("@GameId", gameId);
-
-                conn.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    if (reader.Read())
+                    string query = "SELECT * FROM UserGameDetails WHERE UserId = @UserId AND GameId = @GameId";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.Parameters.AddWithValue("@GameId", gameId);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        userGameDetails = new UserGameDetails
+                        if (reader.Read())
                         {
-                            UserGameId = reader.GetInt32(reader.GetOrdinal("UserGameId")),
-                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
-                            GameId = reader.GetInt32(reader.GetOrdinal("GameId")),
-                            IsPurchased = reader.GetBoolean(reader.GetOrdinal("IsPurchased")),
-                            IsInstalled = reader.GetBoolean(reader.GetOrdinal("IsInstalled")),
-                            InstallationPath = reader.IsDBNull(reader.GetOrdinal("InstallationPath")) ? null : reader.GetString(reader.GetOrdinal("InstallationPath")),
-                            PurchaseDate = reader.IsDBNull(reader.GetOrdinal("PurchaseDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("PurchaseDate")),
-                            DownloadPath = reader.IsDBNull(reader.GetOrdinal("DownloadPath")) ? null : reader.GetString(reader.GetOrdinal("DownloadPath"))
-                        };
+                            userGameDetails = new UserGameDetails
+                            {
+                                UserGameId = reader.GetInt32(reader.GetOrdinal("UserGameId")),
+                                UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                                GameId = reader.GetInt32(reader.GetOrdinal("GameId")),
+                                IsPurchased = reader.GetBoolean(reader.GetOrdinal("IsPurchased")),
+                                IsInstalled = reader.GetBoolean(reader.GetOrdinal("IsInstalled")),
+                                InstallationPath = reader.IsDBNull(reader.GetOrdinal("InstallationPath")) ? null : reader.GetString(reader.GetOrdinal("InstallationPath")),
+                                PurchaseDate = reader.IsDBNull(reader.GetOrdinal("PurchaseDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("PurchaseDate")),
+                                DownloadPath = reader.IsDBNull(reader.GetOrdinal("DownloadPath")) ? null : reader.GetString(reader.GetOrdinal("DownloadPath"))
+                            };
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and rethrow it
+                Console.WriteLine($"An error occurred while fetching game details: {ex.Message}");
+                throw;
+            }
+
+            // Trả về đối tượng mặc định nếu không tìm thấy thông tin
+            if (userGameDetails == null)
+            {
+                userGameDetails = new UserGameDetails
+                {
+                    UserGameId = 0,
+                    UserId = userId,
+                    GameId = gameId,
+                    IsPurchased = false,
+                    IsInstalled = false,
+                    InstallationPath = null,
+                    PurchaseDate = null,
+                    DownloadPath = null
+                };
             }
 
             return userGameDetails;
         }
 
-        public void UpdateInstallationPath(int userId, int gameId, string installationPath, bool isInstalled)
-        {
-            string query = "UPDATE UserGameDetails SET InstallationPath = @InstallationPath, IsInstalled = @IsInstalled WHERE UserId = @UserId AND GameId = @GameId";
 
+        public static void UpdateInstallationPath(int userId, int gameId, string installationPath)
+        {
+            string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                string query = "UPDATE UserGameDetails SET InstallationPath = @InstallationPath WHERE UserId = @UserId AND GameId = @GameId";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@InstallationPath", installationPath);
                 cmd.Parameters.AddWithValue("@UserId", userId);
                 cmd.Parameters.AddWithValue("@GameId", gameId);
-                cmd.Parameters.AddWithValue("@InstallationPath", installationPath);
-                cmd.Parameters.AddWithValue("@IsInstalled", isInstalled);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -198,16 +223,15 @@ namespace LauncherGames.DAL
             }
         }
 
-        public static void DeleteGame(int userId, int gameId)
+        public static void DeleteGame(int userId, int gameId, string installationPath, bool isInstalled)
         {
             string connectionString = "Data Source=DESKTOP-83LI0FP;Initial Catalog=LauncherGamesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "UPDATE UserGameDetails SET IsInstalled = Null WHERE UserId = @UserId AND GameId = @GameId;";
+                string query = "UPDATE UserGameDetails SET InstallationPath = NULL, IsInstalled = 0 WHERE UserId = @UserId AND GameId = @GameId;";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@UserId", userId);
                 cmd.Parameters.AddWithValue("@GameId", gameId);
-
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }

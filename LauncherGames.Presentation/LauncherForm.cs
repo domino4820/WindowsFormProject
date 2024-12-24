@@ -19,7 +19,7 @@ namespace LauncherGames.Presentation
         private int currentUserId; // Giả sử đây là ID của người dùng hiện tại
         private string currentUsername;
 
-        public LauncherForm(string username,int userId)
+        public LauncherForm(string username, int userId)
         {
             InitializeComponent();
             gameBLL = new GameBLL();
@@ -176,7 +176,7 @@ namespace LauncherGames.Presentation
                 Panel parentPanel = control.Parent as Panel;
                 if (parentPanel != null)
                 {
-                    parentPanel.BackColor = Color.FromArgb(50, 255, 50); 
+                    parentPanel.BackColor = Color.FromArgb(50, 255, 50);
 
                     parentPanel.CreateGraphics().DrawRectangle(
                         new Pen(Color.FromArgb(50, 255, 50), 2),
@@ -208,23 +208,32 @@ namespace LauncherGames.Presentation
 
         private void OpenGameForm(Game game)
         {
-            // Kiểm tra nếu gameName hoặc InstallationPath là null hoặc rỗng
-            var userGameDetails = userGameDetailsDAL.GetUserGameDetails(currentUserId, game.GameId);
+            UserGameDetailsDAL userGameDetailsDAL = new UserGameDetailsDAL();
+            try
+            {
+                var userGameDetails = userGameDetailsDAL.GetUserGameDetails(currentUserId, game.GameId);
 
-            GameForm gameForm = new GameForm(
-                currentUserId,
-                game.GameName,
-                game.GameImage,
-                game.Price,
-                game.DownloadPath,
-                game.RunPath,
-                game.Description,
-                CheckIfUserPurchasedGame(game.GameId),
-                CheckIfGameIsInstalled(game.GameId),
-                game.GameId
-            );
-            gameForm.Show();
+                GameForm gameForm = new GameForm(
+                    currentUserId,
+                    game.GameName,
+                    game.GameImage,
+                    game.Price,
+                    game.DownloadPath,
+                    game.RunPath,
+                    game.Description,
+                    userGameDetails.IsPurchased,
+                    userGameDetails.IsInstalled,
+                    game.GameId,
+                    userGameDetails.InstallationPath
+                );
+                gameForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
 
@@ -238,24 +247,24 @@ namespace LauncherGames.Presentation
             return userGameDetailsDAL.IsGameInstalledByUser(currentUserId, gameId);
         }
 
-        private void DeductBalance(decimal amount)
-        {
-            decimal currentBalance = userDAL.GetUserBalance(currentUserId);
-            if (currentBalance >= amount)
-            {
-                userDAL.UpdateUserBalance(currentUserId, currentBalance - amount);
-            }
-            else
-            {
-                MessageBox.Show("Insufficient balance to complete the purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //private void DeductBalance(int user ,decimal amount)
+        //{
+        //    decimal currentBalance = userDAL.GetUserBalance(currentUserId);
+        //    if (currentBalance >= amount)
+        //    {
+        //        userDAL.UpdateUserBalance(currentUserId, currentBalance - amount);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Insufficient balance to complete the purchase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
-        private bool UserHasSufficientBalance(decimal price)
-        {
-            decimal currentBalance = userDAL.GetUserBalance(currentUserId);
-            return currentBalance >= price;
-        }
+        //private bool UserHasSufficientBalance(decimal price)
+        //{
+        //    decimal currentBalance = userDAL.GetUserBalance(currentUserId);
+        //    return currentBalance >= price;
+        //}
 
         private void LauncherForm_Resize(object sender, EventArgs e)
         {
@@ -276,6 +285,26 @@ namespace LauncherGames.Presentation
 
             TransactionForm transactionForm = new TransactionForm(currentUserId);
             transactionForm.Show();
+        }
+
+        private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (UserDAL.IsUserAdmin(currentUserId))
+            {
+                AdminForm adminForm = new AdminForm();
+                adminForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào trang này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private bool IsUserAdmin(int userId)
+        {
+            // Assuming you have a method in userDAL to check if a user is an admin
+            return UserDAL.IsUserAdmin(userId);
         }
     }
 }
