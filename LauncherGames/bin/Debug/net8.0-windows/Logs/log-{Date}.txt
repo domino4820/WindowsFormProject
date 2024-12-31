@@ -1,0 +1,31 @@
+﻿info: LauncherGames.LoginForm[0] @ 2024-12-29T21:43:50.0665696+07:00
+      Attempting to log in user ''
+info: Microsoft.EntityFrameworkCore.Database.Command[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted] @ 2024-12-29T21:43:51.1335051+07:00
+      Executed DbCommand (45ms) [Parameters=[@__ToLower_0='?' (Size = 50), @__password_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[UserId], [u].[Avatar], [u].[Balance], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsAdmin], [u].[IsBanned], [u].[Password], [u].[PhoneNumber], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE LOWER([u].[Username]) = @__ToLower_0 AND [u].[Password] = @__password_1
+warn: LauncherGames.LoginForm[0] @ 2024-12-29T21:43:51.1507589+07:00
+      Failed login attempt for user ''
+warn: LauncherGames.LoginForm[0] @ 2024-12-29T21:46:09.5048893+07:00
+      Login attempt with empty username or password.
+warn: LauncherGames.LoginForm[0] @ 2024-12-29T21:46:15.5079317+07:00
+      Login attempt with empty username or password.
+info: LauncherGames.LoginForm[0] @ 2024-12-29T21:49:16.9579890+07:00
+      Attempting to log in user 'quoc123'
+info: Microsoft.EntityFrameworkCore.Database.Command[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted] @ 2024-12-29T21:49:18.0434904+07:00
+      Executed DbCommand (42ms) [Parameters=[@__ToLower_0='?' (Size = 50), @__password_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[UserId], [u].[Avatar], [u].[Balance], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsAdmin], [u].[IsBanned], [u].[Password], [u].[PhoneNumber], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE LOWER([u].[Username]) = @__ToLower_0 AND [u].[Password] = @__password_1
+info: LauncherGames.LoginForm[0] @ 2024-12-29T21:49:18.1172062+07:00
+      User 'quoc123' logged in successfully
+info: LauncherGames.LoginForm[0] @ 2024-12-29T21:57:37.1616263+07:00
+      Attempting to log in user 'quoc123'
+info: Microsoft.EntityFrameworkCore.Database.Command[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted] @ 2024-12-29T21:57:38.2379257+07:00
+      Executed DbCommand (43ms) [Parameters=[@__ToLower_0='?' (Size = 50), @__password_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[UserId], [u].[Avatar], [u].[Balance], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsAdmin], [u].[IsBanned], [u].[Password], [u].[PhoneNumber], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE LOWER([u].[Username]) = @__ToLower_0 AND [u].[Password] = @__password_1
+info: LauncherGames.LoginForm[0] @ 2024-12-29T21:57:38.3018207+07:00
+      User 'quoc123' logged in successfully

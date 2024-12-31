@@ -1,0 +1,15 @@
+D:\LauncherGames\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.deps.json
+D:\LauncherGames\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.dll
+D:\LauncherGames\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.BLL.pdb
+D:\LauncherGames\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.DAL.dll
+D:\LauncherGames\LauncherGames.BLL\bin\Debug\net8.0\LauncherGames.DAL.pdb
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.csproj.AssemblyReference.cache
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.AssemblyInfoInputs.cache
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.AssemblyInfo.cs
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.csproj.CoreCompileInputs.cache
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\Launcher.A7A0E98B.Up2Date
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.dll
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\refint\LauncherGames.BLL.dll
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.pdb
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\ref\LauncherGames.BLL.dll

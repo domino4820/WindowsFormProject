@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherGames", "LauncherGames\LauncherGames.csproj", "{A05D21AF-9E5B-4980-BC79-F69C5D89B912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherGames.DAL", "LauncherGames.DAL\LauncherGames.DAL.csproj", "{0EEC5925-1EBB-49ED-8EAE-B76A68D6BD9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherGames.BLL", "LauncherGames.BLL\LauncherGames.BLL.csproj", "{C819F010-E43A-4509-8F1E-52B06D6F19B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A05D21AF-9E5B-4980-BC79-F69C5D89B912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05D21AF-9E5B-4980-BC79-F69C5D89B912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05D21AF-9E5B-4980-BC79-F69C5D89B912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05D21AF-9E5B-4980-BC79-F69C5D89B912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EEC5925-1EBB-49ED-8EAE-B76A68D6BD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EEC5925-1EBB-49ED-8EAE-B76A68D6BD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EEC5925-1EBB-49ED-8EAE-B76A68D6BD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EEC5925-1EBB-49ED-8EAE-B76A68D6BD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
