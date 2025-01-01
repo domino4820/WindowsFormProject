@@ -13,3 +13,4 @@ D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.dll
 D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\refint\LauncherGames.BLL.dll
 D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.pdb
 D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\ref\LauncherGames.BLL.dll
+D:\LauncherGames\LauncherGames.BLL\obj\Debug\net8.0\LauncherGames.BLL.sourcelink.json

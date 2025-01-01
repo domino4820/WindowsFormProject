@@ -12,3 +12,4 @@ D:\LauncherGames\LauncherGames.DAL\obj\Debug\net8.0\refint\LauncherGames.DAL.dll
 D:\LauncherGames\LauncherGames.DAL\obj\Debug\net8.0\LauncherGames.DAL.pdb
 D:\LauncherGames\LauncherGames.DAL\obj\Debug\net8.0\LauncherGames.DAL.genruntimeconfig.cache
 D:\LauncherGames\LauncherGames.DAL\obj\Debug\net8.0\ref\LauncherGames.DAL.dll
+D:\LauncherGames\LauncherGames.DAL\obj\Debug\net8.0\LauncherGames.DAL.sourcelink.json

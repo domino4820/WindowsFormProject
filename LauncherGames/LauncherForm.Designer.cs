@@ -50,11 +50,12 @@
             kinhDịToolStripMenuItem = new ToolStripMenuItem();
             tâmLýToolStripMenuItem = new ToolStripMenuItem();
             pnlLauncher = new Panel();
+            label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             flpReleasedGames = new FlowLayoutPanel();
-            flpUpcomingGames = new FlowLayoutPanel();
+            label2 = new Label();
             flpNewReleases = new FlowLayoutPanel();
-            label1 = new Label();
+            flpUpcomingGames = new FlowLayoutPanel();
             toolStrip1.SuspendLayout();
             pnlLauncher.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -68,7 +69,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome, toolStripButton4, toolStripButton5 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1135, 71);
+            toolStrip1.Size = new Size(1148, 71);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -179,6 +180,7 @@
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(118, 68);
             btnHome.Text = "Trang chủ";
+            btnHome.Click += btnHome_Click;
             // 
             // toolStripButton4
             // 
@@ -244,69 +246,83 @@
             // pnlLauncher
             // 
             pnlLauncher.AutoScroll = true;
+            pnlLauncher.Controls.Add(label1);
             pnlLauncher.Controls.Add(tableLayoutPanel1);
             pnlLauncher.Location = new Point(0, 103);
             pnlLauncher.Name = "pnlLauncher";
-            pnlLauncher.Size = new Size(1135, 622);
+            pnlLauncher.Size = new Size(1148, 622);
             pnlLauncher.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(flpReleasedGames, 0, 2);
-            tableLayoutPanel1.Controls.Add(flpUpcomingGames, 0, 3);
-            tableLayoutPanel1.Controls.Add(flpNewReleases, 0, 0);
-            tableLayoutPanel1.Location = new Point(0, 3);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.0266838F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 0.338839471F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 31.9779758F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50.6141472F));
-            tableLayoutPanel1.Size = new Size(1111, 2361);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // flpReleasedGames
-            // 
-            flpReleasedGames.Location = new Point(3, 413);
-            flpReleasedGames.Name = "flpReleasedGames";
-            flpReleasedGames.Size = new Size(1105, 748);
-            flpReleasedGames.TabIndex = 1;
-            // 
-            // flpUpcomingGames
-            // 
-            flpUpcomingGames.Location = new Point(3, 1168);
-            flpUpcomingGames.Name = "flpUpcomingGames";
-            flpUpcomingGames.Size = new Size(1105, 328);
-            flpUpcomingGames.TabIndex = 2;
-            // 
-            // flpNewReleases
-            // 
-            flpNewReleases.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            flpNewReleases.Location = new Point(3, 54);
-            flpNewReleases.Name = "flpNewReleases";
-            flpNewReleases.Size = new Size(1105, 294);
-            flpNewReleases.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 103);
+            label1.Location = new Point(3, 43);
             label1.Name = "label1";
             label1.Size = new Size(233, 27);
             label1.TabIndex = 2;
             label1.Text = "Game Mới Phát Hành";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(flpReleasedGames, 0, 2);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(flpNewReleases, 0, 0);
+            tableLayoutPanel1.Controls.Add(flpUpcomingGames, 0, 3);
+            tableLayoutPanel1.Location = new Point(0, 73);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.0266838F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 1.69419742F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60.5675545F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20.7115631F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(1124, 2291);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // flpReleasedGames
+            // 
+            flpReleasedGames.AutoScroll = true;
+            flpReleasedGames.Location = new Point(3, 431);
+            flpReleasedGames.Name = "flpReleasedGames";
+            flpReleasedGames.Size = new Size(1118, 1335);
+            flpReleasedGames.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cambria", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(3, 390);
+            label2.Name = "label2";
+            label2.Size = new Size(202, 27);
+            label2.TabIndex = 4;
+            label2.Text = "Game Thịnh Hành";
+            // 
+            // flpNewReleases
+            // 
+            flpNewReleases.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            flpNewReleases.Location = new Point(3, 49);
+            flpNewReleases.Name = "flpNewReleases";
+            flpNewReleases.Size = new Size(1118, 291);
+            flpNewReleases.TabIndex = 3;
+            // 
+            // flpUpcomingGames
+            // 
+            flpUpcomingGames.Location = new Point(3, 1818);
+            flpUpcomingGames.Name = "flpUpcomingGames";
+            flpUpcomingGames.Size = new Size(1118, 470);
+            flpUpcomingGames.TabIndex = 2;
             // 
             // LauncherForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1135, 725);
-            Controls.Add(label1);
+            ClientSize = new Size(1148, 725);
             Controls.Add(pnlLauncher);
             Controls.Add(toolStrip1);
             Name = "LauncherForm";
@@ -315,7 +331,9 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             pnlLauncher.ResumeLayout(false);
+            pnlLauncher.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -345,8 +363,9 @@
         private Panel pnlLauncher;
         private TableLayoutPanel tableLayoutPanel1;
         private FlowLayoutPanel flpReleasedGames;
-        private FlowLayoutPanel flpUpcomingGames;
         private FlowLayoutPanel flpNewReleases;
         private Label label1;
+        private Label label2;
+        private FlowLayoutPanel flpUpcomingGames;
     }
 }

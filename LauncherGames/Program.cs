@@ -55,6 +55,7 @@ namespace LauncherGames
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddScoped<IPurchaseService, PurchaseBLL>();
 
+
             services.AddTransient<LoginForm>();
             services.AddTransient<LauncherForm>();
             services.AddTransient<AdminForm>();

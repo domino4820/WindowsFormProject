@@ -12,6 +12,7 @@ namespace LauncherGames.DAL.Repository
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
+        Task UpdatePartialAsync(T entity, params Expression<Func<T, object>>[] updatedProperties);
         Task DeleteAsync(T entity);
         Task SaveChangesAsync();
     }

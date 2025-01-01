@@ -163,3 +163,5 @@ D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProfileFor
 D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.TransactionForm.resources
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProgressForm.resources
+D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.sourcelink.json
+D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Properties.Resources.resources

@@ -21,10 +21,10 @@ namespace LauncherGames
         {
             InitializeComponent();
 
-            _gameService = Program.ServiceProvider.GetRequiredService<IGameService>();
-            _userGameDetailsService = Program.ServiceProvider.GetRequiredService<IUserGameDetailsService>();
-            _serviceProvider = serviceProvider;
-            _userService = serviceProvider.GetRequiredService<IUserService>();
+            _serviceProvider = serviceProvider; // Đảm bảo _serviceProvider được khởi tạo trước
+            _gameService = _serviceProvider.GetRequiredService<IGameService>();
+            _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
+            _userService = _serviceProvider.GetRequiredService<IUserService>();
 
             _currentUsername = username;
             _currentUserId = userId;
@@ -41,6 +41,8 @@ namespace LauncherGames
             {
                 aministratorToolStripMenuItem.Visible = false;
             }
+
+            ReloadLauncherForm();
         }
 
         private async Task LoadGames()
@@ -55,17 +57,19 @@ namespace LauncherGames
             {
                 switch (game.ReleaseStatus)
                 {
-                    case "Mới phát hành":
+                    case "newReleases":
                         newReleases.Add(game);
-                        break;
-                    case "Đã phát hành":
                         releasedGames.Add(game);
                         break;
-                    case "Sắp phát hành":
+                    case "releasedGames":
+                        releasedGames.Add(game);
+                        break;
+                    case "upcomingGames":
                         upcomingGames.Add(game);
                         break;
                     default:
                         newReleases.Add(game);
+                        releasedGames.Add(game);
                         break;
                 }
             }
@@ -93,7 +97,8 @@ namespace LauncherGames
                 Height = 265,
                 BorderStyle = BorderStyle.None,
                 BackColor = Color.Black,
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                Margin = new Padding(10)
             };
 
             PictureBox gameImage = new PictureBox
@@ -113,7 +118,7 @@ namespace LauncherGames
                 ForeColor = Color.White,
                 BackColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Arial", 12, FontStyle.Regular),
+                Font = new Font("Cambria", 12, FontStyle.Regular),
                 AutoSize = false,
                 Dock = DockStyle.Bottom,
                 Height = 30
@@ -124,8 +129,8 @@ namespace LauncherGames
             Label gamePrice = new Label
             {
                 Text = game.Price == 0 ? "Free" : $"{game.Price:C}",
-                ForeColor = Color.DarkGreen,
-                BackColor = Color.FromArgb(50, 50, 50),
+                ForeColor = Color.BlueViolet,
+                BackColor = Color.DarkTurquoise,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Arial", 12, FontStyle.Bold),
                 AutoSize = false,
@@ -159,9 +164,9 @@ namespace LauncherGames
                 Panel parentPanel = control.Parent as Panel;
                 if (parentPanel != null)
                 {
-                    parentPanel.BackColor = Color.FromArgb(50, 255, 50);
+                    parentPanel.BackColor = Color.BlueViolet;
                     parentPanel.CreateGraphics().DrawRectangle(
-                        new Pen(Color.FromArgb(50, 255, 50), 2),
+                        new Pen(Color.BlueViolet, 2),
                         new Rectangle(1, 1, parentPanel.Width - 3, parentPanel.Height - 3)
                     );
 
@@ -223,7 +228,9 @@ namespace LauncherGames
                     userGameDetails.InstallationPath,
                     Program.ServiceProvider
                 );
+                gameForm.FormClosed += (s, args) => this.Show();
                 gameForm.Show();
+                this.Hide();
 
             }
             catch (Exception ex)
@@ -235,20 +242,41 @@ namespace LauncherGames
         private void tsProfile_HoSo_Click(object sender, EventArgs e)
         {
             ProfileForm profileForm = new ProfileForm(_currentUsername);
+            profileForm.FormClosed += (s, args) => this.Show();
             profileForm.Show();
+            this.Hide();
         }
 
         private void tsProfile_SoDu_Click(object sender, EventArgs e)
         {
             TransactionForm transactionForm = new TransactionForm(_currentUserId);
+            transactionForm.FormClosed += (s, args) => this.Show();
             transactionForm.Show();
+            this.Hide();
         }
 
         private async void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminForm adminForm = new AdminForm(_serviceProvider);
+            adminForm.FormClosed += async (s, args) =>
+            {
+                await LoadGames(); 
+                this.Show(); 
+            };
             adminForm.Show();
+            this.Hide();
         }
 
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void ReloadLauncherForm()
+        {
+            await LoadGames();
+            this.Show();
+        }
     }
 }

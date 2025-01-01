@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LauncherGames.BLL.Services;
@@ -30,7 +32,6 @@ namespace LauncherGames
         {
             await LoadGames();
             await LoadUsers();
-
         }
 
         private async Task LoadGames()
@@ -65,23 +66,60 @@ namespace LauncherGames
             cmbReleaseStatus.SelectedItem = game.ReleaseStatus;
         }
 
-
         private async void btnUpdate_Click(object sender, EventArgs e)
         {
-            var game = new Game
+            if (!int.TryParse(txtGameId.Text, out int gameId))
             {
-                GameName = txtGameName.Text,
-                Description = txtDescription.Text,
-                Price = decimal.Parse(txtPrice.Text),
-                GameImage = picImages.ImageLocation,
-                DownloadPath = txtDownloadPath.Text,
-                ReleaseStatus = cmbReleaseStatus.SelectedItem.ToString()
-            };
+                MessageBox.Show("Vui lòng chọn game để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            await _gameService.UpdateGameAsync(game);
-            MessageBox.Show("Cập nhật game thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            flpGames.Controls.Clear();
-            await LoadGames();
+            var game = await _gameService.GetGameByIdAsync(gameId);
+
+            if (game == null)
+            {
+                MessageBox.Show("Không tìm thấy game để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Chỉ cập nhật các trường có thay đổi
+            var propertiesToUpdate = new List<Expression<Func<Game, object>>>();
+
+            if (txtGameName.Text != game.GameName)
+            {
+                game.GameName = txtGameName.Text;
+                propertiesToUpdate.Add(g => g.GameName);
+            }
+
+            if (txtDescription.Text != game.Description)
+            {
+                game.Description = txtDescription.Text;
+                propertiesToUpdate.Add(g => g.Description);
+            }
+
+            if (decimal.TryParse(txtPrice.Text, out decimal price) && price != game.Price)
+            {
+                game.Price = price;
+                propertiesToUpdate.Add(g => g.Price);
+            }
+
+            if (cmbReleaseStatus.SelectedItem.ToString() != game.ReleaseStatus)
+            {
+                game.ReleaseStatus = cmbReleaseStatus.SelectedItem.ToString();
+                propertiesToUpdate.Add(g => g.ReleaseStatus);
+            }
+
+            if (propertiesToUpdate.Any())
+            {
+                await _gameService.UpdateGamePartialAsync(game, propertiesToUpdate.ToArray());
+                MessageBox.Show("Cập nhật game thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                flpGames.Controls.Clear();
+                await LoadGames();
+            }
+            else
+            {
+                MessageBox.Show("Không có thay đổi nào để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private async void btnAdd_Click(object sender, EventArgs e)
@@ -90,7 +128,6 @@ namespace LauncherGames
             if (string.IsNullOrEmpty(txtNewGameName.Text) ||
                 string.IsNullOrEmpty(txtNewDescription.Text) ||
                 string.IsNullOrEmpty(txtNewPrice.Text) ||
-                //string.IsNullOrEmpty(picNewgameImages.ImageLocation) ||
                 string.IsNullOrEmpty(txtNewDownloadPath.Text) ||
                 cmbNewReleaseStatus.SelectedItem == null)
             {
@@ -120,7 +157,6 @@ namespace LauncherGames
                 Price = price,
                 GameImage = picNewgameImages.ImageLocation,
                 DownloadPath = txtNewDownloadPath.Text,
-                // Gán giá trị được chọn từ ComboBox
                 ReleaseStatus = selectedStatus
             };
 
@@ -229,13 +265,28 @@ namespace LauncherGames
 
                     string gameImagePath = Path.Combine("Images", "GameImages", fileName);
 
-                    picNewgameImages.ImageLocation = gameImagePath;
-                    MessageBox.Show("Cập nhật ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFormFields();
+                    if (int.TryParse(txtGameId.Text, out int gameId))
+                    {
+                        var game = await _gameService.GetGameByIdAsync(gameId);
+                        if (game != null)
+                        {
+                            game.GameImage = gameImagePath;
+                            await _gameService.UpdateGameAsync(game);
+                            MessageBox.Show("Cập nhật ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearFormFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy game để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng nhập ID hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
-
 
         private async void btnPicGameRL_Click(object sender, EventArgs e)
         {
@@ -302,5 +353,7 @@ namespace LauncherGames
             txtNewDownloadPath.Clear();
             cmbNewReleaseStatus.SelectedIndex = -1;
         }
+
+
     }
 }

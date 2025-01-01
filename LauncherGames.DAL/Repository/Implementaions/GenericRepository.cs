@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -30,8 +29,6 @@ namespace LauncherGames.DAL.Repository
             return await _dbSet.ToListAsync();
         }
 
-
-
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
@@ -50,6 +47,16 @@ namespace LauncherGames.DAL.Repository
         public async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
+        }
+
+        public async Task UpdatePartialAsync(T entity, params Expression<Func<T, object>>[] updatedProperties)
+        {
+            _dbSet.Attach(entity);
+
+            foreach (var property in updatedProperties)
+            {
+                _context.Entry(entity).Property(property).IsModified = true;
+            }
         }
 
         public async Task DeleteAsync(T entity)
