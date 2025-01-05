@@ -33,13 +33,13 @@
             lblGameName = new Label();
             txtGameDescription = new TextBox();
             label1 = new Label();
-            btnPurchase = new Button();
             btnInstall = new Button();
             btnPlay = new Button();
             btnDeleteGame = new Button();
             lstFeedback = new ListBox();
             lblPrice = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            btnPurchase = new Button();
             ((System.ComponentModel.ISupportInitialize)picBoxGame).BeginInit();
             SuspendLayout();
             // 
@@ -85,17 +85,6 @@
             label1.Size = new Size(180, 31);
             label1.TabIndex = 3;
             label1.Text = "Mô tả sản phẩm";
-            // 
-            // btnPurchase
-            // 
-            btnPurchase.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPurchase.Location = new Point(530, 296);
-            btnPurchase.Name = "btnPurchase";
-            btnPurchase.Size = new Size(119, 41);
-            btnPurchase.TabIndex = 4;
-            btnPurchase.Text = "Mua game";
-            btnPurchase.UseVisualStyleBackColor = true;
-            btnPurchase.Click += btnPurchase_Click;
             // 
             // btnInstall
             // 
@@ -157,6 +146,17 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
+            // btnPurchase
+            // 
+            btnPurchase.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPurchase.Location = new Point(530, 296);
+            btnPurchase.Name = "btnPurchase";
+            btnPurchase.Size = new Size(119, 41);
+            btnPurchase.TabIndex = 4;
+            btnPurchase.Text = "Mua game";
+            btnPurchase.UseVisualStyleBackColor = true;
+            btnPurchase.Click += btnPurchase_Click;
+            // 
             // GameForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -189,12 +189,12 @@
         private Label lblGameName;
         private TextBox txtGameDescription;
         private Label label1;
-        private Button btnPurchase;
         private Button btnInstall;
         private Button btnPlay;
         private Button btnDeleteGame;
         private ListBox lstFeedback;
         private Label lblPrice;
         private ContextMenuStrip contextMenuStrip1;
+        private Button btnPurchase;
     }
 }

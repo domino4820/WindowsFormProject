@@ -1,0 +1,322 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using LauncherGames.BLL.Services.Interface;
+using LauncherGames.DAL.Models;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace LauncherGames
+{
+    public partial class Collection : Form
+    {
+        private readonly int userId;
+        private readonly List<UserGameDetail> userGames;
+        private readonly IServiceProvider _serviceProvider;
+        private readonly IUserGameDetailsService _userGameDetailsService;
+        private readonly IPurchaseService _purchaseService;
+        private bool isDownloading = false;
+
+        public Collection(int userId, List<UserGameDetail> userGames, IServiceProvider serviceProvider)
+        {
+            InitializeComponent();
+            this.userId = userId;
+            this.userGames = userGames;
+            _serviceProvider = serviceProvider;
+            _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
+            _purchaseService = _serviceProvider.GetRequiredService<IPurchaseService>();
+        }
+
+        private async void Collection_Load(object sender, EventArgs e)
+        {
+            foreach (var game in userGames)
+            {
+                Button gameButton = new Button
+                {
+                    Text = game.Game.GameName,
+                    Size = new Size(150, 50),
+                    BackColor = Color.SkyBlue,
+                    Tag = game
+                };
+                gameButton.Click += GameButton_Click;
+                flpGameLib.Controls.Add(gameButton);
+            }
+        }
+
+        private void GameButton_Click(object sender, EventArgs e)
+        {
+            Button gameButton = sender as Button;
+            var game = gameButton.Tag as UserGameDetail;
+
+            if (game != null)
+            {
+                lblGameName.Text = game.Game.GameName ?? "Unknown";
+                picBoxGame.ImageLocation = game.Game.GameImage;
+
+                btnInstall.Enabled = !game.IsInstalled;
+                btnPlay.Enabled = game.IsInstalled;
+
+                btnInstall.Tag = game;
+                btnPlay.Tag = game;
+                btnDeleteGame.Tag = game;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy thông tin game.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnInstall_Click(object sender, EventArgs e)
+        {
+            if (isDownloading)
+            {
+                MessageBox.Show("Đang tải xuống, vui lòng đợi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var game = btnInstall.Tag as UserGameDetail;
+            if (game == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin game.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string downloadPath = game.DownloadPath;
+            if (string.IsNullOrEmpty(downloadPath))
+            {
+                MessageBox.Show("Không tìm thấy đường dẫn tải xuống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Chọn thư mục để lưu game";
+                folderDialog.ShowNewFolderButton = true;
+
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string gameDirectory = folderDialog.SelectedPath; // Declare gameDirectory here
+                    isDownloading = true;
+
+                    using (ProgressForm progressForm = new ProgressForm(downloadPath))
+                    {
+                        progressForm.SavePath = Path.Combine(gameDirectory, $"{game.GameId}.zip");
+                        progressForm.Show();
+
+                        await DownloadAndInstallGame(downloadPath, gameDirectory, progressForm);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bạn chưa chọn thư mục lưu.");
+                }
+            }
+        }
+
+        private async Task DownloadAndInstallGame(string downloadUrl, string saveDirectory, ProgressForm progressForm)
+        {
+            var game = btnInstall.Tag as UserGameDetail;
+            if (game == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin game.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string savePath = Path.Combine(saveDirectory, $"{game.GameId}.zip");
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead))
+                    {
+                        response.EnsureSuccessStatusCode();
+
+                        using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                        {
+                            var totalBytes = response.Content.Headers.ContentLength;
+                            var totalBytesRead = 0L;
+                            var buffer = new byte[8192];
+                            var bytesRead = 0;
+
+                            while ((bytesRead = await contentStream.ReadAsync(buffer.AsMemory(0, buffer.Length))) != 0)
+                            {
+                                await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                totalBytesRead += bytesRead;
+
+                                if (totalBytes.HasValue)
+                                {
+                                    var progress = (int)((totalBytesRead * 100) / totalBytes.Value);
+                                    progressForm.UpdateProgress(progress);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (savePath.EndsWith(".zip"))
+                {
+                    ZipFile.ExtractToDirectory(savePath, saveDirectory);
+                    File.Delete(savePath);
+                }
+
+                var userGameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(userId, game.GameId);
+                if (userGameDetails != null)
+                {
+                    userGameDetails.IsInstalled = true;
+                    userGameDetails.InstallationPath = saveDirectory;
+                    await _userGameDetailsService.UpdateUserGameDetailsAsync(userGameDetails);
+                }
+
+                // Cập nhật trạng thái các nút và đường dẫn cài đặt ngay sau khi cài đặt
+                string gameDirectory = saveDirectory;
+                await UpdateButtonState(userId, game.GameId);
+                MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnInstall.Visible = false;
+                btnPlay.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isDownloading = false;
+                progressForm.Close();
+            }
+        }
+
+        private async Task UpdateButtonState(int userId, int gameId)
+        {
+            var userGameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(userId, gameId);
+            if (userGameDetails != null)
+            {
+                btnInstall.Enabled = !userGameDetails.IsInstalled;
+                btnPlay.Enabled = userGameDetails.IsInstalled;
+            }
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            var game = btnPlay.Tag as UserGameDetail;
+            if (game != null)
+            {
+                PlayGame(game);
+            }
+        }
+
+        private void PlayGame(UserGameDetail game)
+        {
+            if (game.InstallationPath == null || game.Game.GameName == null)
+            {
+                MessageBox.Show("Không tìm thấy file thực thi. Vui lòng kiểm tra lại cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string exePath = Path.Combine(game.InstallationPath, $"{game.Game.GameName}/{game.Game.GameName}.exe");
+
+            if (File.Exists(exePath))
+            {
+                try
+                {
+                    Process.Start(exePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi mở game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy file thực thi. Vui lòng kiểm tra lại cài đặt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnDeleteGame_Click(object sender, EventArgs e)
+        {
+            var game = btnDeleteGame.Tag as UserGameDetail;
+            if (game == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin game.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa game này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                if (game.InstallationPath == null || game.Game.GameName == null)
+                {
+                    MessageBox.Show("Thư mục game không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string gameDirectoryPath = Path.Combine(game.InstallationPath, game.Game.GameName);
+
+                try
+                {
+                    if (Directory.Exists(gameDirectoryPath))
+                    {
+                        DeleteDirectoryContents(gameDirectoryPath);
+                        Directory.Delete(gameDirectoryPath, true);
+
+                        game.IsInstalled = false;
+                        game.InstallationPath = null;
+                        await _userGameDetailsService.UpdateUserGameDetailsAsync(game);
+
+                        UpdatePlayButtonToInstall();
+                        MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thư mục game không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi xóa game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DeleteDirectoryContents(string directoryPath)
+        {
+            try
+            {
+                foreach (var file in Directory.GetFiles(directoryPath))
+                {
+                    File.SetAttributes(file, FileAttributes.Normal);
+                    File.Delete(file);
+                }
+
+                foreach (var subDirectory in Directory.GetDirectories(directoryPath))
+                {
+                    DeleteDirectoryContents(subDirectory);
+                    Directory.Delete(subDirectory);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xóa nội dung thư mục: {directoryPath}\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdatePlayButtonToInstall()
+        {
+            btnInstall.Visible = true;
+            btnInstall.Enabled = true; // Ensure the button is enabled
+            btnPlay.Visible = false;
+            btnInstall.Text = "Cài đặt";
+            btnInstall.Click -= btnPlay_Click;
+            btnInstall.Click += btnInstall_Click;
+        }
+    }
+}

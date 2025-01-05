@@ -9,6 +9,7 @@ namespace LauncherGames.BLL.Services.Interface
 {
     public interface IUserGameDetailsService
     {
+        Task<List<UserGameDetail>> GetPurchasedGamesAsync(int userId);
         Task<UserGameDetail> GetUserGameDetailsAsync(int userId, int gameId);
         Task AddUserGameDetailsAsync(UserGameDetail userGameDetails);
         Task UpdateUserGameDetailsAsync(UserGameDetail userGameDetails);

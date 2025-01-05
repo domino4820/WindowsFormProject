@@ -5,9 +5,10 @@ using LauncherGames.DAL.Repository;
 using LauncherGames.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Configuration;
-using Microsoft.Extensions.Logging;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using Microsoft.Extensions.Logging;
 
 namespace LauncherGames
 {
@@ -55,12 +56,11 @@ namespace LauncherGames
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddScoped<IPurchaseService, PurchaseBLL>();
 
-
             services.AddTransient<LoginForm>();
             services.AddTransient<LauncherForm>();
             services.AddTransient<AdminForm>();
             services.AddTransient<ProfileForm>();
-            services.AddTransient<AdminForm>();
+            services.AddTransient<Collection>();
         }
     }
 }

@@ -265,28 +265,13 @@ namespace LauncherGames
 
                     string gameImagePath = Path.Combine("Images", "GameImages", fileName);
 
-                    if (int.TryParse(txtGameId.Text, out int gameId))
-                    {
-                        var game = await _gameService.GetGameByIdAsync(gameId);
-                        if (game != null)
-                        {
-                            game.GameImage = gameImagePath;
-                            await _gameService.UpdateGameAsync(game);
-                            MessageBox.Show("Cập nhật ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearFormFields();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy game để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Vui lòng nhập ID hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    picNewgameImages.ImageLocation = gameImagePath;
+
+                    MessageBox.Show("Image selected successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
+
 
         private async void btnPicGameRL_Click(object sender, EventArgs e)
         {

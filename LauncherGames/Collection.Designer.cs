@@ -1,6 +1,6 @@
 ﻿namespace LauncherGames
 {
-    partial class LauncherForm
+    partial class Collection
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LauncherForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Collection));
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripDropDownButton();
             tsProfile_HoSo = new ToolStripMenuItem();
@@ -49,16 +49,18 @@
             phiêuLưuToolStripMenuItem = new ToolStripMenuItem();
             kinhDịToolStripMenuItem = new ToolStripMenuItem();
             tâmLýToolStripMenuItem = new ToolStripMenuItem();
-            pnlLauncher = new Panel();
-            label1 = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            flpReleasedGames = new FlowLayoutPanel();
-            label2 = new Label();
-            flpNewReleases = new FlowLayoutPanel();
-            flpUpcomingGames = new FlowLayoutPanel();
+            groupBox1 = new GroupBox();
+            flpGameLib = new FlowLayoutPanel();
+            lblPrice = new Label();
+            btnDeleteGame = new Button();
+            lblGameName = new Label();
+            picBoxGame = new PictureBox();
+            btnInstall = new Button();
+            btnPlay = new Button();
+            btngotopagegame = new Button();
             toolStrip1.SuspendLayout();
-            pnlLauncher.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxGame).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -69,8 +71,8 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome, toolStripButton4, toolStripButton5 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1148, 71);
-            toolStrip1.TabIndex = 0;
+            toolStrip1.Size = new Size(1135, 71);
+            toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButton1
@@ -93,7 +95,6 @@
             tsProfile_HoSo.Name = "tsProfile_HoSo";
             tsProfile_HoSo.Size = new Size(229, 36);
             tsProfile_HoSo.Text = "Hồ sơ";
-            tsProfile_HoSo.Click += tsProfile_HoSo_Click;
             // 
             // tsProfile_SoDu
             // 
@@ -102,7 +103,6 @@
             tsProfile_SoDu.Name = "tsProfile_SoDu";
             tsProfile_SoDu.Size = new Size(229, 36);
             tsProfile_SoDu.Text = "Số dư";
-            tsProfile_SoDu.Click += tsProfile_SoDu_Click;
             // 
             // tsProfile_ThuVien
             // 
@@ -111,7 +111,6 @@
             tsProfile_ThuVien.Name = "tsProfile_ThuVien";
             tsProfile_ThuVien.Size = new Size(229, 36);
             tsProfile_ThuVien.Text = "Thư viện";
-            tsProfile_ThuVien.Click += tsProfile_ThuVien_Click;
             // 
             // tsProfile_Logout
             // 
@@ -129,7 +128,6 @@
             aministratorToolStripMenuItem.Size = new Size(229, 36);
             aministratorToolStripMenuItem.Text = "Aministrator";
             aministratorToolStripMenuItem.Visible = false;
-            aministratorToolStripMenuItem.Click += aministratorToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
@@ -181,7 +179,6 @@
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(118, 68);
             btnHome.Text = "Trang chủ";
-            btnHome.Click += btnHome_Click;
             // 
             // toolStripButton4
             // 
@@ -244,97 +241,122 @@
             tâmLýToolStripMenuItem.Size = new Size(216, 36);
             tâmLýToolStripMenuItem.Text = "Tâm lý";
             // 
-            // pnlLauncher
+            // groupBox1
             // 
-            pnlLauncher.AutoScroll = true;
-            pnlLauncher.Controls.Add(label1);
-            pnlLauncher.Controls.Add(tableLayoutPanel1);
-            pnlLauncher.Location = new Point(0, 103);
-            pnlLauncher.Name = "pnlLauncher";
-            pnlLauncher.Size = new Size(1148, 622);
-            pnlLauncher.TabIndex = 1;
+            groupBox1.Controls.Add(flpGameLib);
+            groupBox1.Font = new Font("Cambria", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = Color.White;
+            groupBox1.Location = new Point(0, 74);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(250, 654);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Sản phẩm đã sở hữu";
             // 
-            // label1
+            // flpGameLib
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cambria", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 43);
-            label1.Name = "label1";
-            label1.Size = new Size(233, 27);
-            label1.TabIndex = 2;
-            label1.Text = "Game Mới Phát Hành";
+            flpGameLib.AllowDrop = true;
+            flpGameLib.Location = new Point(6, 16);
+            flpGameLib.Name = "flpGameLib";
+            flpGameLib.Size = new Size(238, 632);
+            flpGameLib.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // lblPrice
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(flpReleasedGames, 0, 2);
-            tableLayoutPanel1.Controls.Add(label2, 0, 1);
-            tableLayoutPanel1.Controls.Add(flpNewReleases, 0, 0);
-            tableLayoutPanel1.Controls.Add(flpUpcomingGames, 0, 3);
-            tableLayoutPanel1.Location = new Point(0, 73);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.0266838F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 1.69419742F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60.5675545F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20.7115631F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1124, 2291);
-            tableLayoutPanel1.TabIndex = 0;
+            lblPrice.AutoSize = true;
+            lblPrice.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPrice.ForeColor = Color.Lime;
+            lblPrice.Location = new Point(844, 233);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(40, 31);
+            lblPrice.TabIndex = 16;
+            lblPrice.Text = "0đ";
             // 
-            // flpReleasedGames
+            // btnDeleteGame
             // 
-            flpReleasedGames.AutoScroll = true;
-            flpReleasedGames.Location = new Point(3, 431);
-            flpReleasedGames.Name = "flpReleasedGames";
-            flpReleasedGames.Size = new Size(1118, 1335);
-            flpReleasedGames.TabIndex = 1;
+            btnDeleteGame.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeleteGame.Location = new Point(844, 352);
+            btnDeleteGame.Name = "btnDeleteGame";
+            btnDeleteGame.Size = new Size(119, 41);
+            btnDeleteGame.TabIndex = 15;
+            btnDeleteGame.Text = "Xóa game";
+            btnDeleteGame.UseVisualStyleBackColor = true;
+            btnDeleteGame.Click += btnDeleteGame_Click;
             // 
-            // label2
+            // lblGameName
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Cambria", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(3, 390);
-            label2.Name = "label2";
-            label2.Size = new Size(202, 27);
-            label2.TabIndex = 4;
-            label2.Text = "Game Thịnh Hành";
+            lblGameName.AutoSize = true;
+            lblGameName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGameName.ForeColor = Color.White;
+            lblGameName.Location = new Point(844, 178);
+            lblGameName.Name = "lblGameName";
+            lblGameName.Size = new Size(135, 31);
+            lblGameName.TabIndex = 11;
+            lblGameName.Text = "NameGame";
             // 
-            // flpNewReleases
+            // picBoxGame
             // 
-            flpNewReleases.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            flpNewReleases.Location = new Point(3, 49);
-            flpNewReleases.Name = "flpNewReleases";
-            flpNewReleases.Size = new Size(1118, 291);
-            flpNewReleases.TabIndex = 3;
+            picBoxGame.Location = new Point(384, 178);
+            picBoxGame.Name = "picBoxGame";
+            picBoxGame.Size = new Size(409, 226);
+            picBoxGame.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxGame.TabIndex = 10;
+            picBoxGame.TabStop = false;
             // 
-            // flpUpcomingGames
+            // btnInstall
             // 
-            flpUpcomingGames.Location = new Point(3, 1818);
-            flpUpcomingGames.Name = "flpUpcomingGames";
-            flpUpcomingGames.Size = new Size(1118, 470);
-            flpUpcomingGames.TabIndex = 2;
+            btnInstall.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnInstall.Location = new Point(844, 282);
+            btnInstall.Name = "btnInstall";
+            btnInstall.Size = new Size(119, 41);
+            btnInstall.TabIndex = 13;
+            btnInstall.Text = "Cài đặt";
+            btnInstall.UseVisualStyleBackColor = true;
+            btnInstall.Click += btnInstall_Click;
             // 
-            // LauncherForm
+            // btnPlay
+            // 
+            btnPlay.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPlay.Location = new Point(844, 282);
+            btnPlay.Name = "btnPlay";
+            btnPlay.Size = new Size(119, 41);
+            btnPlay.TabIndex = 14;
+            btnPlay.Text = "Chơi game";
+            btnPlay.UseVisualStyleBackColor = true;
+            btnPlay.Click += btnPlay_Click;
+            // 
+            // btngotopagegame
+            // 
+            btngotopagegame.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btngotopagegame.Location = new Point(799, 423);
+            btngotopagegame.Name = "btngotopagegame";
+            btngotopagegame.Size = new Size(207, 33);
+            btngotopagegame.TabIndex = 17;
+            btngotopagegame.Text = "Trang Chủ Nhà Phát Hành";
+            btngotopagegame.UseVisualStyleBackColor = true;
+            // 
+            // Collection
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1148, 725);
-            Controls.Add(pnlLauncher);
+            ClientSize = new Size(1135, 725);
+            Controls.Add(btngotopagegame);
+            Controls.Add(lblPrice);
+            Controls.Add(btnDeleteGame);
+            Controls.Add(lblGameName);
+            Controls.Add(picBoxGame);
+            Controls.Add(btnInstall);
+            Controls.Add(btnPlay);
+            Controls.Add(groupBox1);
             Controls.Add(toolStrip1);
-            Name = "LauncherForm";
-            Text = "LauncherForm";
-            Load += LauncherForm_Load;
+            Name = "Collection";
+            Text = "Collection";
+            Load += Collection_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            pnlLauncher.ResumeLayout(false);
-            pnlLauncher.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picBoxGame).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -347,11 +369,13 @@
         private ToolStripMenuItem tsProfile_SoDu;
         private ToolStripMenuItem tsProfile_ThuVien;
         private ToolStripMenuItem tsProfile_Logout;
-        private ToolStripTextBox txtSearch;
-        private ToolStripButton btnHome;
+        private ToolStripMenuItem aministratorToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnSearch;
+        private ToolStripTextBox txtSearch;
         private ToolStripButton toolStripButton2;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton btnHome;
         private ToolStripButton toolStripButton4;
         private ToolStripSplitButton toolStripButton5;
         private ToolStripMenuItem giảiTríToolStripMenuItem;
@@ -359,14 +383,14 @@
         private ToolStripMenuItem phiêuLưuToolStripMenuItem;
         private ToolStripMenuItem kinhDịToolStripMenuItem;
         private ToolStripMenuItem tâmLýToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem aministratorToolStripMenuItem;
-        private Panel pnlLauncher;
-        private TableLayoutPanel tableLayoutPanel1;
-        private FlowLayoutPanel flpReleasedGames;
-        private FlowLayoutPanel flpNewReleases;
-        private Label label1;
-        private Label label2;
-        private FlowLayoutPanel flpUpcomingGames;
+        private GroupBox groupBox1;
+        private FlowLayoutPanel flpGameLib;
+        private Label lblPrice;
+        private Button btnDeleteGame;
+        private Label lblGameName;
+        private PictureBox picBoxGame;
+        private Button btnInstall;
+        private Button btnPlay;
+        private Button btngotopagegame;
     }
 }

@@ -165,3 +165,4 @@ D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Transactio
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProgressForm.resources
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.sourcelink.json
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Properties.Resources.resources
+D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Collection.resources

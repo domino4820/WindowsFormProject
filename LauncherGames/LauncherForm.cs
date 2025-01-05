@@ -17,11 +17,12 @@ namespace LauncherGames
         private readonly int _currentUserId;
         private readonly string _currentUsername;
 
+
         public LauncherForm(int userId, string username, IServiceProvider serviceProvider)
         {
             InitializeComponent();
 
-            _serviceProvider = serviceProvider; // Đảm bảo _serviceProvider được khởi tạo trước
+            _serviceProvider = serviceProvider;
             _gameService = _serviceProvider.GetRequiredService<IGameService>();
             _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
             _userService = _serviceProvider.GetRequiredService<IUserService>();
@@ -260,8 +261,8 @@ namespace LauncherGames
             AdminForm adminForm = new AdminForm(_serviceProvider);
             adminForm.FormClosed += async (s, args) =>
             {
-                await LoadGames(); 
-                this.Show(); 
+                await LoadGames();
+                this.Show();
             };
             adminForm.Show();
             this.Hide();
@@ -277,6 +278,25 @@ namespace LauncherGames
         {
             await LoadGames();
             this.Show();
+        }
+
+        private async void tsProfile_ThuVien_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy danh sách các game mà người dùng đã mua
+                var userGames = await _userGameDetailsService.GetPurchasedGamesAsync(_currentUserId);
+
+                // Truyền danh sách game vào form Collection
+                Collection collectionForm = new Collection(_currentUserId, userGames, _serviceProvider);
+                collectionForm.FormClosed += (s, args) => this.Show();
+                collectionForm.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
