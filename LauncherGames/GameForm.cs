@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
+using System.Drawing;
 using System.IO.Compression;
-using System.Net.Http;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LauncherGames.BLL.Services.Interface;
@@ -20,18 +21,20 @@ namespace LauncherGames
         private readonly string runPath;
         private readonly bool isPurchased;
         private readonly bool isInstalled;
+        private readonly bool isExclusive;
         private readonly int gameId;
         private readonly int userId;
         private readonly string description;
-        private string installationPath; // Removed the readonly modifier
+        private string installationPath;
         private readonly IUserGameDetailsService _userGameDetailsService;
         private readonly IPurchaseService _purchaseService;
+        private readonly ITransactionService _transactionService;
         private readonly IServiceProvider _serviceProvider;
 
         private string gameDirectory;
         private bool isDownloading = false;
 
-        public GameForm(int userId, string gameName, string gameImage, decimal gamePrice, string downloadPath, string runPath, string description, bool isPurchased, bool isInstalled, int gameId, string installationPath, IServiceProvider serviceProvider)
+        public GameForm(int userId, string gameName, string gameImage, decimal gamePrice, string downloadPath, string runPath, string description, bool isPurchased, bool isInstalled, bool isExclusive, int gameId, string installationPath, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             this.gameName = gameName;
@@ -41,6 +44,7 @@ namespace LauncherGames
             this.runPath = runPath;
             this.isPurchased = isPurchased;
             this.isInstalled = isInstalled;
+            this.isExclusive = isExclusive;
             this.gameId = gameId;
             this.description = description;
             this.userId = userId;
@@ -48,6 +52,7 @@ namespace LauncherGames
             _serviceProvider = serviceProvider;
             _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
             _purchaseService = _serviceProvider.GetRequiredService<IPurchaseService>();
+            _transactionService = _serviceProvider.GetRequiredService<ITransactionService>(); // Get ITransactionService
         }
 
         private async void GameForm_Load_1(object sender, EventArgs e)
@@ -64,14 +69,14 @@ namespace LauncherGames
                 bool isGameInstalled = gameDetails.IsInstalled;
 
                 btnPurchase.Visible = !isGamePurchased;
-                btnInstall.Visible = isGamePurchased && !isGameInstalled;
-                btnPlay.Visible = isGameInstalled;
+                btnInstall.Visible = isGamePurchased && !isGameInstalled && !isExclusive;
+                btnPlay.Visible = isGameInstalled || isExclusive;
             }
             else
             {
                 btnPurchase.Visible = !isPurchased;
-                btnInstall.Visible = isPurchased && !isInstalled;
-                btnPlay.Visible = isInstalled;
+                btnInstall.Visible = isPurchased && !isInstalled && !isExclusive;
+                btnPlay.Visible = isInstalled || isExclusive;
             }
 
             await UpdateButtonState(userId, gameId);
@@ -102,9 +107,18 @@ namespace LauncherGames
                         UserId = userId,
                         GameId = gameId,
                         IsPurchased = true,
-                        IsInstalled = false
+                        IsInstalled = isExclusive
                     });
                 }
+
+                await _transactionService.AddTransactionAsync(new Transaction
+                {
+                    UserId = userId,
+                    GameId = gameId,
+                    Amount = gamePrice,
+                    Status = "COMPLETED",
+                    TransactionDate = DateTime.Now
+                });
 
                 MessageBox.Show("Mua game thành công!", "Thông báo");
                 await UpdateButtonState(userId, gameId);
@@ -202,11 +216,10 @@ namespace LauncherGames
                     await _userGameDetailsService.UpdateUserGameDetailsAsync(userGameDetails);
                 }
 
-                // Cập nhật trạng thái các nút và đường dẫn cài đặt ngay sau khi cài đặt
                 installationPath = saveDirectory;
                 await UpdateButtonState(userId, gameId);
                 MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnPlay.Visible = true; // Hiển thị nút Play ngay sau khi cài đặt thành công
+                btnPlay.Visible = true;
             }
             catch (Exception ex)
             {
@@ -221,7 +234,14 @@ namespace LauncherGames
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            PlayGame();
+            if (isExclusive)
+            {
+                OpenExclusiveGame();
+            }
+            else
+            {
+                PlayGame();
+            }
         }
 
         private void PlayGame()
@@ -248,6 +268,19 @@ namespace LauncherGames
             }
         }
 
+        private void OpenExclusiveGame()
+        {
+            if (gameName == "Flappy-Bird")
+            {
+                var flappyBirdForm = new Flappy_Bird_Game.Form1();
+                flappyBirdForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Game không hỗ trợ chế độ exclusive.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void WriteLog(string message)
         {
             string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs", "gamePlayLog.txt");
@@ -269,13 +302,13 @@ namespace LauncherGames
                 btnInstall.Visible = false;
                 btnPlay.Visible = false;
             }
-            else if (gameDetails.IsPurchased && !gameDetails.IsInstalled)
+            else if (gameDetails.IsPurchased && !gameDetails.IsInstalled && !isExclusive)
             {
                 btnPurchase.Visible = false;
                 btnInstall.Visible = true;
                 btnPlay.Visible = false;
             }
-            else if (gameDetails.IsPurchased && gameDetails.IsInstalled)
+            else if (gameDetails.IsPurchased && (gameDetails.IsInstalled || isExclusive))
             {
                 btnPurchase.Visible = false;
                 btnInstall.Visible = false;

@@ -178,6 +178,10 @@
             "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "PayPal": {
+              "target": "Package",
+              "version": "[1.9.1, )"
             }
           },
           "imports": [

@@ -82,7 +82,6 @@ namespace LauncherGames
                 return;
             }
 
-            // Chỉ cập nhật các trường có thay đổi
             var propertiesToUpdate = new List<Expression<Func<Game, object>>>();
 
             if (txtGameName.Text != game.GameName)
@@ -103,10 +102,16 @@ namespace LauncherGames
                 propertiesToUpdate.Add(g => g.Price);
             }
 
-            if (cmbReleaseStatus.SelectedItem.ToString() != game.ReleaseStatus)
+            if (cmbReleaseStatus.SelectedItem?.ToString() != game.ReleaseStatus)
             {
                 game.ReleaseStatus = cmbReleaseStatus.SelectedItem.ToString();
                 propertiesToUpdate.Add(g => g.ReleaseStatus);
+            }
+
+            if (txtDownloadPath.Text != game.DownloadPath)
+            {
+                game.DownloadPath = txtDownloadPath.Text;
+                propertiesToUpdate.Add(g => g.DownloadPath);
             }
 
             if (propertiesToUpdate.Any())
@@ -157,7 +162,8 @@ namespace LauncherGames
                 Price = price,
                 GameImage = picNewgameImages.ImageLocation,
                 DownloadPath = txtNewDownloadPath.Text,
-                ReleaseStatus = selectedStatus
+                ReleaseStatus = selectedStatus,
+                IsExclusive = chkIsExclusive.Checked
             };
 
             try
@@ -173,6 +179,7 @@ namespace LauncherGames
                 MessageBox.Show($"Đã xảy ra lỗi khi thêm game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private async Task LoadUsers()
         {

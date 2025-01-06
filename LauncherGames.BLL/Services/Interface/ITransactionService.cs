@@ -9,7 +9,8 @@ namespace LauncherGames.BLL.Services.Interface
 {
     public interface ITransactionService
     {
-        Task<List<Transaction>> GetTransactionsByUserIdAsync(int userId);
-       
+        Task<List<TransactionViewModel>> GetTransactionsByUserIdAsync(int userId);
+        Task AddTransactionAsync(Transaction transaction);
     }
+
 }

@@ -60,7 +60,7 @@
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
-            checkBox1 = new CheckBox();
+            chkIsExclusive = new CheckBox();
             picNewgameImages = new PictureBox();
             cmbNewReleaseStatus = new ComboBox();
             txtNewDownloadPath = new TextBox();
@@ -385,7 +385,7 @@
             groupBox3.Controls.Add(label9);
             groupBox3.Controls.Add(label8);
             groupBox3.Controls.Add(label7);
-            groupBox3.Controls.Add(checkBox1);
+            groupBox3.Controls.Add(chkIsExclusive);
             groupBox3.Controls.Add(picNewgameImages);
             groupBox3.Controls.Add(cmbNewReleaseStatus);
             groupBox3.Controls.Add(txtNewDownloadPath);
@@ -453,15 +453,15 @@
             label7.TabIndex = 6;
             label7.Text = "Game Name";
             // 
-            // checkBox1
+            // chkIsExclusive
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(313, 167);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(108, 27);
-            checkBox1.TabIndex = 5;
-            checkBox1.Text = " Exclusive";
-            checkBox1.UseVisualStyleBackColor = true;
+            chkIsExclusive.AutoSize = true;
+            chkIsExclusive.Location = new Point(313, 167);
+            chkIsExclusive.Name = "chkIsExclusive";
+            chkIsExclusive.Size = new Size(108, 27);
+            chkIsExclusive.TabIndex = 5;
+            chkIsExclusive.Text = " Exclusive";
+            chkIsExclusive.UseVisualStyleBackColor = true;
             // 
             // picNewgameImages
             // 
@@ -755,7 +755,7 @@
         private TextBox txtNewPrice;
         private TextBox txtNewGameName;
         private RichTextBox txtNewDescription;
-        private CheckBox checkBox1;
+        private CheckBox chkIsExclusive;
         private PictureBox picNewgameImages;
         private ComboBox cmbNewReleaseStatus;
         private Label label7;

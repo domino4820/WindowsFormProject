@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherGames.DAL", "Launch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherGames.BLL", "LauncherGames.BLL\LauncherGames.BLL.csproj", "{C819F010-E43A-4509-8F1E-52B06D6F19B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flappy Bird Game", "Flappy Bird Game\Flappy Bird Game.csproj", "{9B7A1D1A-8129-46A4-9261-95615C0B7245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C819F010-E43A-4509-8F1E-52B06D6F19B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7A1D1A-8129-46A4-9261-95615C0B7245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7A1D1A-8129-46A4-9261-95615C0B7245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7A1D1A-8129-46A4-9261-95615C0B7245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7A1D1A-8129-46A4-9261-95615C0B7245}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
@@ -18,7 +21,6 @@ namespace LauncherGames
             InitializeComponent();
             _userId = userId;
 
-            // Sử dụng Dependency Injection để lấy các dịch vụ
             _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
             _transactionService = Program.ServiceProvider.GetRequiredService<ITransactionService>();
         }
@@ -27,6 +29,11 @@ namespace LauncherGames
         {
             var transactions = await _transactionService.GetTransactionsByUserIdAsync(_userId);
             dataGridViewTransactions.DataSource = transactions;
+
+            if (dataGridViewTransactions.Columns["TransactionId"] != null)
+            {
+                dataGridViewTransactions.Columns["TransactionId"].Visible = false;
+            }
         }
 
         private async void UpdateUserBalance()
@@ -56,7 +63,12 @@ namespace LauncherGames
             dgview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        
+        private void btnPaypal_Click(object sender, EventArgs e)
+        {
+            PaypalForm paypalform = new PaypalForm(_userService, _userId,this);
+            this.Hide();
+            paypalform.ShowDialog();
 
+        }
     }
 }

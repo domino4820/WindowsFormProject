@@ -225,9 +225,10 @@ namespace LauncherGames
                     game.Description,
                     userGameDetails.IsPurchased,
                     userGameDetails.IsInstalled,
+                    game.IsExclusive,
                     game.GameId,
                     userGameDetails.InstallationPath,
-                    Program.ServiceProvider
+                    _serviceProvider // Added missing argument
                 );
                 gameForm.FormClosed += (s, args) => this.Show();
                 gameForm.Show();
@@ -239,6 +240,7 @@ namespace LauncherGames
                 MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void tsProfile_HoSo_Click(object sender, EventArgs e)
         {

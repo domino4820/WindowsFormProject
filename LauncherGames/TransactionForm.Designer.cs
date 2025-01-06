@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             lblSoDu = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
-            button1 = new Button();
+            btnPaypal = new Button();
             dataGridViewTransactions = new DataGridView();
             label1 = new Label();
             groupBox1.SuspendLayout();
@@ -91,7 +91,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button1);
+            groupBox2.Controls.Add(btnPaypal);
             groupBox2.Font = new Font("Arial Narrow", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(495, 79);
@@ -101,14 +101,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thanh toán";
             // 
-            // button1
+            // btnPaypal
             // 
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(52, 46);
-            button1.Name = "button1";
-            button1.Size = new Size(443, 99);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = true;
+            btnPaypal.Image = (Image)resources.GetObject("btnPaypal.Image");
+            btnPaypal.Location = new Point(60, 44);
+            btnPaypal.Name = "btnPaypal";
+            btnPaypal.Size = new Size(443, 99);
+            btnPaypal.TabIndex = 0;
+            btnPaypal.UseVisualStyleBackColor = true;
+            btnPaypal.Click += btnPaypal_Click;
             // 
             // dataGridViewTransactions
             // 
@@ -116,14 +117,14 @@
             dataGridViewTransactions.AllowUserToDeleteRows = false;
             dataGridViewTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewTransactions.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Black;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Black;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTransactions.GridColor = Color.Black;
             dataGridViewTransactions.Location = new Point(-2, 447);
@@ -171,7 +172,7 @@
         private Label label2;
         private PictureBox pictureBox1;
         private GroupBox groupBox2;
-        private Button button1;
+        private Button btnPaypal;
         private Label lblSoDu;
         private DataGridView dataGridViewTransactions;
         private Label label1;

@@ -166,3 +166,33 @@ D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.ProgressFo
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.sourcelink.json
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Properties.Resources.resources
 D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.Collection.resources
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.deps.json
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.runtimeconfig.json
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\score.txt
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.exe
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\00.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\01.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\02.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\03.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\04.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\05.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\06.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\07.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\08.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\birds\09.gif
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\00.png
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\01.png
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\02.png
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\pipes\03.png
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\sound\hit.wav
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\sound\jumping.wav
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy-Bird.cs
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\GameScreen.cs
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\HelpScreen.cs
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\tainguyen\flappyBirdV3Icon.ico
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.dll
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Flappy Bird Game.pdb
+D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.PaypalForm.resources
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\LauncherGames\LauncherGames\bin\Debug\net8.0-windows\PayPal.dll
+D:\LauncherGames\LauncherGames\obj\Debug\net8.0-windows\LauncherGames.InputForm.resources

@@ -26,9 +26,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
+    <PackageReference Include="PayPal" Version="1.9.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Flappy Bird Game\Flappy Bird Game.csproj" />
     <ProjectReference Include="..\LauncherGames.BLL\LauncherGames.BLL.csproj" />
     <ProjectReference Include="..\LauncherGames.DAL\LauncherGames.DAL.csproj" />
   </ItemGroup>
