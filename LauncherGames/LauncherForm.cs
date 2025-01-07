@@ -193,14 +193,12 @@ namespace LauncherGames
             }
         }
 
-        private async void OpenGameForm(Game game)
+        private async Task OpenGameForm(Game game)
         {
             try
             {
-                // Attempt to get user game details
                 var userGameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(_currentUserId, game.GameId);
 
-                // If userGameDetails is null, initialize with default values
                 if (userGameDetails == null)
                 {
                     userGameDetails = new UserGameDetail
@@ -214,7 +212,6 @@ namespace LauncherGames
                     };
                 }
 
-                // Create and show the GameForm
                 GameForm gameForm = new GameForm(
                     _currentUserId,
                     game.GameName,
@@ -228,9 +225,9 @@ namespace LauncherGames
                     game.IsExclusive,
                     game.GameId,
                     userGameDetails.InstallationPath,
-                    _serviceProvider // Added missing argument
+                    _serviceProvider,
+                    _currentUsername
                 );
-                gameForm.FormClosed += (s, args) => this.Show();
                 gameForm.Show();
                 this.Hide();
 
@@ -244,16 +241,16 @@ namespace LauncherGames
 
         private void tsProfile_HoSo_Click(object sender, EventArgs e)
         {
-            ProfileForm profileForm = new ProfileForm(_currentUsername);
-            profileForm.FormClosed += (s, args) => this.Show();
+            ProfileForm profileForm = new ProfileForm(_currentUsername, _currentUserId);
+            //profileForm.FormClosed += (s, args) => this.Show();
             profileForm.Show();
             this.Hide();
         }
 
         private void tsProfile_SoDu_Click(object sender, EventArgs e)
         {
-            TransactionForm transactionForm = new TransactionForm(_currentUserId);
-            transactionForm.FormClosed += (s, args) => this.Show();
+            TransactionForm transactionForm = new TransactionForm(_currentUsername,_currentUserId);
+            //transactionForm.FormClosed += (s, args) => this.Show();
             transactionForm.Show();
             this.Hide();
         }
@@ -261,7 +258,7 @@ namespace LauncherGames
         private async void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminForm adminForm = new AdminForm(_serviceProvider);
-            adminForm.FormClosed += async (s, args) =>
+            //adminForm.FormClosed += async (s, args) =>
             {
                 await LoadGames();
                 this.Show();
@@ -286,12 +283,9 @@ namespace LauncherGames
         {
             try
             {
-                // Lấy danh sách các game mà người dùng đã mua
                 var userGames = await _userGameDetailsService.GetPurchasedGamesAsync(_currentUserId);
-
-                // Truyền danh sách game vào form Collection
-                Collection collectionForm = new Collection(_currentUserId, userGames, _serviceProvider);
-                collectionForm.FormClosed += (s, args) => this.Show();
+                Collection collectionForm = new Collection(_currentUsername,_currentUserId, userGames, _serviceProvider);
+                //collectionForm.FormClosed += (s, args) => this.Show();
                 collectionForm.Show();
                 this.Hide();
             }
@@ -299,6 +293,40 @@ namespace LauncherGames
             {
                 MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text;
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                lstSearchResults.Visible = false;
+                return;
+            }
+
+            var games = await _gameService.SearchGamesByNameAsync(searchText);
+            if (games.Any())
+            {
+                lstSearchResults.DataSource = games;
+                lstSearchResults.DisplayMember = "GameName";
+                lstSearchResults.ValueMember = "GameId";
+                lstSearchResults.Visible = true;
+            }
+            else
+            {
+                lstSearchResults.Visible = false;
+            }
+        }
+
+        private async void lstSearchResults_Click(object sender, EventArgs e)
+        {
+            if (lstSearchResults.SelectedItem == null)
+                return;
+
+            var selectedGame = (Game)lstSearchResults.SelectedItem;
+            await OpenGameForm(selectedGame);
+            lstSearchResults.Visible = false;
         }
     }
 }

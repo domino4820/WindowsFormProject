@@ -28,6 +28,11 @@ namespace LauncherGames.BLL.Services
             return (await _gameRepository.GetAllAsync()).ToList();
         }
 
+        public async Task<List<Game>> SearchGamesByNameAsync(string gameName)
+        {
+            return (await _gameRepository.FindAsync(g => g.GameName.Contains(gameName))).ToList();
+        }
+
         public async Task<Game> GetGameByIdAsync(int gameId)
         {
             return await _gameRepository.GetByIdAsync(gameId);

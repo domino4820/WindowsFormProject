@@ -61,6 +61,7 @@ namespace LauncherGames
             services.AddTransient<AdminForm>();
             services.AddTransient<ProfileForm>();
             services.AddTransient<Collection>();
+            services.AddTransient<PaypalForm>();
         }
     }
 }

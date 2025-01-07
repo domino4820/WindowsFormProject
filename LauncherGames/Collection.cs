@@ -6,9 +6,11 @@ using System.IO.Compression;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LauncherGames.BLL.Services;
 using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace LauncherGames
 {
@@ -20,15 +22,21 @@ namespace LauncherGames
         private readonly IUserGameDetailsService _userGameDetailsService;
         private readonly IPurchaseService _purchaseService;
         private bool isDownloading = false;
+        private string _username;
+        private readonly IGameService _gameService;
 
-        public Collection(int userId, List<UserGameDetail> userGames, IServiceProvider serviceProvider)
+
+        public Collection(string username, int userId, List<UserGameDetail> userGames, IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            _username = username;
             this.userId = userId;
             this.userGames = userGames;
             _serviceProvider = serviceProvider;
             _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
             _purchaseService = _serviceProvider.GetRequiredService<IPurchaseService>();
+            _gameService = _serviceProvider.GetRequiredService<IGameService>();
+
         }
 
         private async void Collection_Load(object sender, EventArgs e)
@@ -99,7 +107,7 @@ namespace LauncherGames
 
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string gameDirectory = folderDialog.SelectedPath; // Declare gameDirectory here
+                    string gameDirectory = folderDialog.SelectedPath;
                     isDownloading = true;
 
                     using (ProgressForm progressForm = new ProgressForm(downloadPath))
@@ -171,7 +179,6 @@ namespace LauncherGames
                     await _userGameDetailsService.UpdateUserGameDetailsAsync(userGameDetails);
                 }
 
-                // Cập nhật trạng thái các nút và đường dẫn cài đặt ngay sau khi cài đặt
                 string gameDirectory = saveDirectory;
                 await UpdateButtonState(userId, game.GameId);
                 MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -312,11 +319,121 @@ namespace LauncherGames
         private void UpdatePlayButtonToInstall()
         {
             btnInstall.Visible = true;
-            btnInstall.Enabled = true; // Ensure the button is enabled
+            btnInstall.Enabled = true;
             btnPlay.Visible = false;
             btnInstall.Text = "Cài đặt";
             btnInstall.Click -= btnPlay_Click;
             btnInstall.Click += btnInstall_Click;
+        }
+
+        private void tsProfile_HoSo_Click(object sender, EventArgs e)
+        {
+            ProfileForm profileForm = new ProfileForm(_username, userId);
+            profileForm.Show();
+            this.Close();
+        }
+
+        private async void tsProfile_SoDu_Click(object sender, EventArgs e)
+        {
+            TransactionForm transactionForm = new TransactionForm(_username, userId);
+            this.Close();
+            transactionForm.ShowDialog();
+        }
+
+
+        private void tsProfile_Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var userService = _serviceProvider.GetRequiredService<IUserService>();
+            var logger = _serviceProvider.GetRequiredService<ILogger<LoginForm>>();
+            LoginForm loginForm = new LoginForm(userService, logger);
+            loginForm.Show();
+        }
+
+        private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm(_serviceProvider);
+            adminForm.Show();
+            this.Hide();
+        }
+
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text;
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                lstSearchResults.Visible = false;
+                return;
+            }
+
+            var games = await _gameService.SearchGamesByNameAsync(searchText);
+            if (games.Any())
+            {
+                lstSearchResults.DataSource = games;
+                lstSearchResults.DisplayMember = "GameName";
+                lstSearchResults.ValueMember = "GameId";
+                lstSearchResults.Visible = true;
+            }
+            else
+            {
+                lstSearchResults.Visible = false;
+            }
+        }
+
+        private async void lstSearchResults_Click(object sender, EventArgs e)
+        {
+            if (lstSearchResults.SelectedItem == null)
+                return;
+
+            var selectedGame = (Game)lstSearchResults.SelectedItem;
+            await OpenGameForm(selectedGame);
+            lstSearchResults.Visible = false;
+        }
+
+        private async Task OpenGameForm(Game game)
+        {
+            try
+            {
+                var userGameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(userId, game.GameId);
+
+                if (userGameDetails == null)
+                {
+                    userGameDetails = new UserGameDetail
+                    {
+                        UserId = userId,
+                        GameId = game.GameId,
+                        IsPurchased = false,
+                        IsInstalled = false,
+                        InstallationPath = string.Empty,
+                        DownloadPath = string.Empty
+                    };
+                }
+
+                GameForm gameForm = new GameForm(
+                    userId,
+                    game.GameName,
+                    game.GameImage,
+                    game.Price,
+                    game.DownloadPath,
+                    game.RunPath,
+                    game.Description,
+                    userGameDetails.IsPurchased,
+                    userGameDetails.IsInstalled,
+                    game.IsExclusive,
+                    game.GameId,
+                    userGameDetails.InstallationPath,
+                    Program.ServiceProvider,
+                    _username
+                );
+                gameForm.Show();
+                this.Hide();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

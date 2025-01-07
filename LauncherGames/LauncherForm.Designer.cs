@@ -56,6 +56,7 @@
             label2 = new Label();
             flpNewReleases = new FlowLayoutPanel();
             flpUpcomingGames = new FlowLayoutPanel();
+            lstSearchResults = new ListBox();
             toolStrip1.SuspendLayout();
             pnlLauncher.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -155,6 +156,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(300, 71);
             txtSearch.ToolTipText = "Tìm kiếm";
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // toolStripButton2
             // 
@@ -318,15 +320,29 @@
             flpUpcomingGames.Size = new Size(1118, 470);
             flpUpcomingGames.TabIndex = 2;
             // 
+            // lstSearchResults
+            // 
+            lstSearchResults.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lstSearchResults.FormattingEnabled = true;
+            lstSearchResults.ItemHeight = 19;
+            lstSearchResults.Location = new Point(651, 53);
+            lstSearchResults.Name = "lstSearchResults";
+            lstSearchResults.Size = new Size(300, 118);
+            lstSearchResults.TabIndex = 3;
+            lstSearchResults.Visible = false;
+            lstSearchResults.Click += lstSearchResults_Click;
+            // 
             // LauncherForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1148, 725);
+            Controls.Add(lstSearchResults);
             Controls.Add(pnlLauncher);
             Controls.Add(toolStrip1);
             Name = "LauncherForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LauncherForm";
             Load += LauncherForm_Load;
             toolStrip1.ResumeLayout(false);
@@ -368,5 +384,6 @@
         private Label label1;
         private Label label2;
         private FlowLayoutPanel flpUpcomingGames;
+        private ListBox lstSearchResults;
     }
 }

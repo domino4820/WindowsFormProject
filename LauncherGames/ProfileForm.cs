@@ -2,25 +2,32 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LauncherGames.BLL.Services;
 using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace LauncherGames
 {
     public partial class ProfileForm : Form
     {
         private readonly IUserService _userService;
+        private readonly IUserGameDetailsService _userGameDetailsService;
         private string _username;
         private User _currentUser;
+        private readonly int _currentUserId;
+        private readonly IGameService _gameService;
 
-        public ProfileForm(string username)
+
+        public ProfileForm(string username, int userId)
         {
             InitializeComponent();
             _username = username;
-
-            // Sử dụng Dependency Injection để lấy dịch vụ IUserService
+            _currentUserId = userId;
             _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
+            _userGameDetailsService = Program.ServiceProvider.GetRequiredService<IUserGameDetailsService>();
+            _gameService = Program.ServiceProvider.GetRequiredService<IGameService>();
         }
 
         private async void LoadUserProfile()
@@ -28,7 +35,6 @@ namespace LauncherGames
             _currentUser = await _userService.GetUserByUsernameAsync(_username);
             if (_currentUser != null)
             {
-                // Hiển thị thông tin người dùng lên các TextBox
                 txtFullName.Text = _currentUser.FullName;
                 txtSDT.Text = _currentUser.PhoneNumber;
                 txtEmail.Text = _currentUser.Email;
@@ -77,6 +83,15 @@ namespace LauncherGames
 
             await _userService.ChangePasswordAsync(_username, newPassword);
             MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
+
+            if (await _userService.IsUserAdminAsync(_currentUserId))
+            {
+                aministratorToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                aministratorToolStripMenuItem.Visible = false;
+            }
         }
 
         private async void btnCapnhat_Click(object sender, EventArgs e)
@@ -107,9 +122,7 @@ namespace LauncherGames
             _currentUser.PhoneNumber = phoneNumber;
             _currentUser.Email = email;
 
-            // Ghi log: Hiển thị thông tin trước khi cập nhật
             LogToFile($"Updating user: {_currentUser.UserId}, {_currentUser.FullName}, {_currentUser.PhoneNumber}, {_currentUser.Email}");
-            // Cập nhật thông tin người dùng
             await _userService.UpdateUserAsync(_currentUser);
             MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo");
             lblUsername.Text = $"Chào mừng, {_currentUser.FullName}";
@@ -124,6 +137,132 @@ namespace LauncherGames
             }
         }
 
-        
+        private void tsProfile_SoDu_Click(object sender, EventArgs e)
+        {
+            TransactionForm transactionForm = new TransactionForm(_username, _currentUserId);
+            this.Close();
+            transactionForm.ShowDialog();
+        }
+
+        private async void tsProfile_ThuVien_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var userGames = await _userGameDetailsService.GetPurchasedGamesAsync(_currentUserId);
+                Collection collectionForm = new Collection(_username,_currentUserId, userGames, Program.ServiceProvider);
+                this.Close();
+                collectionForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tsProfile_Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var userService = Program.ServiceProvider.GetRequiredService<IUserService>();
+            var logger = Program.ServiceProvider.GetRequiredService<ILogger<LoginForm>>();
+            LoginForm loginForm = new LoginForm(userService, logger);
+            loginForm.Show();
+        }
+
+        private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm(Program.ServiceProvider);
+            //adminForm.FormClosed += async (s, args) =>
+            {
+                this.Show();
+            };
+            adminForm.Show();
+            this.Hide();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LauncherForm launcherForm = new LauncherForm(_currentUserId, _username, Program.ServiceProvider);
+            this.Close();
+            launcherForm.ShowDialog();
+        }
+
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text;
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                lstSearchResults.Visible = false;
+                return;
+            }
+
+            var games = await _gameService.SearchGamesByNameAsync(searchText);
+            if (games.Any())
+            {
+                lstSearchResults.DataSource = games;
+                lstSearchResults.DisplayMember = "GameName";
+                lstSearchResults.ValueMember = "GameId";
+                lstSearchResults.Visible = true;
+            }
+            else
+            {
+                lstSearchResults.Visible = false;
+            }
+        }
+
+        private async void lstSearchResults_Click(object sender, EventArgs e)
+        {
+            if (lstSearchResults.SelectedItem == null)
+                return;
+
+            var selectedGame = (Game)lstSearchResults.SelectedItem;
+            await OpenGameForm(selectedGame);
+            lstSearchResults.Visible = false;
+        }
+
+        private async Task OpenGameForm(Game game)
+        {
+            try
+            {
+                var userGameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(_currentUserId, game.GameId);
+
+                if (userGameDetails == null)
+                {
+                    userGameDetails = new UserGameDetail
+                    {
+                        UserId = _currentUserId,
+                        GameId = game.GameId,
+                        IsPurchased = false,
+                        IsInstalled = false,
+                        InstallationPath = string.Empty,
+                        DownloadPath = string.Empty
+                    };
+                }
+
+                GameForm gameForm = new GameForm(
+                    _currentUserId,
+                    game.GameName,
+                    game.GameImage,
+                    game.Price,
+                    game.DownloadPath,
+                    game.RunPath,
+                    game.Description,
+                    userGameDetails.IsPurchased,
+                    userGameDetails.IsInstalled,
+                    game.IsExclusive,
+                    game.GameId,
+                    userGameDetails.InstallationPath,
+                    Program.ServiceProvider,
+                    _username
+                );
+                gameForm.Show();
+                this.Hide();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

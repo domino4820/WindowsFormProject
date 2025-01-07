@@ -58,6 +58,7 @@
             btnInstall = new Button();
             btnPlay = new Button();
             btngotopagegame = new Button();
+            lstSearchResults = new ListBox();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxGame).BeginInit();
@@ -95,6 +96,7 @@
             tsProfile_HoSo.Name = "tsProfile_HoSo";
             tsProfile_HoSo.Size = new Size(229, 36);
             tsProfile_HoSo.Text = "Hồ sơ";
+            tsProfile_HoSo.Click += tsProfile_HoSo_Click;
             // 
             // tsProfile_SoDu
             // 
@@ -103,6 +105,7 @@
             tsProfile_SoDu.Name = "tsProfile_SoDu";
             tsProfile_SoDu.Size = new Size(229, 36);
             tsProfile_SoDu.Text = "Số dư";
+            tsProfile_SoDu.Click += tsProfile_SoDu_Click;
             // 
             // tsProfile_ThuVien
             // 
@@ -119,6 +122,7 @@
             tsProfile_Logout.Name = "tsProfile_Logout";
             tsProfile_Logout.Size = new Size(229, 36);
             tsProfile_Logout.Text = "Đăng xuất";
+            tsProfile_Logout.Click += tsProfile_Logout_Click;
             // 
             // aministratorToolStripMenuItem
             // 
@@ -128,6 +132,7 @@
             aministratorToolStripMenuItem.Size = new Size(229, 36);
             aministratorToolStripMenuItem.Text = "Aministrator";
             aministratorToolStripMenuItem.Visible = false;
+            aministratorToolStripMenuItem.Click += aministratorToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
@@ -153,6 +158,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(300, 71);
             txtSearch.ToolTipText = "Tìm kiếm";
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // toolStripButton2
             // 
@@ -335,12 +341,25 @@
             btngotopagegame.Text = "Trang Chủ Nhà Phát Hành";
             btngotopagegame.UseVisualStyleBackColor = true;
             // 
+            // lstSearchResults
+            // 
+            lstSearchResults.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lstSearchResults.FormattingEnabled = true;
+            lstSearchResults.ItemHeight = 19;
+            lstSearchResults.Location = new Point(638, 54);
+            lstSearchResults.Name = "lstSearchResults";
+            lstSearchResults.Size = new Size(300, 118);
+            lstSearchResults.TabIndex = 18;
+            lstSearchResults.Visible = false;
+            lstSearchResults.Click += lstSearchResults_Click;
+            // 
             // Collection
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1135, 725);
+            Controls.Add(lstSearchResults);
             Controls.Add(btngotopagegame);
             Controls.Add(lblPrice);
             Controls.Add(btnDeleteGame);
@@ -351,6 +370,7 @@
             Controls.Add(groupBox1);
             Controls.Add(toolStrip1);
             Name = "Collection";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Collection";
             Load += Collection_Load;
             toolStrip1.ResumeLayout(false);
@@ -392,5 +412,6 @@
         private Button btnInstall;
         private Button btnPlay;
         private Button btngotopagegame;
+        private ListBox lstSearchResults;
     }
 }
