@@ -131,7 +131,7 @@ namespace LauncherGames
 
         private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(Program.ServiceProvider);
+            AdminForm adminForm = new AdminForm(Program.ServiceProvider, _username, _userId);
             adminForm.Show();
             this.Hide();
         }

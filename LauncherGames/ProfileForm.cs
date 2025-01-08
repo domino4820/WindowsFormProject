@@ -46,10 +46,20 @@ namespace LauncherGames
             }
         }
 
-        private void ProfileForm_Load_1(object sender, EventArgs e)
+        private async void ProfileForm_Load_1(object sender, EventArgs e)
         {
             LoadUserProfile();
+
+            if (await _userService.IsUserAdminAsync(_currentUserId))
+            {
+                aministratorToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                aministratorToolStripMenuItem.Visible = false;
+            }
         }
+
 
         private async void btnCapNhatMK_Click(object sender, EventArgs e)
         {
@@ -170,7 +180,7 @@ namespace LauncherGames
 
         private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(Program.ServiceProvider);
+            AdminForm adminForm = new AdminForm(Program.ServiceProvider,_username,_currentUserId);
             //adminForm.FormClosed += async (s, args) =>
             {
                 this.Show();

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace LauncherGames
 {
@@ -249,7 +250,7 @@ namespace LauncherGames
 
         private void tsProfile_SoDu_Click(object sender, EventArgs e)
         {
-            TransactionForm transactionForm = new TransactionForm(_currentUsername,_currentUserId);
+            TransactionForm transactionForm = new TransactionForm(_currentUsername, _currentUserId);
             //transactionForm.FormClosed += (s, args) => this.Show();
             transactionForm.Show();
             this.Hide();
@@ -257,7 +258,7 @@ namespace LauncherGames
 
         private async void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(_serviceProvider);
+            AdminForm adminForm = new AdminForm(_serviceProvider, _currentUsername, _currentUserId);
             //adminForm.FormClosed += async (s, args) =>
             {
                 await LoadGames();
@@ -284,7 +285,7 @@ namespace LauncherGames
             try
             {
                 var userGames = await _userGameDetailsService.GetPurchasedGamesAsync(_currentUserId);
-                Collection collectionForm = new Collection(_currentUsername,_currentUserId, userGames, _serviceProvider);
+                Collection collectionForm = new Collection(_currentUsername, _currentUserId, userGames, _serviceProvider);
                 //collectionForm.FormClosed += (s, args) => this.Show();
                 collectionForm.Show();
                 this.Hide();
@@ -327,6 +328,15 @@ namespace LauncherGames
             var selectedGame = (Game)lstSearchResults.SelectedItem;
             await OpenGameForm(selectedGame);
             lstSearchResults.Visible = false;
+        }
+
+        private void tsProfile_Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var userService = _serviceProvider.GetRequiredService<IUserService>();
+            var logger = _serviceProvider.GetRequiredService<ILogger<LoginForm>>();
+            LoginForm loginForm = new LoginForm(userService, logger);
+            loginForm.Show();
         }
     }
 }

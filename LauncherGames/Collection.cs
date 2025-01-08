@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
@@ -11,11 +12,13 @@ using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LauncherGames
 {
     public partial class Collection : Form
     {
+        private readonly IUserService _userService;
         private readonly int userId;
         private readonly List<UserGameDetail> userGames;
         private readonly IServiceProvider _serviceProvider;
@@ -23,20 +26,21 @@ namespace LauncherGames
         private readonly IPurchaseService _purchaseService;
         private bool isDownloading = false;
         private string _username;
+        private readonly int _currentUserId;
         private readonly IGameService _gameService;
-
 
         public Collection(string username, int userId, List<UserGameDetail> userGames, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _username = username;
             this.userId = userId;
+            this._currentUserId = userId;
             this.userGames = userGames;
             _serviceProvider = serviceProvider;
             _userGameDetailsService = _serviceProvider.GetRequiredService<IUserGameDetailsService>();
             _purchaseService = _serviceProvider.GetRequiredService<IPurchaseService>();
             _gameService = _serviceProvider.GetRequiredService<IGameService>();
-
+            _userService = _serviceProvider.GetRequiredService<IUserService>();
         }
 
         private async void Collection_Load(object sender, EventArgs e)
@@ -53,6 +57,15 @@ namespace LauncherGames
                 gameButton.Click += GameButton_Click;
                 flpGameLib.Controls.Add(gameButton);
             }
+
+            if (await _userService.IsUserAdminAsync(_currentUserId))
+            {
+                aministratorToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                aministratorToolStripMenuItem.Visible = false;
+            }
         }
 
         private void GameButton_Click(object sender, EventArgs e)
@@ -65,12 +78,23 @@ namespace LauncherGames
                 lblGameName.Text = game.Game.GameName ?? "Unknown";
                 picBoxGame.ImageLocation = game.Game.GameImage;
 
-                btnInstall.Enabled = !game.IsInstalled;
-                btnPlay.Enabled = game.IsInstalled;
+                if (game.Game.GameName == "Flappy-Bird")
+                {
+                    btnInstall.Visible = false;
+                    btnPlay.Visible = true;
+                    btnDeleteGame.Visible = false;
+                }
+                else
+                {
+                    btnInstall.Enabled = !game.IsInstalled;
+                    btnPlay.Enabled = game.IsInstalled;
+                    btnDeleteGame.Visible = game.IsInstalled;
+                }
 
                 btnInstall.Tag = game;
                 btnPlay.Tag = game;
                 btnDeleteGame.Tag = game;
+                btngotopagegame.Tag = game;
             }
             else
             {
@@ -184,6 +208,7 @@ namespace LauncherGames
                 MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnInstall.Visible = false;
                 btnPlay.Visible = true;
+                btnDeleteGame.Visible = true;
             }
             catch (Exception ex)
             {
@@ -203,17 +228,37 @@ namespace LauncherGames
             {
                 btnInstall.Enabled = !userGameDetails.IsInstalled;
                 btnPlay.Enabled = userGameDetails.IsInstalled;
+                btnDeleteGame.Visible = userGameDetails.IsInstalled;
             }
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             var game = btnPlay.Tag as UserGameDetail;
-            if (game != null)
+
+            if (game != null && game.Game.IsExclusive)
+            {
+                OpenExclusiveGame(game.Game.GameName);
+            }
+            else if (game != null)
             {
                 PlayGame(game);
             }
         }
+
+        private void OpenExclusiveGame(string gameName)
+        {
+            if (gameName == "Flappy-Bird")
+            {
+                var flappyBirdForm = new Flappy_Bird_Game.Form1();
+                flappyBirdForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Game không hỗ trợ chế độ exclusive.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         private void PlayGame(UserGameDetail game)
         {
@@ -280,6 +325,7 @@ namespace LauncherGames
                         await _userGameDetailsService.UpdateUserGameDetailsAsync(game);
 
                         UpdatePlayButtonToInstall();
+                        btnDeleteGame.Visible = false;
                         MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -340,7 +386,6 @@ namespace LauncherGames
             transactionForm.ShowDialog();
         }
 
-
         private void tsProfile_Logout_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -352,7 +397,7 @@ namespace LauncherGames
 
         private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(_serviceProvider);
+            AdminForm adminForm = new AdminForm(_serviceProvider, _username, userId);
             adminForm.Show();
             this.Hide();
         }
@@ -434,6 +479,42 @@ namespace LauncherGames
             {
                 MessageBox.Show($"Đã xảy ra lỗi khi lấy thông tin game: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btngotopagegame_Click(object sender, EventArgs e)
+        {
+            var game = btngotopagegame.Tag as UserGameDetail;
+            if (game == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin game.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var gameForm = new GameForm(
+                userId,
+                game.Game.GameName,
+                game.Game.GameImage,
+                game.Game.Price,
+                game.DownloadPath,
+                game.Game.RunPath,
+                game.Game.Description,
+                game.IsPurchased,
+                game.IsInstalled,
+                game.Game.IsExclusive,
+                game.Game.GameId,
+                game.InstallationPath,
+                _serviceProvider,
+                _username
+            );
+            gameForm.Show();
+            this.Hide();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LauncherForm launcherForm = new LauncherForm(_currentUserId, _username, _serviceProvider);
+            this.Close();
+            launcherForm.ShowDialog();
         }
     }
 }

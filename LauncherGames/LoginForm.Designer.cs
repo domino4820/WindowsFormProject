@@ -398,6 +398,7 @@
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlLogin.ResumeLayout(false);

@@ -69,7 +69,7 @@
             txtNewGameName = new TextBox();
             tabPage3 = new TabPage();
             groupBox6 = new GroupBox();
-            btnDeleteUser = new Button();
+            btnUnbanUser = new Button();
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
@@ -86,7 +86,6 @@
             txtUsername = new TextBox();
             groupBox5 = new GroupBox();
             flpUsers = new FlowLayoutPanel();
-            lstSearchResults = new ListBox();
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripDropDownButton();
             tsProfile_HoSo = new ToolStripMenuItem();
@@ -100,13 +99,7 @@
             toolStripButton2 = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnHome = new ToolStripButton();
-            toolStripButton4 = new ToolStripButton();
-            toolStripButton5 = new ToolStripSplitButton();
-            giảiTríToolStripMenuItem = new ToolStripMenuItem();
-            hànhĐộngToolStripMenuItem = new ToolStripMenuItem();
-            phiêuLưuToolStripMenuItem = new ToolStripMenuItem();
-            kinhDịToolStripMenuItem = new ToolStripMenuItem();
-            tâmLýToolStripMenuItem = new ToolStripMenuItem();
+            lstSearchResults = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -157,6 +150,7 @@
             // flpGames
             // 
             flpGames.AutoScroll = true;
+            flpGames.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             flpGames.Location = new Point(9, 32);
             flpGames.Name = "flpGames";
             flpGames.Size = new Size(584, 536);
@@ -356,6 +350,7 @@
             txtGameName.Name = "txtGameName";
             txtGameName.Size = new Size(375, 30);
             txtGameName.TabIndex = 0;
+            txtGameName.TextChanged += txtGameName_TextChanged;
             // 
             // groupBox1
             // 
@@ -539,7 +534,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(btnDeleteUser);
+            groupBox6.Controls.Add(btnUnbanUser);
             groupBox6.Controls.Add(label15);
             groupBox6.Controls.Add(label14);
             groupBox6.Controls.Add(label13);
@@ -563,15 +558,16 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Information User";
             // 
-            // btnDeleteUser
+            // btnUnbanUser
             // 
-            btnDeleteUser.ForeColor = Color.Black;
-            btnDeleteUser.Location = new Point(168, 546);
-            btnDeleteUser.Name = "btnDeleteUser";
-            btnDeleteUser.Size = new Size(139, 33);
-            btnDeleteUser.TabIndex = 14;
-            btnDeleteUser.Text = "Delete User";
-            btnDeleteUser.UseVisualStyleBackColor = true;
+            btnUnbanUser.ForeColor = Color.Black;
+            btnUnbanUser.Location = new Point(159, 546);
+            btnUnbanUser.Name = "btnUnbanUser";
+            btnUnbanUser.Size = new Size(112, 33);
+            btnUnbanUser.TabIndex = 15;
+            btnUnbanUser.Text = "UnBan User";
+            btnUnbanUser.UseVisualStyleBackColor = true;
+            btnUnbanUser.Click += btnUnbanUser_Click;
             // 
             // label15
             // 
@@ -697,6 +693,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(401, 30);
             txtUsername.TabIndex = 0;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // groupBox5
             // 
@@ -713,28 +710,18 @@
             // flpUsers
             // 
             flpUsers.AutoScroll = true;
+            flpUsers.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             flpUsers.Location = new Point(3, 29);
             flpUsers.Name = "flpUsers";
             flpUsers.Size = new Size(617, 517);
             flpUsers.TabIndex = 0;
-            // 
-            // lstSearchResults
-            // 
-            lstSearchResults.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lstSearchResults.FormattingEnabled = true;
-            lstSearchResults.ItemHeight = 19;
-            lstSearchResults.Location = new Point(638, 54);
-            lstSearchResults.Name = "lstSearchResults";
-            lstSearchResults.Size = new Size(300, 118);
-            lstSearchResults.TabIndex = 5;
-            lstSearchResults.Visible = false;
             // 
             // toolStrip1
             // 
             toolStrip1.BackColor = Color.Black;
             toolStrip1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(64, 64);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome, toolStripButton4, toolStripButton5 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1135, 71);
@@ -761,6 +748,7 @@
             tsProfile_HoSo.Name = "tsProfile_HoSo";
             tsProfile_HoSo.Size = new Size(229, 36);
             tsProfile_HoSo.Text = "Hồ sơ";
+            tsProfile_HoSo.Click += tsProfile_HoSo_Click;
             // 
             // tsProfile_SoDu
             // 
@@ -769,6 +757,7 @@
             tsProfile_SoDu.Name = "tsProfile_SoDu";
             tsProfile_SoDu.Size = new Size(229, 36);
             tsProfile_SoDu.Text = "Số dư";
+            tsProfile_SoDu.Click += tsProfile_SoDu_Click;
             // 
             // tsProfile_ThuVien
             // 
@@ -777,6 +766,7 @@
             tsProfile_ThuVien.Name = "tsProfile_ThuVien";
             tsProfile_ThuVien.Size = new Size(229, 36);
             tsProfile_ThuVien.Text = "Thư viện";
+            tsProfile_ThuVien.Click += tsProfile_ThuVien_Click;
             // 
             // tsProfile_Logout
             // 
@@ -785,6 +775,7 @@
             tsProfile_Logout.Name = "tsProfile_Logout";
             tsProfile_Logout.Size = new Size(229, 36);
             tsProfile_Logout.Text = "Đăng xuất";
+            tsProfile_Logout.Click += tsProfile_Logout_Click;
             // 
             // aministratorToolStripMenuItem
             // 
@@ -819,6 +810,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(300, 71);
             txtSearch.ToolTipText = "Tìm kiếm";
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // toolStripButton2
             // 
@@ -845,67 +837,19 @@
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(118, 68);
             btnHome.Text = "Trang chủ";
+            btnHome.Click += btnHome_Click;
             // 
-            // toolStripButton4
+            // lstSearchResults
             // 
-            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton4.ForeColor = Color.White;
-            toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(98, 68);
-            toolStripButton4.Text = "Thể loại";
-            // 
-            // toolStripButton5
-            // 
-            toolStripButton5.BackColor = Color.Black;
-            toolStripButton5.DisplayStyle = ToolStripItemDisplayStyle.None;
-            toolStripButton5.DropDownItems.AddRange(new ToolStripItem[] { giảiTríToolStripMenuItem, hànhĐộngToolStripMenuItem, phiêuLưuToolStripMenuItem, kinhDịToolStripMenuItem, tâmLýToolStripMenuItem });
-            toolStripButton5.Image = (Image)resources.GetObject("toolStripButton5.Image");
-            toolStripButton5.ImageTransparentColor = Color.Magenta;
-            toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(19, 68);
-            toolStripButton5.Text = "toolStripButton5";
-            // 
-            // giảiTríToolStripMenuItem
-            // 
-            giảiTríToolStripMenuItem.BackColor = Color.Black;
-            giảiTríToolStripMenuItem.ForeColor = Color.White;
-            giảiTríToolStripMenuItem.Name = "giảiTríToolStripMenuItem";
-            giảiTríToolStripMenuItem.Size = new Size(216, 36);
-            giảiTríToolStripMenuItem.Text = "Giải trí";
-            // 
-            // hànhĐộngToolStripMenuItem
-            // 
-            hànhĐộngToolStripMenuItem.BackColor = Color.Black;
-            hànhĐộngToolStripMenuItem.ForeColor = Color.White;
-            hànhĐộngToolStripMenuItem.Name = "hànhĐộngToolStripMenuItem";
-            hànhĐộngToolStripMenuItem.Size = new Size(216, 36);
-            hànhĐộngToolStripMenuItem.Text = "Hành động";
-            // 
-            // phiêuLưuToolStripMenuItem
-            // 
-            phiêuLưuToolStripMenuItem.BackColor = Color.Black;
-            phiêuLưuToolStripMenuItem.ForeColor = Color.White;
-            phiêuLưuToolStripMenuItem.Name = "phiêuLưuToolStripMenuItem";
-            phiêuLưuToolStripMenuItem.Size = new Size(216, 36);
-            phiêuLưuToolStripMenuItem.Text = "Phiêu lưu";
-            // 
-            // kinhDịToolStripMenuItem
-            // 
-            kinhDịToolStripMenuItem.BackColor = Color.Black;
-            kinhDịToolStripMenuItem.ForeColor = Color.White;
-            kinhDịToolStripMenuItem.Name = "kinhDịToolStripMenuItem";
-            kinhDịToolStripMenuItem.Size = new Size(216, 36);
-            kinhDịToolStripMenuItem.Text = "Kinh dị";
-            // 
-            // tâmLýToolStripMenuItem
-            // 
-            tâmLýToolStripMenuItem.BackColor = Color.Black;
-            tâmLýToolStripMenuItem.ForeColor = Color.White;
-            tâmLýToolStripMenuItem.Name = "tâmLýToolStripMenuItem";
-            tâmLýToolStripMenuItem.Size = new Size(216, 36);
-            tâmLýToolStripMenuItem.Text = "Tâm lý";
+            lstSearchResults.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lstSearchResults.FormattingEnabled = true;
+            lstSearchResults.ItemHeight = 19;
+            lstSearchResults.Location = new Point(638, 54);
+            lstSearchResults.Name = "lstSearchResults";
+            lstSearchResults.Size = new Size(300, 118);
+            lstSearchResults.TabIndex = 5;
+            lstSearchResults.Visible = false;
+            lstSearchResults.Click += lstSearchResults_Click;
             // 
             // AdminForm
             // 
@@ -998,10 +942,8 @@
         private Label label11;
         private Label label10;
         private Label label14;
-        private Button btnDeleteUser;
         private Label label15;
         private TextBox txtGameId;
-        private ListBox lstSearchResults;
         private ToolStrip toolStrip1;
         private ToolStripDropDownButton toolStripButton1;
         private ToolStripMenuItem tsProfile_HoSo;
@@ -1010,17 +952,12 @@
         private ToolStripMenuItem tsProfile_Logout;
         private ToolStripMenuItem aministratorToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton btnSearch;
-        private ToolStripTextBox txtSearch;
         private ToolStripButton toolStripButton2;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnHome;
-        private ToolStripButton toolStripButton4;
-        private ToolStripSplitButton toolStripButton5;
-        private ToolStripMenuItem giảiTríToolStripMenuItem;
-        private ToolStripMenuItem hànhĐộngToolStripMenuItem;
-        private ToolStripMenuItem phiêuLưuToolStripMenuItem;
-        private ToolStripMenuItem kinhDịToolStripMenuItem;
-        private ToolStripMenuItem tâmLýToolStripMenuItem;
+        private Button btnUnbanUser;
+        private ToolStripButton btnSearch;
+        private ToolStripTextBox txtSearch;
+        private ListBox lstSearchResults;
     }
 }

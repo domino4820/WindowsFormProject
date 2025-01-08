@@ -42,16 +42,8 @@
             toolStripButton2 = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnHome = new ToolStripButton();
-            toolStripButton4 = new ToolStripButton();
-            toolStripButton5 = new ToolStripSplitButton();
-            giảiTríToolStripMenuItem = new ToolStripMenuItem();
-            hànhĐộngToolStripMenuItem = new ToolStripMenuItem();
-            phiêuLưuToolStripMenuItem = new ToolStripMenuItem();
-            kinhDịToolStripMenuItem = new ToolStripMenuItem();
-            tâmLýToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
             flpGameLib = new FlowLayoutPanel();
-            lblPrice = new Label();
             btnDeleteGame = new Button();
             lblGameName = new Label();
             picBoxGame = new PictureBox();
@@ -59,9 +51,11 @@
             btnPlay = new Button();
             btngotopagegame = new Button();
             lstSearchResults = new ListBox();
+            pictureBox1 = new PictureBox();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxGame).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -69,7 +63,7 @@
             toolStrip1.BackColor = Color.Black;
             toolStrip1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(64, 64);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome, toolStripButton4, toolStripButton5 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1135, 71);
@@ -185,67 +179,7 @@
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(118, 68);
             btnHome.Text = "Trang chủ";
-            // 
-            // toolStripButton4
-            // 
-            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton4.ForeColor = Color.White;
-            toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(98, 68);
-            toolStripButton4.Text = "Thể loại";
-            // 
-            // toolStripButton5
-            // 
-            toolStripButton5.BackColor = Color.Black;
-            toolStripButton5.DisplayStyle = ToolStripItemDisplayStyle.None;
-            toolStripButton5.DropDownItems.AddRange(new ToolStripItem[] { giảiTríToolStripMenuItem, hànhĐộngToolStripMenuItem, phiêuLưuToolStripMenuItem, kinhDịToolStripMenuItem, tâmLýToolStripMenuItem });
-            toolStripButton5.Image = (Image)resources.GetObject("toolStripButton5.Image");
-            toolStripButton5.ImageTransparentColor = Color.Magenta;
-            toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(19, 68);
-            toolStripButton5.Text = "toolStripButton5";
-            // 
-            // giảiTríToolStripMenuItem
-            // 
-            giảiTríToolStripMenuItem.BackColor = Color.Black;
-            giảiTríToolStripMenuItem.ForeColor = Color.White;
-            giảiTríToolStripMenuItem.Name = "giảiTríToolStripMenuItem";
-            giảiTríToolStripMenuItem.Size = new Size(216, 36);
-            giảiTríToolStripMenuItem.Text = "Giải trí";
-            // 
-            // hànhĐộngToolStripMenuItem
-            // 
-            hànhĐộngToolStripMenuItem.BackColor = Color.Black;
-            hànhĐộngToolStripMenuItem.ForeColor = Color.White;
-            hànhĐộngToolStripMenuItem.Name = "hànhĐộngToolStripMenuItem";
-            hànhĐộngToolStripMenuItem.Size = new Size(216, 36);
-            hànhĐộngToolStripMenuItem.Text = "Hành động";
-            // 
-            // phiêuLưuToolStripMenuItem
-            // 
-            phiêuLưuToolStripMenuItem.BackColor = Color.Black;
-            phiêuLưuToolStripMenuItem.ForeColor = Color.White;
-            phiêuLưuToolStripMenuItem.Name = "phiêuLưuToolStripMenuItem";
-            phiêuLưuToolStripMenuItem.Size = new Size(216, 36);
-            phiêuLưuToolStripMenuItem.Text = "Phiêu lưu";
-            // 
-            // kinhDịToolStripMenuItem
-            // 
-            kinhDịToolStripMenuItem.BackColor = Color.Black;
-            kinhDịToolStripMenuItem.ForeColor = Color.White;
-            kinhDịToolStripMenuItem.Name = "kinhDịToolStripMenuItem";
-            kinhDịToolStripMenuItem.Size = new Size(216, 36);
-            kinhDịToolStripMenuItem.Text = "Kinh dị";
-            // 
-            // tâmLýToolStripMenuItem
-            // 
-            tâmLýToolStripMenuItem.BackColor = Color.Black;
-            tâmLýToolStripMenuItem.ForeColor = Color.White;
-            tâmLýToolStripMenuItem.Name = "tâmLýToolStripMenuItem";
-            tâmLýToolStripMenuItem.Size = new Size(216, 36);
-            tâmLýToolStripMenuItem.Text = "Tâm lý";
+            btnHome.Click += btnHome_Click;
             // 
             // groupBox1
             // 
@@ -267,17 +201,6 @@
             flpGameLib.Size = new Size(238, 632);
             flpGameLib.TabIndex = 0;
             // 
-            // lblPrice
-            // 
-            lblPrice.AutoSize = true;
-            lblPrice.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPrice.ForeColor = Color.Lime;
-            lblPrice.Location = new Point(844, 233);
-            lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(40, 31);
-            lblPrice.TabIndex = 16;
-            lblPrice.Text = "0đ";
-            // 
             // btnDeleteGame
             // 
             btnDeleteGame.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -292,16 +215,17 @@
             // lblGameName
             // 
             lblGameName.AutoSize = true;
+            lblGameName.BackColor = Color.SkyBlue;
             lblGameName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGameName.ForeColor = Color.White;
+            lblGameName.ForeColor = Color.BlueViolet;
             lblGameName.Location = new Point(844, 178);
             lblGameName.Name = "lblGameName";
-            lblGameName.Size = new Size(135, 31);
+            lblGameName.Size = new Size(0, 31);
             lblGameName.TabIndex = 11;
-            lblGameName.Text = "NameGame";
             // 
             // picBoxGame
             // 
+            picBoxGame.BackColor = Color.SkyBlue;
             picBoxGame.Location = new Point(384, 178);
             picBoxGame.Name = "picBoxGame";
             picBoxGame.Size = new Size(409, 226);
@@ -340,6 +264,7 @@
             btngotopagegame.TabIndex = 17;
             btngotopagegame.Text = "Trang Chủ Nhà Phát Hành";
             btngotopagegame.UseVisualStyleBackColor = true;
+            btngotopagegame.Click += btngotopagegame_Click;
             // 
             // lstSearchResults
             // 
@@ -353,6 +278,15 @@
             lstSearchResults.Visible = false;
             lstSearchResults.Click += lstSearchResults_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-9, 74);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1153, 654);
+            pictureBox1.TabIndex = 19;
+            pictureBox1.TabStop = false;
+            // 
             // Collection
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -361,7 +295,6 @@
             ClientSize = new Size(1135, 725);
             Controls.Add(lstSearchResults);
             Controls.Add(btngotopagegame);
-            Controls.Add(lblPrice);
             Controls.Add(btnDeleteGame);
             Controls.Add(lblGameName);
             Controls.Add(picBoxGame);
@@ -369,6 +302,7 @@
             Controls.Add(btnPlay);
             Controls.Add(groupBox1);
             Controls.Add(toolStrip1);
+            Controls.Add(pictureBox1);
             Name = "Collection";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Collection";
@@ -377,6 +311,7 @@
             toolStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picBoxGame).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -396,16 +331,8 @@
         private ToolStripButton toolStripButton2;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnHome;
-        private ToolStripButton toolStripButton4;
-        private ToolStripSplitButton toolStripButton5;
-        private ToolStripMenuItem giảiTríToolStripMenuItem;
-        private ToolStripMenuItem hànhĐộngToolStripMenuItem;
-        private ToolStripMenuItem phiêuLưuToolStripMenuItem;
-        private ToolStripMenuItem kinhDịToolStripMenuItem;
-        private ToolStripMenuItem tâmLýToolStripMenuItem;
         private GroupBox groupBox1;
         private FlowLayoutPanel flpGameLib;
-        private Label lblPrice;
         private Button btnDeleteGame;
         private Label lblGameName;
         private PictureBox picBoxGame;
@@ -413,5 +340,6 @@
         private Button btnPlay;
         private Button btngotopagegame;
         private ListBox lstSearchResults;
+        private PictureBox pictureBox1;
     }
 }

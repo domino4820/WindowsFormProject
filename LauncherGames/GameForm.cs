@@ -83,12 +83,14 @@ namespace LauncherGames
                 btnPurchase.Visible = !isGamePurchased;
                 btnInstall.Visible = isGamePurchased && !isGameInstalled && !isExclusive;
                 btnPlay.Visible = isGameInstalled || isExclusive;
+                btnDeleteGame.Visible = isGameInstalled;
             }
             else
             {
                 btnPurchase.Visible = !isPurchased;
                 btnInstall.Visible = isPurchased && !isInstalled && !isExclusive;
                 btnPlay.Visible = isInstalled || isExclusive;
+                btnDeleteGame.Visible = isInstalled;
             }
 
             await UpdateButtonState(userId, gameId);
@@ -241,6 +243,7 @@ namespace LauncherGames
                 await UpdateButtonState(userId, gameId);
                 MessageBox.Show("Tải xuống và cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnPlay.Visible = true;
+                btnDeleteGame.Visible = true;
             }
             catch (Exception ex)
             {
@@ -267,7 +270,16 @@ namespace LauncherGames
 
         private void PlayGame()
         {
-            string exePath = Path.Combine(installationPath, $"{gameName}/{gameName}.exe");
+            string exePath;
+
+            if (gameName == "fighter battle")
+            {
+                exePath = Path.Combine(installationPath, $"{gameName}/setup.exe");
+            }
+            else
+            {
+                exePath = Path.Combine(installationPath, $"{gameName}/{gameName}.exe");
+            }
 
             if (File.Exists(exePath))
             {
@@ -322,18 +334,21 @@ namespace LauncherGames
                 btnPurchase.Visible = true;
                 btnInstall.Visible = false;
                 btnPlay.Visible = false;
+                btnDeleteGame.Visible = false;
             }
             else if (gameDetails.IsPurchased && !gameDetails.IsInstalled && !isExclusive)
             {
                 btnPurchase.Visible = false;
                 btnInstall.Visible = true;
                 btnPlay.Visible = false;
+                btnDeleteGame.Visible = false;
             }
             else if (gameDetails.IsPurchased && (gameDetails.IsInstalled || isExclusive))
             {
                 btnPurchase.Visible = false;
                 btnInstall.Visible = false;
                 btnPlay.Visible = true;
+                btnDeleteGame.Visible = true;
             }
         }
 
@@ -366,6 +381,7 @@ namespace LauncherGames
                         }
 
                         UpdatePlayButtonToInstall();
+                        btnDeleteGame.Visible = false;
                         MessageBox.Show("Game đã được xóa thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -470,12 +486,14 @@ namespace LauncherGames
                 btnPurchase.Visible = !isGamePurchased;
                 btnInstall.Visible = isGamePurchased && !isGameInstalled && !isExclusive;
                 btnPlay.Visible = isGameInstalled || isExclusive;
+                btnDeleteGame.Visible = isGameInstalled;
             }
             else
             {
                 btnPurchase.Visible = !isPurchased;
                 btnInstall.Visible = isPurchased && !isInstalled && !isExclusive;
                 btnPlay.Visible = isInstalled || isExclusive;
+                btnDeleteGame.Visible = isInstalled;
             }
 
             await UpdateButtonState(userId, game.GameId);
@@ -486,9 +504,7 @@ namespace LauncherGames
             LauncherForm launcherForm = new LauncherForm(_currentUserId, _currentUsername, _serviceProvider);
             this.Close();
             launcherForm.ShowDialog();
-
         }
-
 
         private void tsProfile_HoSo_Click(object sender, EventArgs e)
         {
@@ -497,11 +513,9 @@ namespace LauncherGames
             profileForm.ShowDialog();
         }
 
-
-
         private void tsProfile_SoDu_Click(object sender, EventArgs e)
         {
-            TransactionForm transactionForm = new TransactionForm(_currentUsername,_currentUserId);
+            TransactionForm transactionForm = new TransactionForm(_currentUsername, _currentUserId);
             this.Close();
             transactionForm.ShowDialog();
         }
@@ -511,11 +525,9 @@ namespace LauncherGames
             try
             {
                 var userGames = await _userGameDetailsService.GetPurchasedGamesAsync(_currentUserId);
-                Collection collectionForm = new Collection(_currentUsername,_currentUserId, userGames, _serviceProvider);
-                //collectionForm.FormClosed += (s, args) => this.Show();
+                Collection collectionForm = new Collection(_currentUsername, _currentUserId, userGames, _serviceProvider);
                 this.Close();
                 collectionForm.Show();
-                //this.Hide();
             }
             catch (Exception ex)
             {
@@ -534,15 +546,10 @@ namespace LauncherGames
 
         private async void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(_serviceProvider);
-            //adminForm.FormClosed += async (s, args) =>
-            {
-                this.Show();
-            };
+            AdminForm adminForm = new AdminForm(_serviceProvider, _currentUsername, _currentUserId);
+            this.Show();
             adminForm.Show();
             this.Hide();
         }
-
-
     }
 }

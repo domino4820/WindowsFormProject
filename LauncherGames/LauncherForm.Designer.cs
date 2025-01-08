@@ -42,13 +42,6 @@
             toolStripButton2 = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnHome = new ToolStripButton();
-            toolStripButton4 = new ToolStripButton();
-            toolStripButton5 = new ToolStripSplitButton();
-            giảiTríToolStripMenuItem = new ToolStripMenuItem();
-            hànhĐộngToolStripMenuItem = new ToolStripMenuItem();
-            phiêuLưuToolStripMenuItem = new ToolStripMenuItem();
-            kinhDịToolStripMenuItem = new ToolStripMenuItem();
-            tâmLýToolStripMenuItem = new ToolStripMenuItem();
             pnlLauncher = new Panel();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -67,7 +60,7 @@
             toolStrip1.BackColor = Color.Black;
             toolStrip1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(64, 64);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome, toolStripButton4, toolStripButton5 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator2, btnSearch, txtSearch, toolStripButton2, toolStripSeparator1, btnHome });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1148, 71);
@@ -121,6 +114,7 @@
             tsProfile_Logout.Name = "tsProfile_Logout";
             tsProfile_Logout.Size = new Size(229, 36);
             tsProfile_Logout.Text = "Đăng xuất";
+            tsProfile_Logout.Click += tsProfile_Logout_Click;
             // 
             // aministratorToolStripMenuItem
             // 
@@ -184,67 +178,6 @@
             btnHome.Size = new Size(118, 68);
             btnHome.Text = "Trang chủ";
             btnHome.Click += btnHome_Click;
-            // 
-            // toolStripButton4
-            // 
-            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton4.ForeColor = Color.White;
-            toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(98, 68);
-            toolStripButton4.Text = "Thể loại";
-            // 
-            // toolStripButton5
-            // 
-            toolStripButton5.BackColor = Color.Black;
-            toolStripButton5.DisplayStyle = ToolStripItemDisplayStyle.None;
-            toolStripButton5.DropDownItems.AddRange(new ToolStripItem[] { giảiTríToolStripMenuItem, hànhĐộngToolStripMenuItem, phiêuLưuToolStripMenuItem, kinhDịToolStripMenuItem, tâmLýToolStripMenuItem });
-            toolStripButton5.Image = (Image)resources.GetObject("toolStripButton5.Image");
-            toolStripButton5.ImageTransparentColor = Color.Magenta;
-            toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(19, 68);
-            toolStripButton5.Text = "toolStripButton5";
-            // 
-            // giảiTríToolStripMenuItem
-            // 
-            giảiTríToolStripMenuItem.BackColor = Color.Black;
-            giảiTríToolStripMenuItem.ForeColor = Color.White;
-            giảiTríToolStripMenuItem.Name = "giảiTríToolStripMenuItem";
-            giảiTríToolStripMenuItem.Size = new Size(216, 36);
-            giảiTríToolStripMenuItem.Text = "Giải trí";
-            // 
-            // hànhĐộngToolStripMenuItem
-            // 
-            hànhĐộngToolStripMenuItem.BackColor = Color.Black;
-            hànhĐộngToolStripMenuItem.ForeColor = Color.White;
-            hànhĐộngToolStripMenuItem.Name = "hànhĐộngToolStripMenuItem";
-            hànhĐộngToolStripMenuItem.Size = new Size(216, 36);
-            hànhĐộngToolStripMenuItem.Text = "Hành động";
-            // 
-            // phiêuLưuToolStripMenuItem
-            // 
-            phiêuLưuToolStripMenuItem.BackColor = Color.Black;
-            phiêuLưuToolStripMenuItem.ForeColor = Color.White;
-            phiêuLưuToolStripMenuItem.Name = "phiêuLưuToolStripMenuItem";
-            phiêuLưuToolStripMenuItem.Size = new Size(216, 36);
-            phiêuLưuToolStripMenuItem.Text = "Phiêu lưu";
-            // 
-            // kinhDịToolStripMenuItem
-            // 
-            kinhDịToolStripMenuItem.BackColor = Color.Black;
-            kinhDịToolStripMenuItem.ForeColor = Color.White;
-            kinhDịToolStripMenuItem.Name = "kinhDịToolStripMenuItem";
-            kinhDịToolStripMenuItem.Size = new Size(216, 36);
-            kinhDịToolStripMenuItem.Text = "Kinh dị";
-            // 
-            // tâmLýToolStripMenuItem
-            // 
-            tâmLýToolStripMenuItem.BackColor = Color.Black;
-            tâmLýToolStripMenuItem.ForeColor = Color.White;
-            tâmLýToolStripMenuItem.Name = "tâmLýToolStripMenuItem";
-            tâmLýToolStripMenuItem.Size = new Size(216, 36);
-            tâmLýToolStripMenuItem.Text = "Tâm lý";
             // 
             // pnlLauncher
             // 
@@ -368,13 +301,6 @@
         private ToolStripButton btnSearch;
         private ToolStripButton toolStripButton2;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton toolStripButton4;
-        private ToolStripSplitButton toolStripButton5;
-        private ToolStripMenuItem giảiTríToolStripMenuItem;
-        private ToolStripMenuItem hànhĐộngToolStripMenuItem;
-        private ToolStripMenuItem phiêuLưuToolStripMenuItem;
-        private ToolStripMenuItem kinhDịToolStripMenuItem;
-        private ToolStripMenuItem tâmLýToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem aministratorToolStripMenuItem;
         private Panel pnlLauncher;

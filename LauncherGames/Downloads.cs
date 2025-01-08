@@ -17,7 +17,7 @@ namespace LauncherGames
 
         private void ProgressForm_Load(object sender, EventArgs e)
         {
-            // Implement the logic to start downloading the game
+
         }
 
         public void UpdateProgress(int progress)
@@ -26,19 +26,5 @@ namespace LauncherGames
             lblStatus.Text = $"Đang tải xuống... {progress}%";
         }
 
-        private void btnPause_Click(object sender, EventArgs e)
-        {
-            // Implement pause download logic
-        }
-
-        private void btnResume_Click(object sender, EventArgs e)
-        {
-            // Implement resume download logic
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            // Implement cancel download logic
-        }
     }
 }

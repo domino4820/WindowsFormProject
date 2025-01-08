@@ -6,6 +6,8 @@ namespace LauncherGames.BLL.Services.Interface
 {
     public interface IUserService
     {
+        Task UnbanUserAsync(int userId);
+        Task<List<User>> SearchUsersByUsernameAsync(string username);
         Task<(bool success, User? user)> AuthenticateAsync(string username, string password);
         Task<bool> IsAdminAsync(int userId);
         Task<bool> IsBannedAsync(int userId);

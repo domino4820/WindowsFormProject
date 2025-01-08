@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             progressBar = new ProgressBar();
-            btnCancel = new Button();
-            btnPause = new Button();
-            btnResume = new Button();
             lblStatus = new Label();
             SuspendLayout();
             // 
@@ -43,39 +40,6 @@
             progressBar.Size = new Size(824, 51);
             progressBar.Style = ProgressBarStyle.Continuous;
             progressBar.TabIndex = 0;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(488, 148);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(108, 51);
-            btnCancel.TabIndex = 21;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnPause
-            // 
-            btnPause.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPause.Location = new Point(616, 148);
-            btnPause.Margin = new Padding(3, 4, 3, 4);
-            btnPause.Name = "btnPause";
-            btnPause.Size = new Size(108, 51);
-            btnPause.TabIndex = 22;
-            btnPause.Text = "Dừng";
-            btnPause.UseVisualStyleBackColor = true;
-            // 
-            // btnResume
-            // 
-            btnResume.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnResume.Location = new Point(741, 148);
-            btnResume.Margin = new Padding(3, 4, 3, 4);
-            btnResume.Name = "btnResume";
-            btnResume.Size = new Size(108, 51);
-            btnResume.TabIndex = 23;
-            btnResume.Text = "Tiếp tục";
-            btnResume.UseVisualStyleBackColor = true;
             // 
             // lblStatus
             // 
@@ -93,11 +57,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(861, 268);
+            ClientSize = new Size(861, 218);
             Controls.Add(lblStatus);
-            Controls.Add(btnResume);
-            Controls.Add(btnPause);
-            Controls.Add(btnCancel);
             Controls.Add(progressBar);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProgressForm";
@@ -109,9 +70,6 @@
         #endregion
 
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnPause;
-        private System.Windows.Forms.Button btnResume;
         private Label lblStatus;
     }
 }

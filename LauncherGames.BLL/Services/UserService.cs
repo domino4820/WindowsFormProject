@@ -12,6 +12,24 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
+    public async Task UnbanUserAsync(int userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user != null)
+        {
+            user.IsBanned = false;
+            await _userRepository.UpdateAsync(user);
+            await _userRepository.SaveChangesAsync();
+        }
+    }
+
+    public async Task<List<User>> SearchUsersByUsernameAsync(string username)
+    {
+        return (await _userRepository
+            .FindAsync(u => u.Username.ToLower().Contains(username.ToLower())))
+            .ToList();
+    }
+
     public async Task<(bool success, User? user)> AuthenticateAsync(string username, string password)
     {
         var user = (await _userRepository.FindAsync(u =>
@@ -113,4 +131,6 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(userId);
         return user != null && user.IsAdmin;
     }
+
+
 }
