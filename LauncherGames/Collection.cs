@@ -58,6 +58,7 @@ namespace LauncherGames
                 flpGameLib.Controls.Add(gameButton);
             }
 
+
             if (await _userService.IsUserAdminAsync(_currentUserId))
             {
                 aministratorToolStripMenuItem.Visible = true;
@@ -78,11 +79,16 @@ namespace LauncherGames
                 lblGameName.Text = game.Game.GameName ?? "Unknown";
                 picBoxGame.ImageLocation = game.Game.GameImage;
 
+                // Reset button visibility
+                btnInstall.Visible = true;
+                btnPlay.Visible = true;
+                btnDeleteGame.Visible = true;
+
                 if (game.Game.GameName == "Flappy-Bird")
                 {
                     btnInstall.Visible = false;
-                    btnPlay.Visible = true;
                     btnDeleteGame.Visible = false;
+                    btnPlay.Enabled = true; 
                 }
                 else
                 {

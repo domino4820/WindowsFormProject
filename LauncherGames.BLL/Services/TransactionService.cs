@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LauncherGames.BLL.Services.Interface;
 using LauncherGames.DAL.Models;
 using LauncherGames.DAL.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace LauncherGames.BLL.Services
 {
@@ -20,28 +21,29 @@ namespace LauncherGames.BLL.Services
             _gameRepository = gameRepository;
         }
 
-        public async Task<List<TransactionViewModel>> GetTransactionsByUserIdAsync(int userId)
-        {
-            var transactions = await _transactionRepository.FindAsync(t => t.UserId == userId);
-            var users = await _userRepository.GetAllAsync();
-            var games = await _gameRepository.GetAllAsync();
 
-            var result = from t in transactions
-                         join u in users on t.UserId equals u.UserId
-                         join g in games on t.GameId equals g.GameId into gj
-                         from subG in gj.DefaultIfEmpty()
-                         select new TransactionViewModel
-                         {
-                             Username = u.Username,
-                             GameName = subG != null ? subG.GameName : "No Game",
-                             Amount = t.Amount,
-                             AmountInVND = t.AmountInVND,
-                             Status = UpdateTransactionStatus(t.Status), 
-                             TransactionDate = t.TransactionDate
-                         };
+            public async Task<List<TransactionViewModel>> GetTransactionsByUserIdAsync(int userId)
+            {
+                var transactions = await _transactionRepository.FindAsync(t => t.UserId == userId);
+                var users = await _userRepository.GetAllAsync();
+                var games = await _gameRepository.GetAllAsync();
 
-            return result.ToList();
-        }
+                var result = from t in transactions
+                             join u in users on t.UserId equals u.UserId
+                             join g in games on t.GameId equals g.GameId into gj
+                             from subG in gj.DefaultIfEmpty()
+                             select new TransactionViewModel
+                             {
+                                 Username = u.Username,
+                                 GameName = subG != null ? subG.GameName : "No Game",
+                                 Amount = t.Amount,
+                                 AmountInVND = t.Amount * 23000,
+                                 Status = UpdateTransactionStatus(t.Status), 
+                                 TransactionDate = t.TransactionDate
+                             };
+
+                return result.ToList();
+            }
 
         private string UpdateTransactionStatus(string status)
         {

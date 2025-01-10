@@ -528,5 +528,6 @@ namespace LauncherGames
             this.Close();
             launcherForm.ShowDialog();
         }
+
     }
 }

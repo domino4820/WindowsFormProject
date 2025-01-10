@@ -43,6 +43,7 @@ namespace LauncherGames
             {
                 dataGridViewTransactions.Columns["TransactionId"].Visible = false;
             }
+
         }
 
         private async void UpdateUserBalance()
@@ -60,6 +61,7 @@ namespace LauncherGames
             UpdateUserBalance();
             SetGridViewStyle(dataGridViewTransactions);
 
+
             if (await _userService.IsUserAdminAsync(_userId))
             {
                 aministratorToolStripMenuItem.Visible = true;
@@ -68,7 +70,11 @@ namespace LauncherGames
             {
                 aministratorToolStripMenuItem.Visible = false;
             }
+
+
         }
+
+
 
         public static void SetGridViewStyle(DataGridView dgview)
         {
@@ -89,6 +95,13 @@ namespace LauncherGames
 
         }
 
+        public async void ReloadTransaction()
+        {
+            UpdateUserBalance();
+            this.Show();
+        }
+
+
         private void tsProfile_HoSo_Click(object sender, EventArgs e)
         {
             ProfileForm profileForm = new ProfileForm(_username, _userId);
@@ -105,7 +118,7 @@ namespace LauncherGames
                 if (user != null)
                 {
                     var userGames = user.UserGameDetails;
-                    Collection collectionForm = new Collection(_username,_userId, userGames.ToList(), Program.ServiceProvider);
+                    Collection collectionForm = new Collection(_username, _userId, userGames.ToList(), Program.ServiceProvider);
                     this.Close();
                     collectionForm.Show();
                 }
@@ -221,5 +234,7 @@ namespace LauncherGames
             this.Close();
             launcherForm.ShowDialog();
         }
+
+
     }
 }

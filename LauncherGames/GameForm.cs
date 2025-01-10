@@ -74,6 +74,8 @@ namespace LauncherGames
             lblPrice.Text = gamePrice == 0 ? "Free" : $"{gamePrice:C}";
             txtGameDescription.Text = description;
 
+
+
             var gameDetails = await _userGameDetailsService.GetUserGameDetailsAsync(userId, gameId);
             if (gameDetails != null)
             {
@@ -84,7 +86,13 @@ namespace LauncherGames
                 btnInstall.Visible = isGamePurchased && !isGameInstalled && !isExclusive;
                 btnPlay.Visible = isGameInstalled || isExclusive;
                 btnDeleteGame.Visible = isGameInstalled;
+
+
+
             }
+
+
+
             else
             {
                 btnPurchase.Visible = !isPurchased;
@@ -92,6 +100,7 @@ namespace LauncherGames
                 btnPlay.Visible = isInstalled || isExclusive;
                 btnDeleteGame.Visible = isInstalled;
             }
+
 
             await UpdateButtonState(userId, gameId);
 
@@ -336,6 +345,12 @@ namespace LauncherGames
                 btnPlay.Visible = false;
                 btnDeleteGame.Visible = false;
             }
+            else if (gameName == "Flappy-Bird")
+            {
+                btnInstall.Visible = false;
+                btnDeleteGame.Visible = false;
+                btnPlay.Visible = true;
+            }
             else if (gameDetails.IsPurchased && !gameDetails.IsInstalled && !isExclusive)
             {
                 btnPurchase.Visible = false;
@@ -354,6 +369,7 @@ namespace LauncherGames
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+
             DialogResult result = MessageBox.Show(
                 "Bạn có chắc chắn muốn xóa game này không?",
                 "Xác nhận xóa",

@@ -162,6 +162,9 @@ namespace LauncherGames
                     decimal amount = decimal.Parse(executedPayment.transactions.First().amount.total);
                     await _userService.AddBalanceAsync(_userId, amount);
 
+
+
+
                     MessageBox.Show("Thanh toán thành công và số dư đã được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -179,6 +182,7 @@ namespace LauncherGames
         {
             base.OnFormClosed(e);
             mainForm.Show();
+            mainForm.ReloadTransaction();
         }
     }
 }

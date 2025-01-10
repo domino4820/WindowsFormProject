@@ -111,7 +111,7 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(495, 94);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(552, 309);
+            groupBox2.Size = new Size(552, 260);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thanh toán";
@@ -119,7 +119,7 @@
             // btnPaypal
             // 
             btnPaypal.Image = (Image)resources.GetObject("btnPaypal.Image");
-            btnPaypal.Location = new Point(60, 44);
+            btnPaypal.Location = new Point(69, 84);
             btnPaypal.Name = "btnPaypal";
             btnPaypal.Size = new Size(443, 99);
             btnPaypal.TabIndex = 0;
@@ -142,11 +142,11 @@
             dataGridViewTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTransactions.GridColor = Color.Black;
-            dataGridViewTransactions.Location = new Point(-2, 447);
+            dataGridViewTransactions.Location = new Point(0, 446);
             dataGridViewTransactions.Name = "dataGridViewTransactions";
             dataGridViewTransactions.ReadOnly = true;
             dataGridViewTransactions.RowHeadersWidth = 51;
-            dataGridViewTransactions.Size = new Size(1143, 280);
+            dataGridViewTransactions.Size = new Size(1135, 282);
             dataGridViewTransactions.TabIndex = 1;
             // 
             // label1
@@ -154,7 +154,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 404);
+            label1.Location = new Point(12, 399);
             label1.Name = "label1";
             label1.Size = new Size(169, 28);
             label1.TabIndex = 3;
@@ -301,10 +301,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1135, 725);
+            Controls.Add(dataGridViewTransactions);
             Controls.Add(lstSearchResults);
             Controls.Add(toolStrip2);
             Controls.Add(label1);
-            Controls.Add(dataGridViewTransactions);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "TransactionForm";
